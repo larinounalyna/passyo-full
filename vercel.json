@@ -3,5 +3,10 @@
   "outputDirectory": "frontend/.next",
   "installCommand": "cd frontend && npm install",
   "devCommand": "cd frontend && npm run dev",
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "functions": {
+    "api/**/*.py": {
+      "runtime": "python@3.11"
+    }
+  }
 }
