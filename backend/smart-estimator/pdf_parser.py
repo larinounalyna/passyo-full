@@ -38,16 +38,15 @@ except ImportError:
 # Optional Groq Vision support (primary OCR method — much better than Tesseract)
 import io as _io
 import base64 as _base64
+import os
 
-_GROQ_API_KEY = os.environ.get(
-    "GROQ_API_KEY",
-)
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 _GROQ_MODEL = "meta-llama/llama-4-scout-17b-16e-instruct"
 VISION_AI_AVAILABLE = False
 
 try:
     from groq import Groq as _Groq
-    if _GROQ_API_KEY:
+    if GROQ_API_KEY:
         VISION_AI_AVAILABLE = True
 except ImportError:
     pass
