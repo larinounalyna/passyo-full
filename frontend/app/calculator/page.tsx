@@ -15,7 +15,7 @@ import {
   Trash2,
 } from "lucide-react";
 
-const API_BASE = "http://localhost:8002";
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8002";
 
 const STEPS = [
   { id: 1, name: "Upload", icon: <UploadCloud size={18} /> },
