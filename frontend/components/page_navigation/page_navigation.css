@@ -1,0 +1,49 @@
+.page-navigation-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 6px;
+  border-bottom: 1px solid var(--border);
+  background-color: transparent;
+  color: var(--text-1);
+  list-style: none;
+  margin-top: 0;
+  padding: 0 0 10px;
+}
+
+.page-navigation-item {
+  font-size: 13px;
+}
+
+.page-navigation-link {
+  text-decoration: none;
+  color: var(--text-3);
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 9px;
+  padding: 6px 12px;
+  font-size: inherit;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.page-navigation-link:hover {
+  background: var(--surface-2);
+  color: var(--text-2);
+  border-color: var(--border);
+}
+
+/* Yellow active tab — strong & distinctive */
+.page-navigation-link.active {
+  color: var(--yellow-dark);
+  font-weight: 700;
+  border-color: var(--yellow);
+  background: var(--yellow-pale);
+}
+
+.dark .page-navigation-link.active {
+  color: var(--yellow);
+  border-color: var(--yellow-pale);
+  background: var(--yellow-pale);
+}

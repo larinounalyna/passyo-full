@@ -1,0 +1,20 @@
+.reports-hub-page {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.reports-hub-panel {
+  border: 1.5px solid #dbe4f0;
+  border-radius: 0 10px 10px 10px;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(19, 40, 73, 0.08);
+  overflow: hidden;
+  padding: 24px;
+}
+
+@media (max-width: 768px) {
+  .reports-hub-panel {
+    padding: 16px;
+  }
+}

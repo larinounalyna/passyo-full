@@ -1,0 +1,402 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Passyo Onboarding - General Project Information</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-active { font-variation-settings: 'FILL' 1; }
+        .transition-all-200 { transition: all 0.2s ease-in-out; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 10px; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#d9dadc",
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "on-tertiary-container": "#eef0ff",
+                        "tertiary-fixed": "#dae2fd",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed": "#00174b",
+                        "on-surface-variant": "#434655",
+                        "inverse-surface": "#2e3132",
+                        "inverse-on-surface": "#f0f1f3",
+                        "surface-container-low": "#f3f4f6",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c3c6d7",
+                        "secondary-container": "#d0e1fb",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "on-primary-container": "#eeefff",
+                        "secondary-fixed": "#d3e4fe",
+                        "surface-container-highest": "#e1e2e4",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-tertiary-fixed": "#131b2e",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "on-background": "#191c1e",
+                        "primary-container": "#2563eb",
+                        "primary": "#004ac6",
+                        "surface-container": "#edeef0",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "background": "#f8f9fb",
+                        "on-surface": "#191c1e",
+                        "on-secondary-fixed": "#0b1c30",
+                        "outline": "#737686",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f8f9fb",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-container-high": "#e7e8ea",
+                        "inverse-primary": "#b4c5ff",
+                        "secondary": "#505f76",
+                        "tertiary": "#4d556b",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e1e2e4",
+                        "surface": "#f8f9fb",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#54647a",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#dbe1ff",
+                        "tertiary-container": "#656d84"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "2rem",
+                        "stack-md": "1rem",
+                        "stack-sm": "0.5rem",
+                        "container-max": "1280px",
+                        "gutter": "1.5rem",
+                        "margin-mobile": "1rem"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center px-gutter py-stack-sm w-full max-w-container-max mx-auto sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<span class="font-display text-display text-primary">Passyo</span>
+</div>
+
+</header>
+<div class="flex flex-1 max-w-container-max w-full mx-auto">
+<!-- Sidebar Navigation (Matching JSON SideNavBar) -->
+
+<!-- Main Content Canvas -->
+<main class="flex-1 p-gutter max-w-4xl mx-auto w-full">
+<!-- Progress Stepper -->
+<div class="mb-stack-lg">
+<div class="flex justify-between items-end mb-4">
+<div>
+<span class="text-primary font-bold font-label-md text-label-md">STEP 1 OF 2</span>
+<h1 class="font-headline-lg text-headline-lg">General Project Information</h1>
+</div>
+<span class="text-secondary font-label-md text-label-md">60% Complete</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[50%] transition-all duration-500"></div>
+</div>
+</div>
+<form class="space-y-stack-lg pb-stack-lg">
+<!-- Section A: Project Identity -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6">
+<div class="flex items-center gap-2 mb-6 pb-4 border-b border-surface-container-high">
+<span class="material-symbols-outlined text-primary">apartment</span>
+<h3 class="font-headline-md text-headline-md">Project Identity</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="md:col-span-2">
+<label class="block font-label-md text-label-md text-secondary mb-1.5">Project Full Name</label>
+<input class="w-full px-4 py-2 rounded border border-outline-variant focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="e.g. Skyline Residency Phase I" type="text">
+</div>
+<div>
+<label class="block font-label-md text-label-md text-secondary mb-1.5">Project Identifier / ID</label>
+<input class="w-full px-4 py-2 rounded border border-outline-variant focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="PRJ-2024-001" type="text">
+</div>
+<div>
+<label class="block font-label-md text-label-md text-secondary mb-1.5">Project Location</label>
+<div class="relative">
+<input class="w-full pl-10 pr-4 py-2 rounded border border-outline-variant focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="alger" type="text">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">location_on</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section B: Stakeholders -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6">
+<div class="flex items-center gap-2 mb-6 pb-4 border-b border-surface-container-high">
+<span class="material-symbols-outlined text-primary">groups</span>
+<h3 class="font-headline-md text-headline-md">Primary Stakeholders</h3>
+</div>
+<div class="space-y-8">
+<!-- Stakeholder Row: Client -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-surface-container-low rounded-lg">
+<div class="md:col-span-3 mb-2 flex items-center justify-between">
+<span class="font-bold text-primary font-label-md text-label-md uppercase tracking-wider">Client</span>
+<span class="text-outline text-xs">Required</span>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-secondary mb-1">Contact Person</label>
+<input class="w-full px-3 py-2 text-sm rounded border border-outline-variant" type="text" placeholder="fff">
+</div>
+<div>
+<label class="block font-label-md text-label-md text-secondary mb-1">Email Address</label>
+<input class="w-full px-3 py-2 text-sm rounded border border-outline-variant" type="email" placeholder="ff">
+</div>
+<div>
+<label class="block font-label-md text-label-md text-secondary mb-1">Phone Number</label>
+<input class="w-full px-3 py-2 text-sm rounded border border-outline-variant" type="tel">
+</div>
+</div>
+<!-- Stakeholder Row: Architect -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="md:col-span-3 mb-2">
+<span class="font-bold text-secondary font-label-md text-label-md uppercase tracking-wider">Lead Architect</span>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-secondary mb-1">Name</label>
+<input class="w-full px-3 py-2 text-sm rounded border border-outline-variant" type="text">
+</div>
+<div>
+<label class="block font-label-md text-label-md text-secondary mb-1">Email Address</label>
+<input class="w-full px-3 py-2 text-sm rounded border border-outline-variant" type="email">
+</div>
+<div>
+<label class="block font-label-md text-label-md text-secondary mb-1">Phone Number</label>
+<input class="w-full px-3 py-2 text-sm rounded border border-outline-variant" type="tel">
+</div>
+</div>
+<!-- Stakeholder Row: Main Contractor -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="md:col-span-3 mb-2">
+<span class="font-bold text-secondary font-label-md text-label-md uppercase tracking-wider">Main Contractor</span>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-secondary mb-1">Name</label>
+<input class="w-full px-3 py-2 text-sm rounded border border-outline-variant" type="text">
+</div>
+<div>
+<label class="block font-label-md text-label-md text-secondary mb-1">Email Address</label>
+<input class="w-full px-3 py-2 text-sm rounded border border-outline-variant" type="email">
+</div>
+<div>
+<label class="block font-label-md text-label-md text-secondary mb-1">Phone Number</label>
+<input class="w-full px-3 py-2 text-sm rounded border border-outline-variant" type="tel">
+</div>
+</div>
+</div>
+</section>
+<!-- Section C: Technical Specs -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6">
+<div class="flex items-center gap-2 mb-6 pb-4 border-b border-surface-container-high">
+<span class="material-symbols-outlined text-primary">engineering</span>
+<h3 class="font-headline-md text-headline-md">Technical Specifications</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block font-label-md text-label-md text-secondary mb-1.5">Scheduled Start Date</label>
+<input class="w-full px-4 py-2 rounded border border-outline-variant" type="date">
+</div>
+<div>
+<label class="block font-label-md text-label-md text-secondary mb-1.5">Expected Completion Date</label>
+<input class="w-full px-4 py-2 rounded border border-outline-variant" type="date">
+</div>
+<div>
+<label class="block font-label-md text-label-md text-secondary mb-2">Construction System</label>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex flex-col items-center justify-center p-4 border border-outline-variant rounded hover:bg-surface-container-low transition-colors group" id="btnSteel" onclick="toggleConcrete(false)" type="button">
+<span class="material-symbols-outlined text-secondary group-[.active]:text-primary mb-1">foundation</span>
+<span class="font-label-md text-label-md text-on-surface-variant group-[.active]:text-primary">Steel Frame</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 border border-outline-variant rounded hover:bg-surface-container-low transition-colors group active border-primary bg-primary-container/10" id="btnConcrete" onclick="toggleConcrete(true)" type="button">
+<span class="material-symbols-outlined text-secondary group-[.active]:text-primary mb-1">blur_on</span>
+<span class="font-label-md text-label-md text-on-surface-variant group-[.active]:text-primary">Concrete Cast</span>
+</button>
+</div>
+</div>
+<div class="animate-in fade-in slide-in-from-top-2 duration-300 block" id="concreteField">
+<label class="block font-label-md text-label-md text-secondary mb-1.5">Concrete Curing Time (days) *</label>
+<input class="w-full px-4 py-2 rounded border border-primary focus:ring-2 focus:ring-primary/20 outline-none" placeholder="14" type="number">
+<p class="text-[10px] text-primary mt-1 font-medium italic">Required for structural safety calculations</p>
+</div>
+</div>
+</section>
+<!-- Section D: Building Structure -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6">
+<div class="flex items-center gap-2 mb-6 pb-4 border-b border-surface-container-high">
+<span class="material-symbols-outlined text-primary">domain</span>
+<h3 class="font-headline-md text-headline-md">Building Structure</h3>
+</div>
+<div class="mb-8">
+<div class="max-w-xs">
+<label class="block font-label-md text-label-md text-secondary mb-1.5">Number of Blocks</label>
+<div class="flex items-center">
+<button class="px-3 py-2 border border-outline-variant rounded-l border-r-0 hover:bg-surface-container-high" type="button">-</button>
+<input class="w-16 px-2 py-2 border border-outline-variant text-center focus:outline-none" readonly="" type="text" value="3">
+<button class="px-3 py-2 border border-outline-variant rounded-r border-l-0 hover:bg-surface-container-high" type="button">+</button>
+</div>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-4 bg-surface-bright border border-outline-variant rounded-lg hover:shadow-sm transition-shadow">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-surface-container-highest flex items-center justify-center text-primary font-bold">A</div>
+<div>
+<p class="font-bold">Block A</p>
+<p class="text-xs text-secondary">Main Residential Hub</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<label class="text-xs text-secondary font-label-md">Number of Floors</label>
+<input class="w-20 px-3 py-1 text-sm border border-outline-variant rounded" type="number" value="12" placeholder="4">
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-bright border border-outline-variant rounded-lg hover:shadow-sm transition-shadow">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-surface-container-highest flex items-center justify-center text-primary font-bold">B</div>
+<div>
+<p class="font-bold">Block B</p>
+<p class="text-xs text-secondary">Secondary Tower</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<label class="text-xs text-secondary font-label-md">Number of Floors</label>
+<input class="w-20 px-3 py-1 text-sm border border-outline-variant rounded" type="number" value="12" placeholder="4">
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-bright border border-outline-variant rounded-lg hover:shadow-sm transition-shadow">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-surface-container-highest flex items-center justify-center text-primary font-bold">C</div>
+<div>
+<p class="font-bold">Block C</p>
+<p class="text-xs text-secondary">Commercial Annex</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<label class="text-xs text-secondary font-label-md">Number of Floors</label>
+<input class="w-20 px-3 py-1 text-sm border border-outline-variant rounded" type="number" value="5" placeholder="4">
+</div>
+</div>
+</div>
+</section>
+<!-- Section E: Documents -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6">
+<div class="flex items-center gap-2 mb-6 pb-4 border-b border-surface-container-high">
+<span class="material-symbols-outlined text-primary">upload_file</span>
+<h3 class="font-headline-md text-headline-md">Project Documents</h3>
+</div>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-10 flex flex-col items-center justify-center bg-surface-bright group hover:border-primary transition-colors cursor-pointer mb-6">
+<div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">cloud_upload</span>
+</div>
+<p class="font-bold text-on-surface">Drag &amp; Drop Architectural Drawings</p>
+<p class="text-secondary text-sm mt-1">PDF, DWG or BIM models (Max 50MB per file)</p>
+<button class="mt-4 px-6 py-2 bg-primary text-white rounded font-label-md text-label-md hover:shadow-lg transition-all" type="button">Browse Files</button>
+</div>
+<div class="space-y-2">
+<div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-red-600">picture_as_pdf</span>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium truncate">Site_Layout_Final_v2.pdf</p>
+<p class="text-[10px] text-secondary">4.2 MB • Uploaded today</p>
+</div>
+<button class="text-outline hover:text-error transition-colors" type="button"><span class="material-symbols-outlined text-xl">delete</span></button>
+</div>
+<div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg opacity-60">
+<span class="material-symbols-outlined text-blue-500">article</span>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium truncate">Environmental_Impact_Assessment.pdf</p>
+<p class="text-[10px] text-secondary">Waitng for upload...</p>
+</div>
+<div class="w-12 bg-outline-variant h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[30%]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Navigation -->
+<div class="flex justify-between items-center pt-8 border-t border-outline-variant">
+<button class="px-6 py-2.5 text-secondary font-label-md text-label-md flex items-center gap-2 hover:bg-surface-container-high rounded transition-colors" type="button">
+<span class="material-symbols-outlined">arrow_back</span>
+                        Cancel Setup
+                    </button>
+<button class="px-8 py-3 bg-primary text-white rounded-lg font-headline-md text-headline-md flex items-center gap-2 shadow-md hover:bg-primary-fixed-variant hover:shadow-lg transition-all-200 active:scale-98" type="button">
+                        Next
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</form>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant w-full">
+<div class="max-w-container-max mx-auto px-gutter py-stack-md flex justify-between items-center">
+<span class="font-label-md text-label-md font-bold text-primary">© 2024 Passyo Construction Technologies</span>
+<div class="flex gap-6">
+<a class="font-body-md text-body-md text-on-surface-variant hover:underline" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:underline" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:underline" href="#">Support</a>
+</div>
+</div>
+</footer>
+<script>
+        function toggleConcrete(isConcrete) {
+            const btnSteel = document.getElementById('btnSteel');
+            const btnConcrete = document.getElementById('btnConcrete');
+            const field = document.getElementById('concreteField');
+
+            if (isConcrete) {
+                btnConcrete.classList.add('active', 'border-primary', 'bg-primary-container/10');
+                btnSteel.classList.remove('active', 'border-primary', 'bg-primary-container/10');
+                field.classList.remove('hidden');
+                field.classList.add('block');
+            } else {
+                btnSteel.classList.add('active', 'border-primary', 'bg-primary-container/10');
+                btnConcrete.classList.remove('active', 'border-primary', 'bg-primary-container/10');
+                field.classList.add('hidden');
+                field.classList.remove('block');
+            }
+        }
+        
+        // Initialize default active
+        window.onload = () => toggleConcrete(false);
+    </script>
+
+
+</body></html>

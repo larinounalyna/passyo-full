@@ -1,0 +1,27 @@
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 13.5px;
+  font-weight: 600;
+  font-family: inherit;
+  transition: all 0.18s ease;
+}
+
+.btn-primary {
+  background-color: var(--accent, #1E4FD0);
+  color: white;
+  box-shadow: 0 2px 6px rgba(30, 79, 208, 0.28);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-dark, #1840B0);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(30, 79, 208, 0.35);
+}
+
+.btn-primary:active {
+  background-color: var(--accent-dark, #1840B0);
+  transform: scale(0.97);
+}

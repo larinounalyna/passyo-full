@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Estimator - Estimation des Coûts de Construction</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="landing-container">
+        <nav class="navbar">
+            <div class="nav-content">
+                <h1 class="logo">Smart Estimator</h1>
+                <div class="nav-links">
+                    <a href="#features">Fonctionnalités</a>
+                    <a href="#how-it-works">Comment ça marche</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Estimation Intelligente des Coûts de Construction</h1>
+                <p>Importez vos modèles BIM, configurez les conditions du site et générez des estimations précises avec tarification régionale et décomposition complète des coûts</p>
+                <a href="app.html" class="cta-button">Commencer l'Estimation</a>
+            </div>
+            <div class="hero-image">
+                <div class="hero-icon">📐</div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <h2>Fonctionnalités</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📥</div>
+                    <h3>Import BIM Universel</h3>
+                    <p>Support des formats IFC, Excel et PDF avec extraction intelligente des quantités.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Extraction IA (Vision)</h3>
+                    <p>Lecture automatique des tableaux PDF par IA (Groq Vision) avec Tesseract OCR en secours.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Pipeline d'Estimation 5D</h3>
+                    <p>Calculs contextuels avec facteurs de perte, transport, équipement et contingence.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Tarification Régionale</h3>
+                    <p>Profils pré-configurés pour l'Afrique du Nord, le Moyen-Orient, l'Europe et profils personnalisables.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Assistant Site Intelligent</h3>
+                    <p>Coefficients dynamiques pour accessibilité, type de sol, équipement, béton, hébergement et plus.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Rapports & Graphiques</h3>
+                    <p>Bordereau des quantités hiérarchique (MétréExpert), graphiques interactifs et export PDF/Word.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="how-it-works">
+            <h2>Comment ça marche</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number-landing">1</div>
+                    <h3>Importer</h3>
+                    <p>Importez votre fichier BIM (IFC, Excel) ou PDF par glisser-déposer.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number-landing">2</div>
+                    <h3>Vérifier & Modifier</h3>
+                    <p>Modifiez les quantités, prix et heures de main-d'œuvre. Ajoutez ou supprimez des composants.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number-landing">3</div>
+                    <h3>Configurer le Site</h3>
+                    <p>Définissez l'équipement, le type de sol, l'accessibilité, les réseaux et les détails ouvriers.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number-landing">4</div>
+                    <h3>Résultats</h3>
+                    <p>Visualisez la décomposition des coûts avec graphiques, exportez en PDF ou Word.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="tech-stack">
+            <h2>Technologies Utilisées</h2>
+            <div class="tech-items">
+                <span class="tech-item">FastAPI</span>
+                <span class="tech-item">Groq Vision (Llama 4)</span>
+                <span class="tech-item">Tesseract OCR</span>
+                <span class="tech-item">Chart.js</span>
+                <span class="tech-item">Python 3.12</span>
+                <span class="tech-item">pdfplumber</span>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2026 Smart Estimator. Plateforme intelligente d'estimation des coûts de construction.</p>
+        </footer>
+    </div>
+</body>
+</html>

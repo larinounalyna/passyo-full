@@ -1,0 +1,436 @@
+<!DOCTYPE html><html class="light" lang="fr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Passyo - Situations de Travaux</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#dbe1ff",
+                    "primary-container": "#2563eb",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#656d84",
+                    "surface": "#f8f9fb",
+                    "surface-tint": "#0053db",
+                    "outline-variant": "#c3c6d7",
+                    "on-primary-container": "#eeefff",
+                    "on-tertiary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed": "#d3e4fe",
+                    "surface-variant": "#e1e2e4",
+                    "secondary-container": "#d0e1fb",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#4d556b",
+                    "on-secondary": "#ffffff",
+                    "inverse-on-surface": "#f0f1f3",
+                    "on-secondary-container": "#54647a",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#bec6e0",
+                    "on-primary-fixed": "#00174b",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#dae2fd",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "outline": "#737686",
+                    "on-error": "#ffffff",
+                    "on-background": "#191c1e",
+                    "surface-container-high": "#e7e8ea",
+                    "on-tertiary-fixed": "#131b2e",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "surface-container-highest": "#e1e2e4",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-tertiary-container": "#eef0ff",
+                    "on-surface-variant": "#434655",
+                    "on-surface": "#191c1e",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "background": "#f8f9fb",
+                    "surface-bright": "#f8f9fb",
+                    "surface-container-low": "#f3f4f6",
+                    "surface-dim": "#d9dadc",
+                    "inverse-surface": "#2e3132",
+                    "secondary": "#505f76",
+                    "on-tertiary-fixed-variant": "#3f465c",
+                    "inverse-primary": "#b4c5ff",
+                    "on-secondary-fixed": "#0b1c30",
+                    "surface-container": "#edeef0",
+                    "primary": "#004ac6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "0.5rem",
+                    "margin-mobile": "1rem",
+                    "gutter": "1.5rem",
+                    "container-max": "1280px",
+                    "stack-md": "1rem",
+                    "stack-lg": "2rem"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-row { background-color: #f3f4f6; border-left: 4px solid #004ac6; }
+        .warning-row { background-color: #fff7ed; }
+        .table-compact td, .table-compact th { padding: 8px 12px; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-fixed">
+<!-- Global Navigation Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-outline-variant bg-surface flex flex-col py-stack-lg z-50">
+<div class="px-6 mb-8">
+<h1 class="font-display text-display font-bold text-primary">Passyo</h1>
+<p class="text-label-md text-outline uppercase tracking-widest mt-1">Construction Planning</p>
+</div>
+<nav class="flex-1 space-y-1 px-3">
+<a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-container-low transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary">dashboard</span>
+<span class="font-body-md">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-container-low transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary">groups</span>
+<span class="font-body-md">Teams</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-container-low transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary">engineering</span>
+<span class="font-body-md">Workforce</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-primary font-bold border-r-4 border-primary bg-surface-container-low rounded-l-lg group" href="#">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">assessment</span>
+<span class="font-body-md">Reports</span>
+</a>
+</nav>
+<div class="mt-auto px-3 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-container-low transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-md">Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-container-low transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md">Account</span>
+</a>
+</div>
+</aside>
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-surface-container-lowest border-b border-outline-variant flex items-center justify-between px-gutter z-40">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-96 group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary">search</span>
+<input class="w-full bg-surface border-none rounded-full pl-10 pr-4 py-2 text-body-md focus:ring-2 focus:ring-primary-container/20 focus:bg-white transition-all" placeholder="Rechercher une situation, un projet..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<button class="material-symbols-outlined text-secondary hover:bg-surface-container-low p-2 rounded-full transition-all">notifications</button>
+<button class="material-symbols-outlined text-secondary hover:bg-surface-container-low p-2 rounded-full transition-all">settings</button>
+</div>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a senior project manager in a clean office environment. The image is brightly lit with soft, diffused sunlight, emphasizing a clean B2B SaaS professional aesthetic. The colors are muted and professional with subtle blue and white tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBi3yaUzwyLtBt5ggKmbVCPjMzEpSi2sy3ogDvwMw6ynGcmvg-8YSnp4Uq317NrPTlw75fLz4on3l8q73DCAo9gQDYwm02DFdmsP6LXf2a30gkm81HYT7EbKzpRZpw5Wb4k2fLpPXKm-AjeMZn2loN8VScSWxzloqhe3WCz27fguDTPd9gy7hyAXGRsdt9yLmi88vMkLDQq-z3wX2wAlpRZL2YwK1zNokKQVbzqebQmhPy-Stjypmq2ZevjuAy40aDYlFe6F-nAA4E">
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="pl-64 pt-16 h-screen flex">
+<!-- Sidebar: History of Situations -->
+<aside class="w-80 border-r border-outline-variant bg-white flex flex-col h-full shrink-0 overflow-y-auto">
+<div class="p-6 border-b border-outline-variant sticky top-0 bg-white z-10">
+<button class="w-full bg-primary text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-primary/90 active:scale-95 transition-all shadow-sm shadow-primary/20">
+<span class="material-symbols-outlined">add_circle</span>
+                    Nouvelle Situation
+                </button>
+</div>
+<div class="flex-1 overflow-y-auto">
+<div class="px-6 py-4">
+<h3 class="text-label-md text-outline font-bold uppercase tracking-widest mb-4">Historique Récent</h3>
+<div class="space-y-3">
+<!-- Situation Item 1 (Active) -->
+<div class="p-4 rounded-xl active-row cursor-pointer shadow-sm transition-all">
+<div class="flex justify-between items-start mb-2">
+<span class="font-headline-md text-primary text-sm">Situation N°14</span>
+<span class="bg-secondary-container text-on-secondary-fixed-variant px-2 py-0.5 rounded text-[10px] font-bold uppercase">En Cours</span>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-body-md text-on-surface font-medium">Juin 2026</p>
+<p class="text-headline-md text-lg">12 450 000,00 DA</p>
+<div class="flex items-center gap-1 text-label-md text-outline mt-2">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>Modifié il y a 2h</span>
+</div>
+</div>
+</div>
+<!-- Situation Item 2 -->
+<div class="p-4 rounded-xl border border-outline-variant hover:border-primary/40 cursor-pointer transition-all">
+<div class="flex justify-between items-start mb-2">
+<span class="font-headline-md text-on-surface text-sm">Situation N°13</span>
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-2 py-0.5 rounded text-[10px] font-bold uppercase">Validé</span>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-body-md text-outline font-medium">Mai 2026</p>
+<p class="text-headline-md text-lg">8 215 300,00 DA</p>
+</div>
+</div>
+<!-- Situation Item 3 -->
+<div class="p-4 rounded-xl border border-outline-variant hover:border-primary/40 cursor-pointer transition-all">
+<div class="flex justify-between items-start mb-2">
+<span class="font-headline-md text-on-surface text-sm">Situation N°12</span>
+<span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-[10px] font-bold uppercase">Payé</span>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-body-md text-outline font-medium">Avril 2026</p>
+<p class="text-headline-md text-lg">15 000 000,00 DA</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Workspace -->
+<section class="flex-1 bg-surface overflow-y-auto flex flex-col">
+<header class="p-gutter flex items-center justify-between border-b border-outline-variant bg-white shadow-sm">
+<div>
+<h2 class="font-display text-display text-2xl text-on-surface">Gestion des Situations</h2>
+<p class="text-body-md text-outline">Projet : Extension Terminal Aéroportuaire - Alger</p>
+</div>
+<div class="flex items-center gap-4 bg-surface p-2 rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-secondary">calendar_today</span>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase font-bold text-outline">Période de facturation</span>
+<input class="bg-transparent border-none p-0 text-sm font-semibold text-on-surface focus:ring-0" type="text" value="01/06/2026 au 30/06/2026">
+</div>
+</div>
+</header>
+<div class="p-gutter flex-1 space-y-gutter pb-32">
+<!-- Summary Bar -->
+<div class="grid grid-cols-4 gap-6">
+<div class="bg-white p-4 rounded-xl border border-outline-variant shadow-sm">
+<p class="text-label-md text-outline mb-1">Montant Cumulé H.T</p>
+<p class="text-headline-md text-primary">145 230 400,00 DA</p>
+</div>
+<div class="bg-white p-4 rounded-xl border border-outline-variant shadow-sm">
+<p class="text-label-md text-outline mb-1">Montant de la Période</p>
+<p class="text-headline-md text-secondary">12 450 000,00 DA</p>
+</div>
+<div class="bg-white p-4 rounded-xl border border-outline-variant shadow-sm">
+<p class="text-label-md text-outline mb-1">Avancement Global</p>
+<div class="flex items-center gap-3">
+<p class="text-headline-md text-on-surface">62%</p>
+<div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 62%"></div>
+</div>
+</div>
+</div>
+<div class="bg-white p-4 rounded-xl border border-outline-variant shadow-sm border-l-4 border-l-error">
+<p class="text-label-md text-error mb-1">Dépassements Constatés</p>
+<p class="text-headline-md text-error">3 Postes</p>
+</div>
+</div>
+<!-- Financial Table Card -->
+<div class="bg-white rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left table-compact border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr class="text-label-md text-outline font-bold uppercase tracking-wider">
+<th class="w-16">Ref</th>
+<th>Désignation des Travaux</th>
+<th class="w-32">Mode</th>
+<th class="w-32">Prix (DA)</th>
+<th class="w-20 text-center">Unité</th>
+<th class="w-24 text-right">Qté Prév.</th>
+<th class="w-24 text-right">Qté Période</th>
+<th class="w-24 text-right">Cumul</th>
+<th class="w-20 text-right">%</th>
+<th class="w-40 text-right">Montant (DA)</th>
+</tr>
+</thead>
+<tbody>
+<!-- SECTION A -->
+<tr class="bg-surface-container-highest/30">
+<td class="py-2 px-gutter font-bold text-primary text-sm uppercase tracking-wide" colspan="10">
+                                        SECTION A : Travaux du Contrat Initial (DQE)
+                                    </td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface transition-colors">
+<td class="text-body-md font-medium text-outline">1.1</td>
+<td class="text-body-md font-semibold text-on-surface">Terrassement en pleine masse</td>
+<td>
+<select class="text-xs border-outline-variant rounded bg-white w-full py-1 focus:ring-primary" onchange="updateRow(this)">
+<option selected="" value="quantity">Par Quantité</option>
+<option value="day">Par Jour</option>
+</select>
+</td>
+<td><input class="w-full border-none p-1 text-xs focus:ring-2 focus:ring-primary-container rounded bg-surface-container-low font-medium" type="number" value="1250"></td>
+<td class="text-center text-xs font-bold text-outline unit-label">m3</td>
+<td class="text-right text-xs">15 000</td>
+<td class="text-right"><input class="w-20 border-none p-1 text-xs focus:ring-2 focus:ring-primary-container rounded bg-white text-right font-bold border border-outline-variant" type="number" value="2500"></td>
+<td class="text-right text-xs font-semibold">12 400</td>
+<td class="text-right text-xs">82%</td>
+<td class="text-right text-sm font-bold">3 125 000,00</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface transition-colors warning-row group relative">
+<td class="text-body-md font-medium text-outline">1.2</td>
+<td class="text-body-md font-semibold text-on-surface flex items-center gap-2">
+                                        Béton de propreté dosé à 150kg/m3
+                                        <span class="material-symbols-outlined text-error text-lg cursor-help" title="Le cumul dépasse la quantité prévue au contrat initial">warning</span>
+</td>
+<td>
+<select class="text-xs border-outline-variant rounded bg-white w-full py-1 focus:ring-primary">
+<option selected="">Par Quantité</option>
+<option>Par Jour</option>
+</select>
+</td>
+<td><input class="w-full border-none p-1 text-xs focus:ring-2 focus:ring-primary-container rounded bg-surface-container-low font-medium" type="number" value="18000"></td>
+<td class="text-center text-xs font-bold text-outline">m3</td>
+<td class="text-right text-xs">450</td>
+<td class="text-right"><input class="w-20 border-none p-1 text-xs focus:ring-2 focus:ring-primary-container rounded bg-white text-right font-bold border border-outline-variant" type="number" value="45"></td>
+<td class="text-right text-xs font-semibold text-error">495</td>
+<td class="text-right text-xs text-error font-bold">110%</td>
+<td class="text-right text-sm font-bold">810 000,00</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface transition-colors">
+<td class="text-body-md font-medium text-outline">1.3</td>
+<td class="text-body-md font-semibold text-on-surface">Location Grue Mobile 40T</td>
+<td>
+<select class="text-xs border-outline-variant rounded bg-white w-full py-1 focus:ring-primary" onchange="updateRow(this)">
+<option value="quantity">Par Quantité</option>
+<option selected="" value="day">Par Jour</option>
+</select>
+</td>
+<td><input class="w-full border-none p-1 text-xs focus:ring-2 focus:ring-primary-container rounded bg-surface-container-low font-medium" type="number" value="85000"></td>
+<td class="text-center text-xs font-bold text-outline unit-label">Jour</td>
+<td class="text-right text-xs">22</td>
+<td class="text-right"><input class="w-20 border-none p-1 text-xs focus:ring-2 focus:ring-primary-container rounded bg-white text-right font-bold border border-outline-variant" type="number" value="12"></td>
+<td class="text-right text-xs font-semibold">18</td>
+<td class="text-right text-xs">81%</td>
+<td class="text-right text-sm font-bold">1 020 000,00</td>
+</tr>
+<!-- SECTION B -->
+<tr class="bg-surface-container-highest/30">
+<td class="py-2 px-gutter font-bold text-primary text-sm uppercase tracking-wide" colspan="10">
+                                        SECTION B : Travaux sur Avenants
+                                    </td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface transition-colors">
+<td class="text-body-md font-medium text-outline">A-1</td>
+<td class="text-body-md font-semibold text-on-surface">Suppléments ferraillage radier</td>
+<td>
+<select class="text-xs border-outline-variant rounded bg-white w-full py-1 focus:ring-primary">
+<option selected="">Par Quantité</option>
+<option>Par Jour</option>
+</select>
+</td>
+<td><input class="w-full border-none p-1 text-xs focus:ring-2 focus:ring-primary-container rounded bg-surface-container-low font-medium" type="number" value="350"></td>
+<td class="text-center text-xs font-bold text-outline">kg</td>
+<td class="text-right text-xs">5 000</td>
+<td class="text-right"><input class="w-20 border-none p-1 text-xs focus:ring-2 focus:ring-primary-container rounded bg-white text-right font-bold border border-outline-variant" type="number" value="1200"></td>
+<td class="text-right text-xs font-semibold">3 200</td>
+<td class="text-right text-xs">64%</td>
+<td class="text-right text-sm font-bold">420 000,00</td>
+</tr>
+</tbody>
+<tfoot class="bg-surface font-bold">
+<tr>
+<td class="text-right py-4 px-gutter text-sm uppercase tracking-widest text-outline" colspan="9">Total Net Période (DA)</td>
+<td class="text-right py-4 px-gutter text-headline-md text-primary">12 450 000,00</td>
+</tr>
+</tfoot>
+</table>
+</div>
+</div>
+<!-- Notes Section -->
+<div class="bg-white p-6 rounded-xl border border-outline-variant shadow-sm max-w-3xl">
+<h3 class="text-headline-md mb-4 text-sm">Observations &amp; Justifications</h3>
+<textarea class="w-full border-outline-variant rounded-lg text-body-md p-4 min-h-[120px] focus:ring-primary" placeholder="Ajouter une note pour le maître de l'ouvrage concernant les dépassements ou les travaux supplémentaires..."></textarea>
+</div>
+</div>
+<!-- Sticky Bottom Actions -->
+<footer class="fixed bottom-0 right-0 w-[calc(100%-16rem)] h-20 bg-white border-t border-outline-variant flex items-center justify-between px-gutter z-30">
+<div class="flex items-center gap-4">
+<div class="flex -space-x-2">
+<img alt="Reviewer 1" class="w-8 h-8 rounded-full border-2 border-white" data-alt="A close-up portrait of a project architect with glasses, smiling warmly, wearing professional casual attire. The lighting is studio-quality and clean, matching a modern software dashboard interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoFA431mpNBsyDoSGqYj-YjlGsqtsGw__paT3pL4DmUofzt3enVcpp_o1vOqoSTcfTr8pVtspXiF060XRgjHX0ZNiv3iFdmU8eEZJ4CKc9t6J1Tc2PgV7EIVdU6Cguv9js6n2xzK68NLMjA8hKFj017JirEO8U9UJoOCQ91cD3ahmPgg5O8szSfr48cAxouxPDQvhRmLDmu2iHidDDWCWX_3KJXnFiXGd74h5P0SZ_FvRJF09LQI-Dq-tg1KmcUid0eHiFrqvREUs">
+<img alt="Reviewer 2" class="w-8 h-8 rounded-full border-2 border-white" data-alt="A portrait of a male construction engineer in a white hard hat and reflective vest, looking confident in a bright, outdoor daylight setting. The style is crisp and professional, emphasizing reliability and industry standards." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdtqEYx7oxX2WPmSRYa-U7AxQuyoYd6bQd97iowmKXWTTL4AidUVRSqkNi9WO_OR8vc8TzvDlesIP8ENG7pg9U3bEaXqjy6_jA-ur29CY5rJTYFPJVIKapgyPZO8K-bGMqPipvpd7H6RcQFzw2vhtiDpyCWL9HjJ0BmHbKQy_9hP3tuYR9oNBSpY2OMjaeiqyJRXS8lH_9rr_3crFJYio8sdmcomPxYXVXE2N0wgYiYzt1H-XpnNV46DV5l8GYulragdQaol3n5XI">
+</div>
+<span class="text-label-md text-outline">En attente de validation par 2 superviseurs</span>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-2.5 text-secondary font-semibold border border-outline-variant rounded-lg hover:bg-surface-container transition-all active:scale-95">
+                        Enregistrer Brouillon
+                    </button>
+<button class="px-6 py-2.5 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-all flex items-center gap-2 shadow-lg shadow-primary/20 active:scale-95">
+<span class="material-symbols-outlined text-xl">picture_as_pdf</span>
+                        Générer la Situation (PDF)
+                    </button>
+</div>
+</footer>
+</section>
+</main>
+<script>
+        /**
+         * Update Row Logic
+         * Changes units and labels based on selection
+         */
+        function updateRow(selectElement) {
+            const row = selectElement.closest('tr');
+            const unitLabel = row.querySelector('.unit-label');
+            const priceInput = row.querySelector('input[type="number"]');
+            
+            if (selectElement.value === 'day') {
+                unitLabel.innerText = 'Jour';
+                priceInput.placeholder = 'PJ (DA)';
+            } else {
+                // Default back to something generic or specific based on item index if we had a data model
+                // For demo purposes, we toggle to m3
+                unitLabel.innerText = 'm3';
+                priceInput.placeholder = 'PU (DA)';
+            }
+            
+            // Subtle visual feedback
+            row.classList.add('bg-primary-container/5');
+            setTimeout(() => {
+                row.classList.remove('bg-primary-container/5');
+            }, 300);
+        }
+
+        // Tooltip simple implementation simulation
+        document.querySelectorAll('.material-symbols-outlined[title]').forEach(icon => {
+            icon.addEventListener('mouseenter', function() {
+                // In a real app, use a proper tooltip library like Popper.js
+                this.classList.add('scale-110');
+            });
+            icon.addEventListener('mouseleave', function() {
+                this.classList.remove('scale-110');
+            });
+        });
+    </script>
+</body></html>

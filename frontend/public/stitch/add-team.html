@@ -1,0 +1,373 @@
+<!DOCTYPE html><html class="light" lang="fr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .slide-over-backdrop {
+            background-color: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(4px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e5e7eb;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #d1d5db;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#505f76",
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "on-primary-container": "#eeefff",
+                        "surface-container-low": "#f3f4f6",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#4d556b",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "outline-variant": "#c3c6d7",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e1e2e4",
+                        "surface-container-highest": "#e1e2e4",
+                        "on-secondary-container": "#54647a",
+                        "inverse-on-surface": "#f0f1f3",
+                        "tertiary-fixed": "#dae2fd",
+                        "surface-container": "#edeef0",
+                        "primary-container": "#2563eb",
+                        "on-tertiary-fixed": "#131b2e",
+                        "primary": "#004ac6",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "primary-fixed": "#dbe1ff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "inverse-primary": "#b4c5ff",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f8f9fb",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "inverse-surface": "#2e3132",
+                        "surface-tint": "#0053db",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-surface-variant": "#434655",
+                        "surface": "#f8f9fb",
+                        "outline": "#737686",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e7e8ea",
+                        "tertiary-container": "#656d84",
+                        "secondary-container": "#d0e1fb",
+                        "on-background": "#191c1e",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-primary-fixed": "#00174b",
+                        "on-surface": "#191c1e",
+                        "on-tertiary-container": "#eef0ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#d9dadc",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#f8f9fb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "1rem",
+                        "margin-mobile": "1rem",
+                        "gutter": "1.5rem",
+                        "stack-sm": "0.5rem",
+                        "stack-lg": "2rem",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "display": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background font-body-md text-on-background min-h-screen">
+<!-- Background Content Mockup (Dashboard) -->
+<div class="fixed inset-0 overflow-hidden flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest dark:bg-surface-dim border-b border-outline-variant dark:border-outline flex justify-between items-center w-full px-gutter h-16 max-w-container-max mx-auto z-10">
+<div class="flex items-center gap-8">
+<span class="font-display text-display font-bold text-primary dark:text-primary-fixed">Passyo</span>
+<nav class="hidden md:flex gap-6">
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Dashboard</a>
+<a class="font-body-md text-body-md text-primary dark:text-primary-fixed border-b-2 border-primary dark:border-primary-fixed pb-1" href="#">Projects</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Resources</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Schedule</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant">settings</button>
+<img alt="User profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLuyuGegS1B1SeDLJakWJ0TiCU_TRM-92Lu5glv1FAE14E0aaeyKopb1hjPK2AVk-0VNuEV-x3JwB_egMaYrghSDO0_CO_3m0elaspLBaqd5cNd-QPuAqnJ9T1vxtU5FpJctmNn8seoBFEVabDJ11wRL6FuaF8cLwWNhgR1G9gcCbIb-95ySpFVq_NV1DqDOvT8PLwEaZyLRM7f5SLK7i1Xx233QtOb5gvR46dtA3peKSv6TT7Smr-tRV9U">
+</div>
+</header>
+<main class="flex-1 flex max-w-container-max mx-auto w-full">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-full py-stack-lg bg-surface-container-low dark:bg-surface-container border-r border-outline-variant dark:border-outline w-64">
+<div class="px-6 mb-8">
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface dark:text-inverse-on-surface">Project Alpha</h2>
+<p class="font-label-md text-label-md text-secondary">Site Phase 2</p>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-highest dark:hover:bg-on-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-primary dark:text-primary-fixed font-bold bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-md text-label-md">Teams</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-highest dark:hover:bg-on-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined">engineering</span>
+<span class="font-label-md text-label-md">Workforce</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-highest dark:hover:bg-on-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-label-md text-label-md">Safety</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-highest dark:hover:bg-on-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<section class="flex-1 p-gutter bg-surface-container-lowest">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Gestion des Équipes</h1>
+<p class="text-secondary">Gérez les intervenants et les ressources de votre chantier</p>
+</div>
+<button class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded hover:bg-primary transition-all active:scale-95 flex items-center gap-2" id="open-drawer">
+<span class="material-symbols-outlined text-sm">add</span>
+<span>Ajouter une Équipe</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Placeholder Cards -->
+<div class="bg-white border border-outline-variant p-5 rounded-lg flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Gros Œuvre</div>
+<span class="material-symbols-outlined text-secondary cursor-pointer">more_vert</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md">Équipe Béton A</h3>
+<p class="text-secondary text-sm">Responsable: Jean Dupont</p>
+</div>
+<div class="flex items-center gap-2 text-sm text-secondary">
+<span class="material-symbols-outlined text-sm">group</span>
+<span>12 Membres</span>
+</div>
+</div>
+<div class="bg-white border border-outline-variant p-5 rounded-lg flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">VRD</div>
+<span class="material-symbols-outlined text-secondary cursor-pointer">more_vert</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md">Équipe Terrassement</h3>
+<p class="text-secondary text-sm">Responsable: Marc Levêque</p>
+</div>
+<div class="flex items-center gap-2 text-sm text-secondary">
+<span class="material-symbols-outlined text-sm">group</span>
+<span>8 Membres</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Slide-over Drawer Backdrop -->
+<div class="fixed inset-0 slide-over-backdrop z-40 hidden transition-opacity duration-300 opacity-0" id="drawer-backdrop" onclick="closeDrawer()"></div>
+<!-- Slide-over Drawer Content -->
+<div class="fixed inset-y-0 right-0 w-full max-w-xl bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col" id="drawer">
+<!-- Header -->
+<div class="p-6 border-b border-outline-variant flex items-center justify-between bg-white shrink-0">
+<h2 class="font-headline-md text-headline-md text-on-surface">Ajouter une Équipe</h2>
+<button class="material-symbols-outlined text-secondary hover:text-on-surface p-2 rounded-full hover:bg-surface-container transition-colors" onclick="closeDrawer()">close</button>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-6 custom-scrollbar space-y-stack-lg">
+<!-- Section 1: Informations Générales -->
+<section class="space-y-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">info</span>
+<h3 class="font-headline-md text-headline-md !text-sm uppercase tracking-widest text-secondary">Informations Générales</h3>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-slate-700 block">Type d'Équipe</label>
+<select class="w-full h-10 px-3 border border-outline-variant rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-body-md transition-all">
+<option value="">Sélectionner un type</option>
+<option>Béton</option>
+<option>Maçonnerie</option>
+<option>VRD</option>
+<option>CES</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-slate-700 block">Responsable (Nom/Prénom)</label>
+<input class="w-full h-10 px-3 border border-outline-variant rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-body-md transition-all" placeholder="ex: Jean Dupont" type="text">
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-slate-700 block">Téléphone</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-outline text-sm">phone</span>
+<input class="w-full h-10 pl-9 pr-3 border border-outline-variant rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-body-md transition-all" placeholder="+33 6 ..." type="tel">
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-slate-700 block">Email</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-outline text-sm">mail</span>
+<input class="w-full h-10 pl-9 pr-3 border border-outline-variant rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-body-md transition-all" placeholder="contact@email.com" type="email">
+</div>
+</div>
+</div>
+</div>
+</section>
+<hr class="border-outline-variant">
+<!-- Section 2: Membres de l'Équipe -->
+<section class="space-y-4">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">groups</span>
+<h3 class="font-headline-md text-headline-md !text-sm uppercase tracking-widest text-secondary">Membres de l'Équipe</h3>
+</div>
+<button class="text-primary text-xs font-bold flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-xs">add_circle</span>
+                        Ajouter un membre
+                    </button>
+</div>
+<div class="border border-outline-variant rounded-lg overflow-hidden">
+<table class="w-full text-left text-body-md">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-4 py-3 font-label-md text-label-md text-secondary">Nom/Prénom</th>
+<th class="px-4 py-3 font-label-md text-label-md text-secondary">Sous-poste</th>
+<th class="px-4 py-3 font-label-md text-label-md text-secondary">Statut</th>
+<th class="px-4 py-3 font-label-md text-label-md text-secondary text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-4 py-3 font-medium">Marc Lefebvre</td>
+<td class="px-4 py-3">Coffreur-Bancheur</td>
+<td class="px-4 py-3">
+<span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-semibold">Actif</span>
+</td>
+<td class="px-4 py-3 text-right">
+<button class="material-symbols-outlined text-error hover:bg-error-container p-1 rounded-md transition-colors text-lg">delete</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-4 py-3 font-medium">Lucie Durand</td>
+<td class="px-4 py-3">Chef de File</td>
+<td class="px-4 py-3">
+<span class="bg-slate-100 text-slate-500 px-2 py-0.5 rounded text-xs font-semibold">En attente</span>
+</td>
+<td class="px-4 py-3 text-right">
+<button class="material-symbols-outlined text-error hover:bg-error-container p-1 rounded-md transition-colors text-lg">delete</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-4 py-3 font-medium">Thomas Petit</td>
+<td class="px-4 py-3">Manœuvre</td>
+<td class="px-4 py-3">
+<span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-semibold">Actif</span>
+</td>
+<td class="px-4 py-3 text-right">
+<button class="material-symbols-outlined text-error hover:bg-error-container p-1 rounded-md transition-colors text-lg">delete</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs text-secondary italic">Note: Les sous-postes sont filtrés selon le type d'équipe sélectionné.</p>
+</section>
+</div>
+<!-- Footer Actions -->
+<div class="p-6 border-t border-outline-variant bg-surface-container-lowest flex items-center justify-end gap-4 shrink-0">
+<button class="px-6 py-2.5 border border-outline-variant bg-white text-on-surface hover:bg-surface-container transition-all active:scale-95 rounded font-medium" onclick="closeDrawer()">Annuler</button>
+<button class="px-6 py-2.5 bg-primary text-white hover:bg-blue-800 shadow-md transition-all active:scale-95 rounded font-medium">Enregistrer l'Équipe</button>
+</div>
+</div>
+<script>
+        const drawer = document.getElementById('drawer');
+        const backdrop = document.getElementById('drawer-backdrop');
+        const openBtn = document.getElementById('open-drawer');
+
+        function openDrawer() {
+            drawer.classList.remove('translate-x-full');
+            backdrop.classList.remove('hidden');
+            setTimeout(() => {
+                backdrop.classList.add('opacity-100');
+            }, 10);
+        }
+
+        function closeDrawer() {
+            drawer.classList.add('translate-x-full');
+            backdrop.classList.remove('opacity-100');
+            setTimeout(() => {
+                backdrop.classList.add('hidden');
+            }, 300);
+        }
+
+        openBtn.addEventListener('click', openDrawer);
+
+        // Close on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeDrawer();
+        });
+
+        // Initialize view by opening drawer for the user as per prompt focus
+        window.addEventListener('load', () => {
+            setTimeout(openDrawer, 500);
+        });
+    </script>
+</body></html>

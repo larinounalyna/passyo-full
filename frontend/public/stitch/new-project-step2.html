@@ -1,0 +1,369 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Passyo Onboarding - Time Configuration</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#d9dadc",
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "on-tertiary-container": "#eef0ff",
+                        "tertiary-fixed": "#dae2fd",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed": "#00174b",
+                        "on-surface-variant": "#434655",
+                        "inverse-surface": "#2e3132",
+                        "inverse-on-surface": "#f0f1f3",
+                        "surface-container-low": "#f3f4f6",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c3c6d7",
+                        "secondary-container": "#d0e1fb",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "on-primary-container": "#eeefff",
+                        "secondary-fixed": "#d3e4fe",
+                        "surface-container-highest": "#e1e2e4",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-tertiary-fixed": "#131b2e",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "on-background": "#191c1e",
+                        "primary-container": "#2563eb",
+                        "primary": "#004ac6",
+                        "surface-container": "#edeef0",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "background": "#f8f9fb",
+                        "on-surface": "#191c1e",
+                        "on-secondary-fixed": "#0b1c30",
+                        "outline": "#737686",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f8f9fb",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-container-high": "#e7e8ea",
+                        "inverse-primary": "#b4c5ff",
+                        "secondary": "#505f76",
+                        "tertiary": "#4d556b",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e1e2e4",
+                        "surface": "#f8f9fb",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#54647a",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#dbe1ff",
+                        "tertiary-container": "#656d84"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "2rem",
+                        "stack-md": "1rem",
+                        "stack-sm": "0.5rem",
+                        "container-max": "1280px",
+                        "gutter": "1.5rem",
+                        "margin-mobile": "1rem"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .day-toggle:checked + label {
+            background-color: #004ac6;
+            color: #ffffff;
+            border-color: #004ac6;
+        }
+        .shift-radio:checked + label {
+            border-color: #2563eb;
+            background-color: #eeefff;
+            color: #004ac6;
+        }
+        .transition-all-custom { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+    </style>
+</head>
+<body class="bg-background text-on-surface flex flex-col min-h-screen">
+<!-- TopNavBar (Shared Component) -->
+<header class="bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center px-gutter py-stack-sm w-full max-w-container-max mx-auto sticky top-0 z-50">
+<div class="font-display text-display text-primary">Passyo</div>
+<div class="flex items-center gap-stack-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">help</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant">
+<img alt="User profile" src="https://lh3.googleusercontent.com/aida/AP1WRLu6n_7Ijc8FA1urjRa6087JXTPtCGXfUkZrjeP1SF6S2ndoGHPoQ6svBJrMcdY6Y2hYfENf6bypnlSzfu7e58QKWVQh0GWimU0k4HuoeYbsXTqDN2g1R6u6DNFPjo2SDgmpQku_1ujkH4UWmsDIf0Az4oGbzKDRM-tkiydmV8MVYZaprhRvOsCKiBddv7MV-5CuatL6rX-_pz4Hzn2s6YTGSlKDbS-0oaRzPfdJQOLtWUlo3jNWLiIwg1Y">
+</div>
+</div>
+</header>
+<main class="flex-grow flex flex-col lg:flex-row max-w-container-max w-full mx-auto">
+<!-- SideNavBar (Shared Component) -->
+
+<!-- Main Content Area -->
+<div class="flex-grow p-gutter md:p-stack-lg max-w-4xl">
+<!-- Progress Stepper -->
+<div class="mb-stack-lg">
+<div class="flex justify-between items-center mb-4">
+<span class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Step 2 of 3: Working Time</span>
+<span class="font-label-md text-label-md text-secondary">66% Completed</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[66%] transition-all duration-1000"></div>
+</div>
+</div>
+<!-- Configuration Form -->
+<div class="space-y-stack-lg">
+<!-- Section A: Working Calendar -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-stack-md shadow-sm">
+<div class="flex items-center gap-2 mb-stack-md border-b border-surface-container-high pb-stack-sm">
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+<h2 class="font-headline-md text-headline-md">Working Calendar</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Define the standard work week for this project. Construction schedules will be calculated based on these active days.</p>
+<div class="grid grid-cols-4 md:grid-cols-7 gap-3">
+<!-- Monday -->
+<div class="relative">
+<input checked="" class="day-toggle hidden" id="mon" type="checkbox">
+<label class="flex flex-col items-center justify-center py-4 border border-outline-variant rounded-lg cursor-pointer transition-all-custom hover:border-primary text-secondary font-bold" for="mon">
+<span class="font-label-md text-label-md">MON</span>
+</label>
+</div>
+<!-- Tuesday -->
+<div class="relative">
+<input checked="" class="day-toggle hidden" id="tue" type="checkbox">
+<label class="flex flex-col items-center justify-center py-4 border border-outline-variant rounded-lg cursor-pointer transition-all-custom hover:border-primary text-secondary font-bold" for="tue">
+<span class="font-label-md text-label-md">TUE</span>
+</label>
+</div>
+<!-- Wednesday -->
+<div class="relative">
+<input checked="" class="day-toggle hidden" id="wed" type="checkbox">
+<label class="flex flex-col items-center justify-center py-4 border border-outline-variant rounded-lg cursor-pointer transition-all-custom hover:border-primary text-secondary font-bold" for="wed">
+<span class="font-label-md text-label-md">WED</span>
+</label>
+</div>
+<!-- Thursday -->
+<div class="relative">
+<input checked="" class="day-toggle hidden" id="thu" type="checkbox">
+<label class="flex flex-col items-center justify-center py-4 border border-outline-variant rounded-lg cursor-pointer transition-all-custom hover:border-primary text-secondary font-bold" for="thu">
+<span class="font-label-md text-label-md">THU</span>
+</label>
+</div>
+<!-- Friday -->
+<div class="relative">
+<input checked="" class="day-toggle hidden" id="fri" type="checkbox">
+<label class="flex flex-col items-center justify-center py-4 border border-outline-variant rounded-lg cursor-pointer transition-all-custom hover:border-primary text-secondary font-bold" for="fri">
+<span class="font-label-md text-label-md">FRI</span>
+</label>
+</div>
+<!-- Saturday -->
+<div class="relative">
+<input class="day-toggle hidden" id="sat" type="checkbox">
+<label class="flex flex-col items-center justify-center py-4 border border-outline-variant rounded-lg cursor-pointer transition-all-custom hover:border-primary text-secondary font-bold" for="sat">
+<span class="font-label-md text-label-md">SAT</span>
+</label>
+</div>
+<!-- Sunday -->
+<div class="relative">
+<input class="day-toggle hidden" id="sun" type="checkbox">
+<label class="flex flex-col items-center justify-center py-4 border border-outline-variant rounded-lg cursor-pointer transition-all-custom hover:border-primary text-secondary font-bold" for="sun">
+<span class="font-label-md text-label-md">SUN</span>
+</label>
+</div>
+</div>
+</section>
+<!-- Section B: Hours & Shifts -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-stack-md shadow-sm">
+<div class="flex items-center gap-2 mb-stack-md border-b border-surface-container-high pb-stack-sm">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<h2 class="font-headline-md text-headline-md">Hours &amp; Shifts</h2><p class="font-body-md text-body-md text-on-surface-variant mt-2">Configure your daily capacity. These values will be used to calculate Total Man-Hours in the final review.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg mb-8">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Total Working Hours/Day</label>
+<input class="w-full bg-white border border-outline-variant rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all-custom" max="24" min="1" type="number" value="8">
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Number of Daily Shifts</label>
+<div class="flex gap-2">
+<div class="flex-1">
+<input checked="" class="shift-radio hidden" id="shift1" name="shifts" onchange="toggleShifts(1)" type="radio" value="1">
+<label class="flex items-center justify-center py-3 border border-outline-variant rounded-lg cursor-pointer transition-all-custom hover:bg-surface-container hover:border-primary font-bold text-label-md" for="shift1">1</label>
+</div>
+<div class="flex-1">
+<input class="shift-radio hidden" id="shift2" name="shifts" onchange="toggleShifts(2)" type="radio" value="2">
+<label class="flex items-center justify-center py-3 border border-outline-variant rounded-lg cursor-pointer transition-all-custom hover:bg-surface-container hover:border-primary font-bold text-label-md" for="shift2">2</label>
+</div>
+<div class="flex-1">
+<input class="shift-radio hidden" id="shift3" name="shifts" onchange="toggleShifts(3)" type="radio" value="3">
+<label class="flex items-center justify-center py-3 border border-outline-variant rounded-lg cursor-pointer transition-all-custom hover:bg-surface-container hover:border-primary font-bold text-label-md" for="shift3">3</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Dynamic Shifts -->
+<div class="space-y-4" id="shifts-container">
+<!-- Shift 1 -->
+<div class="p-4 border border-outline-variant rounded-lg flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all duration-300" id="shift-card-1">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">engineering</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md !text-body-lg">Team 1: Morning Shift</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Primary operational shift</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="flex-1">
+<span class="block font-label-md text-label-md text-on-surface-variant mb-1">Start</span>
+<input class="w-full bg-white border border-outline-variant rounded-lg px-2 py-2 text-body-md outline-none" type="time" value="08:00">
+</div>
+<div class="flex-1">
+<span class="block font-label-md text-label-md text-on-surface-variant mb-1">End</span>
+<input class="w-full bg-white border border-outline-variant rounded-lg px-2 py-2 text-body-md outline-none" type="time" value="16:00">
+</div>
+</div>
+</div>
+<!-- Shift 2 -->
+<div class="hidden p-4 border border-outline-variant rounded-lg flex-col md:flex-row md:items-center justify-between gap-4 transition-all duration-300" id="shift-card-2">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">groups</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md !text-body-lg">Team 2: Evening Shift</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Secondary operations</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="flex-1">
+<span class="block font-label-md text-label-md text-on-surface-variant mb-1">Start</span>
+<input class="w-full bg-white border border-outline-variant rounded-lg px-2 py-2 text-body-md outline-none" type="time" value="16:00">
+</div>
+<div class="flex-1">
+<span class="block font-label-md text-label-md text-on-surface-variant mb-1">End</span>
+<input class="w-full bg-white border border-outline-variant rounded-lg px-2 py-2 text-body-md outline-none" type="time" value="00:00">
+</div>
+</div>
+</div>
+<!-- Shift 3 -->
+<div class="hidden p-4 border border-outline-variant rounded-lg flex-col md:flex-row md:items-center justify-between gap-4 transition-all duration-300" id="shift-card-3">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/20 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">dark_mode</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md !text-body-lg">Team 3: Night Shift</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Maintenance &amp; safety</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="flex-1">
+<span class="block font-label-md text-label-md text-on-surface-variant mb-1">Start</span>
+<input class="w-full bg-white border border-outline-variant rounded-lg px-2 py-2 text-body-md outline-none" type="time" value="00:00">
+</div>
+<div class="flex-1">
+<span class="block font-label-md text-label-md text-on-surface-variant mb-1">End</span>
+<input class="w-full bg-white border border-outline-variant rounded-lg px-2 py-2 text-body-md outline-none" type="time" value="08:00">
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Navigation -->
+<div class="flex justify-end items-center gap-4 pt-stack-md">
+<button class="px-6 py-3 border border-outline text-on-surface hover:bg-surface-container transition-all-custom rounded-lg font-bold font-body-md">
+                        Previous
+                    </button>
+<button class="px-8 py-3 bg-primary text-on-primary hover:bg-primary/90 active:scale-95 transition-all-custom rounded-lg font-bold font-body-md shadow-lg shadow-primary/20" onclick="window.location.reload()">Review Summary</button>
+</div>
+</div>
+</div>
+<!-- Right Side Visual / Hint -->
+<aside class="hidden xl:block w-80 p-gutter bg-surface-container-low border-l border-outline-variant">
+<div class="sticky top-[80px] space-y-gutter">
+
+<div class="relative overflow-hidden rounded-lg aspect-square border border-outline-variant shadow-md">
+
+
+</div>
+</div>
+</aside>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant mt-stack-lg">
+<div class="flex flex-col md:flex-row justify-between items-center px-gutter py-stack-md w-full max-w-container-max mx-auto gap-4">
+<div class="font-label-md text-label-md font-bold text-primary">© 2024 Passyo Construction Technologies</div>
+<div class="flex gap-stack-md">
+<a class="font-body-md text-body-md text-on-surface-variant hover:underline opacity-80 hover:opacity-100 transition-all" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:underline opacity-80 hover:opacity-100 transition-all" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:underline opacity-80 hover:opacity-100 transition-all" href="#">Support</a>
+</div>
+</div>
+</footer>
+<script>
+        function toggleShifts(count) {
+            const shift2 = document.getElementById('shift-card-2');
+            const shift3 = document.getElementById('shift-card-3');
+            
+            if (count >= 2) {
+                shift2.classList.remove('hidden');
+                shift2.classList.add('flex');
+            } else {
+                shift2.classList.add('hidden');
+                shift2.classList.remove('flex');
+            }
+            
+            if (count === 3) {
+                shift3.classList.remove('hidden');
+                shift3.classList.add('flex');
+            } else {
+                shift3.classList.add('hidden');
+                shift3.classList.remove('flex');
+            }
+        }
+        
+        // Initial setup
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentShiftCount = document.querySelector('input[name="shifts"]:checked').value;
+            toggleShifts(parseInt(currentShiftCount));
+        });
+    </script>
+
+
+</body></html>

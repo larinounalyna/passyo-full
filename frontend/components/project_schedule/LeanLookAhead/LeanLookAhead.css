@@ -1,0 +1,90 @@
+.lean-lookahead-page {
+  padding: 24px;
+  background-color: #0f172a;
+  min-height: 100vh;
+}
+
+.lean-header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.lean-header-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.constraint-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.board-column {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 16px;
+  min-height: 600px;
+}
+
+.column-header {
+  margin-bottom: 16px;
+}
+
+.column-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.column-icon {
+  font-size: 18px;
+}
+
+.column-title h3 {
+  font-size: 12px;
+  font-weight: 700;
+  color: #94a3b8;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex: 1;
+}
+
+.column-count {
+  background: #334155;
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.column-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (max-width: 1400px) {
+  .constraint-board {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .constraint-board {
+    grid-template-columns: 1fr;
+  }
+}

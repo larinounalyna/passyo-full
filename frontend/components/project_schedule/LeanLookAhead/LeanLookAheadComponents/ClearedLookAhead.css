@@ -1,0 +1,92 @@
+.cleared-lookahead-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #d1fae5;
+}
+
+.cleared-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.cleared-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #10b981;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cleared-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+}
+
+.cleared-more-btn {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.cleared-more-btn:hover {
+  color: #6b7280;
+}
+
+.cleared-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 20px 0;
+  line-height: 1.4;
+}
+
+.cleared-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cleared-tabs {
+  display: flex;
+  gap: 24px;
+}
+
+.cleared-tab-icon {
+  font-size: 18px;
+  opacity: 0.4;
+}
+
+.cleared-tab-icon.active {
+  opacity: 1;
+}
+
+.cleared-go-btn {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background 0.2s;
+}
+
+.cleared-go-btn:hover {
+  background: #059669;
+}

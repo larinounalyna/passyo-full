@@ -1,0 +1,770 @@
+<!doctype html>
+<html class="light" lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Passyo | Smart Grid Final Organisé</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+      .accordion-open .accordion-content {
+        max-height: 2000px;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #e5e7eb;
+        border-radius: 10px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #d1d5db;
+      }
+      .read-only-cell {
+        background-color: #f9fafb;
+        color: #64748b;
+      }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#656d84",
+              "on-surface-variant": "#434655",
+              "on-surface": "#191c1e",
+              "on-primary-fixed": "#00174b",
+              "primary-fixed": "#dbe1ff",
+              "on-secondary": "#ffffff",
+              "outline-variant": "#c3c6d7",
+              "surface-container-high": "#e7e8ea",
+              "on-tertiary-fixed": "#131b2e",
+              "on-primary-container": "#eeefff",
+              "secondary-fixed": "#d3e4fe",
+              "surface-bright": "#f8f9fb",
+              "on-error-container": "#93000a",
+              "surface-tint": "#0053db",
+              "tertiary-fixed": "#dae2fd",
+              surface: "#f8f9fb",
+              error: "#ba1a1a",
+              "primary-container": "#2563eb",
+              outline: "#737686",
+              "on-primary-fixed-variant": "#003ea8",
+              "surface-container-lowest": "#ffffff",
+              "surface-container": "#edeef0",
+              "secondary-container": "#d0e1fb",
+              "inverse-primary": "#b4c5ff",
+              "surface-container-highest": "#e1e2e4",
+              "on-error": "#ffffff",
+              "on-tertiary-container": "#eef0ff",
+              "on-background": "#191c1e",
+              "inverse-surface": "#2e3132",
+              "primary-fixed-dim": "#b4c5ff",
+              "tertiary-fixed-dim": "#bec6e0",
+              "on-secondary-fixed-variant": "#38485d",
+              "on-secondary-fixed": "#0b1c30",
+              "surface-container-low": "#f3f4f6",
+              "error-container": "#ffdad6",
+              background: "#f8f9fb",
+              tertiary: "#4d556b",
+              "surface-dim": "#d9dadc",
+              primary: "#004ac6",
+              "surface-variant": "#e1e2e4",
+              secondary: "#505f76",
+              "on-tertiary": "#ffffff",
+              "inverse-on-surface": "#f0f1f3",
+              "on-primary": "#ffffff",
+              "secondary-fixed-dim": "#b7c8e1",
+              "on-secondary-container": "#54647a",
+              "on-tertiary-fixed-variant": "#3f465c",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "stack-lg": "2rem",
+              "margin-mobile": "1rem",
+              gutter: "1.5rem",
+              "stack-sm": "0.5rem",
+              "stack-md": "1rem",
+              "container-max": "1280px",
+            },
+            fontFamily: {
+              "headline-lg-mobile": ["Inter"],
+              "headline-md": ["Inter"],
+              "label-md": ["Inter"],
+              "headline-lg": ["Inter"],
+              display: ["Inter"],
+              "body-md": ["Inter"],
+              "body-lg": ["Inter"],
+            },
+            fontSize: {
+              "headline-lg-mobile": [
+                "24px",
+                { lineHeight: "32px", fontWeight: "600" },
+              ],
+              "headline-md": [
+                "20px",
+                { lineHeight: "28px", fontWeight: "600" },
+              ],
+              "label-md": [
+                "12px",
+                {
+                  lineHeight: "16px",
+                  letterSpacing: "0.05em",
+                  fontWeight: "500",
+                },
+              ],
+              "headline-lg": [
+                "28px",
+                {
+                  lineHeight: "36px",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              display: [
+                "36px",
+                {
+                  lineHeight: "44px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+              "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-background font-body-md text-on-surface custom-scrollbar">
+    <!-- Sidebar (Shared Component) -->
+
+    <!-- Top Navigation (Shared Component) -->
+    <header
+      class="fixed top-0 h-16 bg-surface-container-lowest border-b border-outline-variant flex items-center justify-between px-gutter"
+    >
+      <div class="flex items-center gap-stack-md w-1/3">
+        <div class="relative w-full max-w-md">
+          <span
+            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline"
+            >search</span
+          >
+          <input
+            class="w-full bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-body-md focus:ring-2 focus:ring-primary"
+            placeholder="Rechercher une tâche ou un projet..."
+            type="text"
+          />
+        </div>
+      </div>
+      <div class="flex items-center gap-stack-md">
+        <button
+          class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all active:scale-95"
+        >
+          <span class="material-symbols-outlined">notifications</span>
+        </button>
+        <button
+          class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all active:scale-95"
+        >
+          <span class="material-symbols-outlined">settings</span>
+        </button>
+        <div
+          class="h-8 w-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border border-outline-variant"
+        >
+          <img
+            alt="User Avatar"
+            class="w-full h-full object-cover"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmG71FFe3UAwrghYmwkkQejncti1821cwUhBTvz1PUkkstLopn3RsJpi5bKkXrtkDTk8J0PFaKni0VBAvgfcikdYQqrV32J4gdQxyoucKyeIxYzT0CyUmVNSViKWUgP-XwI772dY7l58jG9WeMbSHmrW-VWO8X12bcqLGYkFpz7a282yPR6x46FP4dwzsrdNj3DcL5JNZPLGSsNsLbVd-d0s3GNt5wdnSnggnA3lq29iNwoSnJSBvhndkOmx8MZ_BxOcgA-lWYdJ0"
+          />
+        </div>
+      </div>
+    </header>
+    <!-- Main Content -->
+    <main class="mt-16 p-stack-lg min-h-screen">
+      <div class="max-w-[1280px] mx-auto">
+        <!-- Header section -->
+        <div class="flex justify-between items-end mb-stack-lg">
+          <div>
+            <h2 class="font-headline-lg text-headline-lg text-on-surface">
+              Smart Grid Final
+            </h2>
+            <p class="text-body-md text-secondary">
+              Gestion et ordonnancement des phases de construction - Villa
+              Horizon
+            </p>
+          </div>
+          <div class="flex gap-stack-sm">
+            <div
+              class="flex items-center bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline-variant"
+            >
+              <span class="text-label-md text-secondary mr-2 uppercase"
+                >Statut:</span
+              >
+              <span
+                class="bg-primary text-on-primary text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-tighter"
+                >En cours</span
+              >
+            </div>
+            <button
+              class="bg-surface-container-lowest border border-outline-variant text-on-surface px-4 py-2 rounded-lg font-bold flex items-center hover:bg-surface-container-low transition-all"
+            >
+              <span class="material-symbols-outlined mr-2">download</span>
+              Export PDF
+            </button>
+          </div>
+        </div>
+        <!-- Smart Grid Content -->
+        <div
+          class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden"
+        >
+          <!-- Table Header -->
+          <div
+            class="grid grid-cols-[2fr,100px,120px,150px,120px,120px,100px] border-b border-outline-variant bg-surface-container-low text-label-md uppercase tracking-wider font-bold text-on-surface-variant p-4"
+          >
+            <div>Tâche</div>
+            <div class="text-center">Unité</div>
+            <div class="text-center">Quantité</div>
+            <div class="text-center">Équipe</div>
+            <div class="text-center">Début</div>
+            <div class="text-center">Fin</div>
+            <div class="text-center">Durée</div>
+          </div>
+          <!-- Accordions Container -->
+          <div class="divide-y divide-outline-variant">
+            <!-- GROS OEUVRE -->
+            <section class="accordion-section accordion-open" id="gros-oeuvre">
+              <header
+                class="flex items-center px-4 py-3 bg-surface-bright cursor-pointer hover:bg-surface-container-low transition-colors group"
+                onclick="toggleAccordion('gros-oeuvre')"
+              >
+                <span
+                  class="material-symbols-outlined text-primary mr-3 transition-transform duration-300 group-[.accordion-open]:rotate-90"
+                  >chevron_right</span
+                >
+                <h3 class="font-bold text-primary uppercase tracking-wide">
+                  GROS ŒUVRE
+                </h3>
+                <span
+                  class="ml-4 px-2 py-0.5 bg-primary-container/10 text-primary text-[10px] font-bold rounded"
+                  >12 Tâches</span
+                >
+                <div class="ml-auto text-label-md text-secondary">
+                  Progression: 45%
+                </div>
+              </header>
+              <div class="accordion-content border-t border-outline-variant/50">
+                <!-- Table Rows -->
+                <div class="divide-y divide-outline-variant/30">
+                  <div
+                    class="grid grid-cols-[2fr,100px,120px,150px,120px,120px,100px] items-center p-4 hover:bg-surface-container-low/50 transition-colors group"
+                  >
+                    <div class="font-medium text-on-surface">
+                      Terrassement et fouilles
+                    </div>
+                    <div class="text-center text-body-md text-secondary">
+                      m³
+                    </div>
+                    <div class="flex justify-center">
+                      <input
+                        class="w-20 text-center bg-transparent border-b border-transparent group-hover:border-outline-variant focus:border-primary focus:ring-0 p-0 text-body-md transition-all"
+                        type="number"
+                        value="450"
+                      />
+                    </div>
+                    <div class="flex justify-center">
+                      <button
+                        class="bg-secondary-container text-on-secondary-container text-label-md px-3 py-1 rounded-full hover:bg-primary hover:text-on-primary transition-all active:scale-95"
+                      >
+                        Équipe Alpha
+                      </button>
+                    </div>
+                    <div
+                      class="text-center text-body-md read-only-cell py-1 rounded"
+                    >
+                      12/05/24
+                    </div>
+                    <div
+                      class="text-center text-body-md read-only-cell py-1 rounded"
+                    >
+                      18/05/24
+                    </div>
+                    <div
+                      class="text-center text-body-md read-only-cell py-1 rounded"
+                    >
+                      6j
+                    </div>
+                  </div>
+                  <div
+                    class="grid grid-cols-[2fr,100px,120px,150px,120px,120px,100px] items-center p-4 hover:bg-surface-container-low/50 transition-colors group"
+                  >
+                    <div class="font-medium text-on-surface">
+                      Fondations spéciales
+                    </div>
+                    <div class="text-center text-body-md text-secondary">
+                      ml
+                    </div>
+                    <div class="flex justify-center">
+                      <input
+                        class="w-20 text-center bg-transparent border-b border-transparent group-hover:border-outline-variant focus:border-primary focus:ring-0 p-0 text-body-md transition-all"
+                        type="number"
+                        value="120"
+                      />
+                    </div>
+                    <div class="flex justify-center">
+                      <button
+                        class="bg-tertiary-fixed text-on-tertiary-fixed text-label-md px-3 py-1 rounded-full hover:bg-primary hover:text-on-primary transition-all active:scale-95"
+                      >
+                        Équipe Gamma
+                      </button>
+                    </div>
+                    <div
+                      class="text-center text-body-md read-only-cell py-1 rounded"
+                    >
+                      19/05/24
+                    </div>
+                    <div
+                      class="text-center text-body-md read-only-cell py-1 rounded"
+                    >
+                      25/05/24
+                    </div>
+                    <div
+                      class="text-center text-body-md read-only-cell py-1 rounded"
+                    >
+                      6j
+                    </div>
+                  </div>
+                  <div
+                    class="grid grid-cols-[2fr,100px,120px,150px,120px,120px,100px] items-center p-4 hover:bg-surface-container-low/50 transition-colors group"
+                  >
+                    <div class="font-medium text-on-surface">
+                      Dalle de compression
+                    </div>
+                    <div class="text-center text-body-md text-secondary">
+                      m²
+                    </div>
+                    <div class="flex justify-center">
+                      <input
+                        class="w-20 text-center bg-transparent border-b border-transparent group-hover:border-outline-variant focus:border-primary focus:ring-0 p-0 text-body-md transition-all"
+                        type="number"
+                        value="210"
+                      />
+                    </div>
+                    <div class="flex justify-center">
+                      <button
+                        class="bg-secondary-container text-on-secondary-container text-label-md px-3 py-1 rounded-full hover:bg-primary hover:text-on-primary transition-all active:scale-95"
+                      >
+                        Équipe Alpha
+                      </button>
+                    </div>
+                    <div
+                      class="text-center text-body-md read-only-cell py-1 rounded"
+                    >
+                      26/05/24
+                    </div>
+                    <div
+                      class="text-center text-body-md read-only-cell py-1 rounded"
+                    >
+                      28/05/24
+                    </div>
+                    <div
+                      class="text-center text-body-md read-only-cell py-1 rounded"
+                    >
+                      2j
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- SECOND OEUVRE -->
+            <section class="accordion-section" id="second-oeuvre">
+              <header
+                class="flex items-center px-4 py-3 bg-surface-bright cursor-pointer hover:bg-surface-container-low transition-colors group"
+                onclick="toggleAccordion('second-oeuvre')"
+              >
+                <span
+                  class="material-symbols-outlined text-primary mr-3 transition-transform duration-300 group-[.accordion-open]:rotate-90"
+                  >chevron_right</span
+                >
+                <h3 class="font-bold text-primary uppercase tracking-wide">
+                  SECOND ŒUVRE
+                </h3>
+                <span
+                  class="ml-4 px-2 py-0.5 bg-primary-container/10 text-primary text-[10px] font-bold rounded"
+                  >8 Tâches</span
+                >
+                <div class="ml-auto text-label-md text-secondary">
+                  En attente
+                </div>
+              </header>
+              <div class="accordion-content border-t border-outline-variant/50">
+                <div class="divide-y divide-outline-variant/30">
+                  <div
+                    class="grid grid-cols-[2fr,100px,120px,150px,120px,120px,100px] items-center p-4 hover:bg-surface-container-low/50 transition-colors group"
+                  >
+                    <div class="font-medium text-on-surface">
+                      Pose menuiseries extérieures
+                    </div>
+                    <div class="text-center text-body-md text-secondary">u</div>
+                    <div class="flex justify-center">
+                      <input
+                        class="w-20 text-center bg-transparent border-b border-transparent group-hover:border-outline-variant focus:border-primary focus:ring-0 p-0 text-body-md transition-all"
+                        type="number"
+                        value="14"
+                      />
+                    </div>
+                    <div class="flex justify-center">
+                      <button
+                        class="bg-secondary-container text-on-secondary-container text-label-md px-3 py-1 rounded-full hover:bg-primary hover:text-on-primary transition-all active:scale-95"
+                      >
+                        Équipe Delta
+                      </button>
+                    </div>
+                    <div
+                      class="text-center text-body-md read-only-cell py-1 rounded"
+                    >
+                      10/06/24
+                    </div>
+                    <div
+                      class="text-center text-body-md read-only-cell py-1 rounded"
+                    >
+                      14/06/24
+                    </div>
+                    <div
+                      class="text-center text-body-md read-only-cell py-1 rounded"
+                    >
+                      4j
+                    </div>
+                  </div>
+                  <div
+                    class="grid grid-cols-[2fr,100px,120px,150px,120px,120px,100px] items-center p-4 hover:bg-surface-container-low/50 transition-colors group"
+                  >
+                    <div class="font-medium text-on-surface">
+                      Cloisonnement plaques de plâtre
+                    </div>
+                    <div class="text-center text-body-md text-secondary">
+                      m²
+                    </div>
+                    <div class="flex justify-center">
+                      <input
+                        class="w-20 text-center bg-transparent border-b border-transparent group-hover:border-outline-variant focus:border-primary focus:ring-0 p-0 text-body-md transition-all"
+                        type="number"
+                        value="580"
+                      />
+                    </div>
+                    <div class="flex justify-center">
+                      <button
+                        class="bg-tertiary-fixed text-on-tertiary-fixed text-label-md px-3 py-1 rounded-full hover:bg-primary hover:text-on-primary transition-all active:scale-95"
+                      >
+                        Équipe Bêta
+                      </button>
+                    </div>
+                    <div
+                      class="text-center text-body-md read-only-cell py-1 rounded"
+                    >
+                      15/06/24
+                    </div>
+                    <div
+                      class="text-center text-body-md read-only-cell py-1 rounded"
+                    >
+                      28/06/24
+                    </div>
+                    <div
+                      class="text-center text-body-md read-only-cell py-1 rounded"
+                    >
+                      13j
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- STRUCTURE METALLIQUE -->
+            <section class="accordion-section" id="structure-metallique">
+              <header
+                class="flex items-center px-4 py-3 bg-surface-bright cursor-pointer hover:bg-surface-container-low transition-colors group"
+                onclick="toggleAccordion('structure-metallique')"
+              >
+                <span
+                  class="material-symbols-outlined text-primary mr-3 transition-transform duration-300 group-[.accordion-open]:rotate-90"
+                  >chevron_right</span
+                >
+                <h3 class="font-bold text-primary uppercase tracking-wide">
+                  STRUCTURE MÉTALLIQUE
+                </h3>
+                <span
+                  class="ml-4 px-2 py-0.5 bg-primary-container/10 text-primary text-[10px] font-bold rounded"
+                  >5 Tâches</span
+                >
+                <div class="ml-auto text-label-md text-secondary">Planifié</div>
+              </header>
+              <div class="accordion-content border-t border-outline-variant/50">
+                <div class="divide-y divide-outline-variant/30">
+                  <div
+                    class="grid grid-cols-[2fr,100px,120px,150px,120px,120px,100px] items-center p-4 hover:bg-surface-container-low/50 transition-colors group"
+                  >
+                    <div class="font-medium text-on-surface">
+                      Assemblage charpente principale
+                    </div>
+                    <div class="text-center text-body-md text-secondary">
+                      tonnes
+                    </div>
+                    <div class="flex justify-center">
+                      <input
+                        class="w-20 text-center bg-transparent border-b border-transparent group-hover:border-outline-variant focus:border-primary focus:ring-0 p-0 text-body-md transition-all"
+                        type="number"
+                        value="12"
+                      />
+                    </div>
+                    <div class="flex justify-center">
+                      <button
+                        class="bg-secondary-container text-on-secondary-container text-label-md px-3 py-1 rounded-full hover:bg-primary hover:text-on-primary transition-all active:scale-95"
+                      >
+                        Équipe Zeta
+                      </button>
+                    </div>
+                    <div
+                      class="text-center text-body-md read-only-cell py-1 rounded"
+                    >
+                      02/07/24
+                    </div>
+                    <div
+                      class="text-center text-body-md read-only-cell py-1 rounded"
+                    >
+                      08/07/24
+                    </div>
+                    <div
+                      class="text-center text-body-md read-only-cell py-1 rounded"
+                    >
+                      6j
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <!-- Footer Summary Row -->
+          <div
+            class="grid grid-cols-[2fr,100px,120px,150px,120px,120px,100px] border-t-2 border-outline-variant bg-surface-container-lowest p-4 font-bold"
+          >
+            <div class="text-on-surface">TOTAL PROJET</div>
+            <div class="text-center text-secondary">-</div>
+            <div class="text-center text-primary">1,374 units</div>
+            <div class="text-center text-secondary">6 Équipes</div>
+            <div class="text-center text-secondary">12/05/24</div>
+            <div class="text-center text-secondary">25/08/24</div>
+            <div
+              class="text-center text-primary-container bg-primary-container/10 rounded"
+            >
+              105j
+            </div>
+          </div>
+        </div>
+        <!-- Bento Widgets for insights -->
+        <div class="grid grid-cols-12 gap-stack-lg mt-stack-lg">
+          <div
+            class="col-span-12 lg:col-span-8 bg-surface-container-lowest p-stack-md border border-outline-variant rounded-xl shadow-sm"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="font-headline-md text-headline-md">
+                Analyse de la Charge
+              </h4>
+              <button
+                class="text-primary text-label-md font-bold uppercase hover:underline"
+              >
+                Voir le calendrier complet
+              </button>
+            </div>
+            <div class="h-64 flex items-end gap-2 px-2 pb-6">
+              <div
+                class="flex-1 bg-surface-container-low rounded-t-lg relative group h-[80%] hover:bg-primary-container/20 transition-colors"
+              >
+                <div
+                  class="absolute inset-x-0 bottom-0 bg-primary-container rounded-t-lg h-[60%]"
+                ></div>
+                <span
+                  class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] text-secondary"
+                  >Sem 22</span
+                >
+              </div>
+              <div
+                class="flex-1 bg-surface-container-low rounded-t-lg relative group h-[90%] hover:bg-primary-container/20 transition-colors"
+              >
+                <div
+                  class="absolute inset-x-0 bottom-0 bg-primary-container rounded-t-lg h-[85%]"
+                ></div>
+                <span
+                  class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] text-secondary"
+                  >Sem 23</span
+                >
+              </div>
+              <div
+                class="flex-1 bg-surface-container-low rounded-t-lg relative group h-[100%] hover:bg-primary-container/20 transition-colors"
+              >
+                <div
+                  class="absolute inset-x-0 bottom-0 bg-primary-container rounded-t-lg h-[95%]"
+                ></div>
+                <span
+                  class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] text-secondary"
+                  >Sem 24</span
+                >
+              </div>
+              <div
+                class="flex-1 bg-surface-container-low rounded-t-lg relative group h-[70%] hover:bg-primary-container/20 transition-colors"
+              >
+                <div
+                  class="absolute inset-x-0 bottom-0 bg-primary-container rounded-t-lg h-[40%]"
+                ></div>
+                <span
+                  class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] text-secondary"
+                  >Sem 25</span
+                >
+              </div>
+              <div
+                class="flex-1 bg-surface-container-low rounded-t-lg relative group h-[60%] hover:bg-primary-container/20 transition-colors"
+              >
+                <div
+                  class="absolute inset-x-0 bottom-0 bg-primary-container rounded-t-lg h-[25%]"
+                ></div>
+                <span
+                  class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] text-secondary"
+                  >Sem 26</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-span-12 lg:col-span-4 flex flex-col gap-stack-lg">
+            <div
+              class="bg-primary-container text-on-primary p-stack-md rounded-xl shadow-lg relative overflow-hidden group"
+            >
+              <div class="relative z-10">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="material-symbols-outlined text-white/50"
+                    >warning</span
+                  >
+                  <span
+                    class="bg-white/20 px-2 py-0.5 rounded text-[10px] font-bold"
+                    >ALERTE</span
+                  >
+                </div>
+                <p class="font-bold text-lg mb-1">Retard sur Second Œuvre</p>
+                <p class="text-sm text-white/80">
+                  L'équipe Bêta nécessite 2 techniciens supplémentaires pour
+                  rattraper le délai prévu.
+                </p>
+                <button
+                  class="mt-4 w-full bg-white text-primary font-bold py-2 rounded-lg text-sm hover:bg-surface-bright transition-colors"
+                >
+                  Optimiser les ressources
+                </button>
+              </div>
+              <!-- Decorative bg shader -->
+              <div
+                class="absolute -right-10 -bottom-10 opacity-20 transform group-hover:scale-110 transition-transform duration-700"
+              ></div>
+            </div>
+            <div
+              class="bg-surface-container-lowest p-stack-md border border-outline-variant rounded-xl shadow-sm flex-grow"
+            >
+              <h4 class="font-bold text-on-surface mb-3">Dernières Actions</h4>
+              <div class="space-y-4">
+                <div class="flex gap-3">
+                  <div
+                    class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center shrink-0"
+                  >
+                    <span
+                      class="material-symbols-outlined text-on-secondary-container text-sm"
+                      >edit</span
+                    >
+                  </div>
+                  <div>
+                    <p class="text-body-md">
+                      <span class="font-bold">Jean D.</span> a modifié la
+                      quantité sur
+                      <span class="text-primary italic">Terrassement</span>
+                    </p>
+                    <p class="text-label-md text-secondary">
+                      Il y a 14 minutes
+                    </p>
+                  </div>
+                </div>
+                <div class="flex gap-3">
+                  <div
+                    class="w-8 h-8 rounded-full bg-primary-container/10 flex items-center justify-center shrink-0"
+                  >
+                    <span class="material-symbols-outlined text-primary text-sm"
+                      >groups</span
+                    >
+                  </div>
+                  <div>
+                    <p class="text-body-md">
+                      <span class="font-bold">Marie L.</span> a assigné l'Équipe
+                      Zeta
+                    </p>
+                    <p class="text-label-md text-secondary">Il y a 2 heures</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      function toggleAccordion(id) {
+        const section = document.getElementById(id);
+        const isOpen = section.classList.contains("accordion-open");
+
+        // Close all others if desired, or just toggle this one
+        // document.querySelectorAll('.accordion-section').forEach(s => s.classList.remove('accordion-open'));
+
+        if (isOpen) {
+          section.classList.remove("accordion-open");
+        } else {
+          section.classList.add("accordion-open");
+        }
+      }
+
+      // Add small interaction feedback to number inputs
+      document.querySelectorAll('input[type="number"]').forEach((input) => {
+        input.addEventListener("change", function () {
+          this.classList.add("text-primary", "font-bold");
+          setTimeout(() => {
+            this.classList.remove("text-primary");
+          }, 2000);
+        });
+      });
+    </script>
+  </body>
+</html>

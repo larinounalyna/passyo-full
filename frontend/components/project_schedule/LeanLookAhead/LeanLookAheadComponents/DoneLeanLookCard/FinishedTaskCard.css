@@ -1,0 +1,34 @@
+.finished-card {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+}
+
+.finished-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #6b7280;
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+}
+
+.finished-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.finished-icon {
+  font-size: 16px;
+  color: #10b981;
+  font-weight: bold;
+}
+
+.finished-text {
+  font-size: 11px;
+  font-weight: 700;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}

@@ -1,0 +1,693 @@
+/* ============================================================
+   Planning Page — Smart Grid Task Table
+   ============================================================ */
+
+.planning-page-main {
+  position: relative;
+}
+
+.planning-page-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Page header ── */
+.planning-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.planning-page-title {
+  margin: 0 0 4px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-1);
+  letter-spacing: -0.3px;
+}
+
+.planning-page-sub {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+.planning-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.planning-status-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface-2);
+  font-size: 12px;
+}
+
+.planning-status-label {
+  color: var(--text-3);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.planning-status-value {
+  background: var(--accent);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.planning-export-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── Smart Grid container ── */
+.smart-grid-container {
+  border: 1px solid var(--border);
+  border-radius: var(--surface-r);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.smart-grid-container:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.planning-table-wrap {
+  overflow-x: auto;
+}
+
+/* ── Table ── */
+.planning-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+/* Column widths */
+.planning-table colgroup col:nth-child(1) { width: 35%; }
+.planning-table colgroup col:nth-child(2) { width: 8%; }
+.planning-table colgroup col:nth-child(3) { width: 10%; }
+.planning-table colgroup col:nth-child(4) { width: 14%; }
+.planning-table colgroup col:nth-child(5) { width: 11%; }
+.planning-table colgroup col:nth-child(6) { width: 11%; }
+.planning-table colgroup col:nth-child(7) { width: 11%; }
+
+/* ── Table head ── */
+.planning-thead-row {
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+}
+
+.planning-th {
+  padding: 11px 14px;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-4);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.planning-th--left {
+  text-align: left;
+}
+
+/* ── Section header row ── */
+.planning-section-row {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.planning-section-row:hover td {
+  background: rgba(30, 79, 208, 0.04);
+}
+
+.planning-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 14px;
+  background: var(--surface-2);
+  border-top: 1px solid var(--border);
+  user-select: none;
+}
+
+.planning-section-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.planning-chevron {
+  color: var(--accent);
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.planning-chevron--open {
+  transform: rotate(90deg);
+}
+
+.planning-section-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.planning-task-count {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--accent-pale);
+  color: var(--accent);
+}
+
+.planning-status-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+
+.planning-status-badge--progress {
+  background: var(--green-pale);
+  color: var(--green);
+}
+
+.planning-status-badge--waiting {
+  background: var(--amber-pale);
+  color: var(--yellow-dark);
+}
+
+.planning-status-badge--planned {
+  background: var(--accent-pale);
+  color: var(--accent);
+}
+
+/* ── Task data row ── */
+.planning-task-row {
+  transition: background 0.12s;
+}
+
+.planning-task-row:hover td {
+  background: var(--surface-2);
+}
+
+.planning-task-row--highlighted td {
+  background: var(--accent-pale);
+}
+
+.planning-td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13.5px;
+  color: var(--text-1);
+  vertical-align: middle;
+}
+
+.planning-td--center {
+  text-align: center;
+}
+
+.planning-td--name {
+  font-weight: 500;
+  color: var(--text-1);
+}
+
+.planning-td--muted {
+  color: var(--text-3);
+  font-size: 13px;
+}
+
+/* ── Quantity input ── */
+.planning-qty-input {
+  width: 72px;
+  text-align: center;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-1);
+  font-size: 13px;
+  font-family: inherit;
+  padding: 4px 0;
+  outline: none;
+  transition: all 0.15s;
+}
+
+.planning-qty-input:focus {
+  border-color: var(--accent);
+  background: var(--surface);
+  box-shadow: 0 0 0 2px var(--accent-pale);
+}
+
+.editable-cell-input,
+.editable-cell-select {
+  width: 100%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 13px;
+  color: var(--text-1);
+  font-family: inherit;
+  outline: none;
+  transition: all 0.15s;
+}
+
+.editable-cell-input:focus,
+.editable-cell-select:focus {
+  border-color: var(--accent);
+  background: var(--surface);
+  box-shadow: 0 0 0 2px var(--accent-pale);
+}
+
+.add-task-btn,
+.delete-task-btn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text-3);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.add-task-btn:hover {
+  background: var(--accent-pale);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.delete-task-btn:hover {
+  background: var(--red-pale);
+  color: var(--red);
+  border-color: var(--red);
+}
+
+/* ── Report Modal ── */
+.report-modal-overlay {
+  background-color: rgba(7, 15, 28, 0.4);
+  backdrop-filter: blur(4px);
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.report-modal-content {
+  background-color: var(--bg);
+  border-radius: 20px;
+  box-shadow: 0 10px 38px -10px rgba(22, 23, 24, 0.35), 0 10px 20px -15px rgba(22, 23, 24, 0.2);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 900px;
+  max-height: 92vh;
+  padding: 0;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.report-modal-header {
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.report-modal-title {
+  margin: 0;
+  font-weight: 700;
+  color: var(--text-1);
+  font-size: 18px;
+}
+
+.report-modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.report-modal-close-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-3);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.report-modal-close-btn:hover {
+  background: var(--red-pale);
+  color: var(--red);
+  border-color: var(--red);
+}
+
+@keyframes overlayShow {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes contentShow {
+  from { opacity: 0; transform: translate(-50%, -48%) scale(0.96); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* ── Team chip ── */
+.planning-team-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 99px;
+  font-size: 11.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.planning-team-chip:hover { opacity: 0.85; }
+
+.planning-team-chip--blue   { background: var(--accent-pale);  color: var(--accent);      }
+.planning-team-chip--violet { background: var(--violet-pale);  color: var(--violet);      }
+.planning-team-chip--green  { background: var(--green-pale);   color: var(--green);       }
+.planning-team-chip--amber  { background: var(--amber-pale);   color: var(--yellow-dark); }
+
+/* ── Table footer ── */
+.planning-tfoot-row {
+  background: var(--surface-2);
+}
+
+.planning-tfoot-td {
+  padding: 12px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-2);
+  border-top: 2px solid var(--border-2);
+}
+
+.planning-tfoot-td--center   { text-align: center; }
+.planning-tfoot-td--label    { color: var(--text-1); }
+.planning-tfoot-td--accent   { color: var(--accent); }
+.planning-tfoot-td--highlight {
+  color: var(--accent);
+  background: var(--accent-pale);
+  border-radius: 6px;
+}
+
+/* ── Bento widgets grid ── */
+.planning-bento-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 16px;
+  align-items: start;
+}
+
+.planning-bento-side {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ── Generic bento card ── */
+.planning-bento {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--surface-r);
+  box-shadow: var(--shadow-sm);
+  padding: 16px 18px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.planning-bento:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.planning-bento-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.planning-bento-title {
+  margin: 0 0 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-1);
+}
+
+.planning-bento-head .planning-bento-title {
+  margin-bottom: 0;
+}
+
+.planning-link-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  transition: opacity 0.15s;
+}
+
+.planning-link-btn:hover { opacity: 0.75; }
+
+/* ── Workload chart ── */
+.planning-bento--wide {
+  /* takes full left column */
+}
+
+.planning-chart-wrap {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 160px;
+  padding-bottom: 24px;
+}
+
+.planning-chart-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  position: relative;
+}
+
+.planning-bar-outer {
+  width: 100%;
+  background: var(--surface-2);
+  border-radius: 6px 6px 0 0;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.planning-bar-outer:hover {
+  filter: brightness(1.05);
+  transform: scaleY(1.04);
+  transform-origin: bottom;
+}
+
+.planning-bar-inner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, var(--accent), var(--accent-dark));
+  border-radius: 6px 6px 0 0;
+}
+
+.planning-bar-label {
+  position: absolute;
+  bottom: -20px;
+  font-size: 10px;
+  color: var(--text-4);
+  white-space: nowrap;
+}
+
+/* ── Alert card ── */
+.planning-bento--alert {
+  background: linear-gradient(135deg, var(--red) 0%, #b91c1c 100%);
+  border-color: transparent;
+  color: #fff;
+}
+
+.planning-alert-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.planning-alert-badge {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.planning-alert-title {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.planning-alert-body {
+  margin: 0 0 14px;
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.5;
+}
+
+.planning-alert-btn {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.planning-alert-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ── Recent actions ── */
+.planning-bento--actions {
+  flex: 1;
+}
+
+.planning-actions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.planning-action-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  opacity: 0;
+  animation: slideInLeft 0.4s ease-out forwards;
+}
+
+.planning-action-row:nth-child(1) { animation-delay: 0.05s; }
+.planning-action-row:nth-child(2) { animation-delay: 0.12s; }
+
+.planning-action-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.planning-action-icon--blue   { background: var(--surface-2); color: var(--accent); }
+.planning-action-icon--accent { background: var(--accent-pale); color: var(--accent); }
+
+.planning-action-text {
+  margin: 0 0 2px;
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.4;
+}
+
+.planning-action-time {
+  margin: 0;
+  font-size: 11.5px;
+  color: var(--text-4);
+}
+
+/* ── Accordion animation ── */
+.accordion-content {
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Animations ── */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .planning-bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .planning-bento-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .planning-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .planning-bento-side {
+    grid-template-columns: 1fr;
+  }
+}

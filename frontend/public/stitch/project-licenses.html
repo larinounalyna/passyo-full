@@ -1,0 +1,296 @@
+<!DOCTYPE html><html class="light" lang="fr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Passyo - Configuration des Licences</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "primary": "#004ac6",
+                        "surface-container-highest": "#e1e2e4",
+                        "tertiary-fixed": "#dae2fd",
+                        "on-primary-fixed": "#00174b",
+                        "surface-container-low": "#f3f4f6",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-fixed": "#131b2e",
+                        "surface-bright": "#f8f9fb",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "secondary": "#505f76",
+                        "outline": "#737686",
+                        "on-surface": "#191c1e",
+                        "surface-tint": "#0053db",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-tertiary-container": "#eef0ff",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#f8f9fb",
+                        "on-primary-container": "#eeefff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-variant": "#e1e2e4",
+                        "on-secondary-container": "#54647a",
+                        "primary-container": "#2563eb",
+                        "surface-container-high": "#e7e8ea",
+                        "tertiary": "#4d556b",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f0f1f3",
+                        "surface": "#f8f9fb",
+                        "inverse-surface": "#2e3132",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "surface-dim": "#d9dadc",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-container": "#edeef0",
+                        "secondary-container": "#d0e1fb",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c3c6d7",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-background": "#191c1e",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "tertiary-container": "#656d84",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-surface-variant": "#434655"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "stack-lg": "2rem",
+                        "gutter": "1.5rem",
+                        "stack-sm": "0.5rem",
+                        "stack-md": "1rem",
+                        "margin-mobile": "1rem"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9fb; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .custom-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            background: #2563eb;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        .step-transition { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col">
+<!-- Top Bar Navigation (Hidden for focused onboarding per UX Goal) -->
+<header class="w-full top-0 sticky bg-surface-container-lowest border-b border-outline-variant z-50">
+<div class="flex justify-between items-center px-gutter py-stack-sm max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary">Passyo</div>
+<div class="flex items-center gap-stack-md">
+<span class="font-label-md text-label-md text-secondary">Aide</span>
+<span class="material-symbols-outlined text-secondary">help</span>
+</div>
+</div>
+</header>
+<main class="flex-grow flex flex-col items-center justify-center px-gutter py-stack-lg">
+<div class="max-w-4xl w-full">
+<!-- Stepper Container -->
+<div class="mb-stack-lg flex flex-col items-center">
+<div class="flex items-center w-full max-w-md gap-stack-sm">
+<div class="flex-1 h-1 bg-primary-container rounded-full"></div>
+<div class="flex-1 h-1 bg-primary-container rounded-full relative">
+<div class="absolute -right-1 -top-1.5 w-4 h-4 bg-primary-container rounded-full border-4 border-white shadow-sm"></div>
+</div>
+</div>
+<div class="mt-stack-sm font-label-md text-label-md text-secondary uppercase tracking-widest">Étape 2 sur 2 : Configuration</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Main Configuration Card (Bento-style layout) -->
+<div class="md:col-span-8 space-y-gutter">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-stack-lg shadow-sm overflow-hidden relative">
+<!-- AI Recommendation Badge -->
+<div class="absolute top-0 right-0 bg-primary-container text-white font-label-md text-label-md px-4 py-1.5 rounded-bl-xl flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                            RECOMMANDÉ PAR L'IA
+                        </div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-stack-sm">Sélectionnez vos licences</h1>
+<p class="font-body-md text-body-md text-secondary mb-stack-lg">Selon votre profil d'entreprise, nous préconisons un accès collaboratif pour vos ingénieurs de site.</p>
+<!-- Central License Selector -->
+<div class="bg-surface-container-low rounded-lg p-stack-lg flex flex-col items-center border border-outline-variant border-dashed">
+<div class="flex items-center justify-between w-full max-w-sm mb-stack-lg">
+<button class="w-12 h-12 flex items-center justify-center bg-white border border-outline-variant rounded-lg hover:border-primary transition-colors active:scale-95 shadow-sm" onclick="updateCount(-1)">
+<span class="material-symbols-outlined text-primary">remove</span>
+</button>
+<div class="text-center">
+<div class="font-display text-display text-on-surface leading-none" id="license-count">10</div>
+<div class="font-label-md text-label-md text-secondary mt-1 uppercase">Ingénieurs</div>
+</div>
+<button class="w-12 h-12 flex items-center justify-center bg-white border border-outline-variant rounded-lg hover:border-primary transition-colors active:scale-95 shadow-sm" onclick="updateCount(1)">
+<span class="material-symbols-outlined text-primary">add</span>
+</button>
+</div>
+<input class="w-full h-2 bg-surface-container-highest rounded-lg appearance-none cursor-pointer custom-slider mb-stack-sm" id="license-slider" max="100" min="1" oninput="syncFromSlider(this.value)" type="range" value="10">
+<div class="flex justify-between w-full font-label-md text-label-md text-outline">
+<span>1 licence</span>
+<span>100+ licences</span>
+</div>
+</div>
+<div class="mt-stack-lg grid grid-cols-1 sm:grid-cols-2 gap-stack-md">
+<div class="p-stack-md border border-outline-variant rounded-lg flex items-start gap-stack-md bg-white">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container">engineering</span>
+</div>
+<div>
+<div class="font-label-md text-label-md font-bold text-on-surface">Gestion de Projet</div>
+<p class="font-body-md text-[13px] text-secondary">Accès complet aux outils de planification et workflows.</p>
+</div>
+</div>
+<div class="p-stack-md border border-outline-variant rounded-lg flex items-start gap-stack-md bg-white">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container">security</span>
+</div>
+<div>
+<div class="font-label-md text-label-md font-bold text-on-surface">Sécurité &amp; Conformité</div>
+<p class="font-body-md text-[13px] text-secondary">Modules de sécurité inclus pour chaque utilisateur.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Summary Sidebar -->
+<div class="md:col-span-4 space-y-gutter">
+<div class="bg-white border border-outline-variant rounded-xl p-stack-md shadow-sm">
+<div class="font-label-md text-label-md font-bold text-on-surface mb-stack-md pb-stack-sm border-b border-surface-variant uppercase">Récapitulatif de l'offre</div>
+<div class="space-y-stack-md mb-stack-lg">
+<div class="flex justify-between font-body-md text-body-md">
+<span class="text-secondary">Abonnement Enterprise</span>
+<span class="text-on-surface font-semibold">Mensuel</span>
+</div>
+<div class="flex justify-between font-body-md text-body-md">
+<span class="text-secondary">Prix par ingénieur</span>
+<span class="text-on-surface font-semibold">49,00 €</span>
+</div>
+<div class="flex justify-between font-body-md text-body-md">
+<span class="text-secondary">Remise volume IA</span>
+<span class="text-error font-semibold">-15%</span>
+</div>
+</div>
+<div class="pt-stack-md border-t border-surface-variant mb-stack-lg">
+<div class="flex items-baseline justify-between">
+<div class="font-label-md text-label-md text-on-surface font-bold uppercase">Total Annuel HT</div>
+<div class="text-right">
+<div class="font-headline-lg text-headline-lg text-primary" id="total-price">4 998,00 €</div>
+<div class="font-label-md text-label-md text-secondary">Soit 416,50 € / mois</div>
+</div>
+</div>
+</div>
+<button class="w-full py-stack-md bg-primary-container text-white rounded-lg font-label-md text-label-md font-bold flex items-center justify-center gap-stack-sm hover:brightness-90 active:scale-[0.98] transition-all">
+                            Continuer vers le paiement
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<div class="mt-stack-md flex items-center justify-center gap-stack-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">lock</span>
+<span class="font-label-md text-label-md text-secondary">Paiement 100% sécurisé via Stripe</span>
+</div>
+</div>
+<!-- Trust Factor / Contextual Info -->
+<div class="bg-surface-container-high rounded-xl p-stack-md border border-outline-variant">
+<div class="flex items-center gap-stack-sm mb-stack-sm">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-white">
+<img class="w-full h-full object-cover" data-alt="Un portrait professionnel d'une directrice technique travaillant dans le secteur de la construction. Elle se tient dans un bureau moderne et lumineux, vêtue d'une tenue de travail élégante et décontractée. L'ambiance est sérieuse mais accueillante, avec une lumière naturelle douce mettant en valeur son expression de confiance et d'expertise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATCUiRakOJb8-R5sB-qMmsiCIK41qE_chESDOiGiVKtmmAWIb_HIBY4ZftPm4cFdjMqrSW9xw5ej64d5wOc-Tg1DCKbg27cFyhl82azr_f0-DlJaOM9BcWc-iLaoafA43reA02_D603fRJKoRu3lmJTfBh15JMRLuekNkSD4nT9zYVV7yFa2nPtQHgsbAElPAntki0OdM_dmlHBGhY7nPi6bJJqoXa0fveZT-miqx-SxazC4xdzuzWDAl4VuZQxTYQRZdQesaVBEA">
+</div>
+<div class="font-label-md text-label-md text-on-surface-variant font-bold italic">"Passyo a réduit nos délais de planification de 30%."</div>
+</div>
+<div class="font-label-md text-[11px] text-secondary text-right">— Sarah L., Directrice Opérations</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-surface-container-lowest border-t border-outline-variant py-stack-md mt-auto">
+<div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-stack-md">
+<div class="flex items-center gap-stack-lg">
+<span class="font-label-md text-label-md text-secondary">© 2024 Passyo. Tous droits réservés.</span>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Confidentialité</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Conditions</a>
+</div>
+<div class="flex items-center gap-stack-sm">
+<span class="font-label-md text-label-md text-secondary">Une question ?</span>
+<span class="font-label-md text-label-md text-primary font-bold">Contactez un expert</span>
+</div>
+</div>
+</footer>
+<script>
+        const PRICE_PER_LICENSE = 49.00;
+        const VOLUME_DISCOUNT = 0.85; // 15% discount
+        const licenseCountEl = document.getElementById('license-count');
+        const licenseSlider = document.getElementById('license-slider');
+        const totalPriceEl = document.getElementById('total-price');
+
+        function updateDisplay(count) {
+            licenseCountEl.textContent = count;
+            licenseSlider.value = count;
+            
+            // Calculation logic
+            const rawTotal = count * PRICE_PER_LICENSE * 12;
+            const discountedTotal = rawTotal * VOLUME_DISCOUNT;
+            
+            // Formatter for Currency
+            const formatter = new Intl.NumberFormat('fr-FR', {
+                style: 'currency',
+                currency: 'EUR',
+            });
+            
+            totalPriceEl.textContent = formatter.format(discountedTotal);
+            
+            // Animation for value change
+            totalPriceEl.classList.add('scale-105');
+            setTimeout(() => totalPriceEl.classList.remove('scale-105'), 150);
+        }
+
+        function updateCount(delta) {
+            let current = parseInt(licenseCountEl.textContent);
+            let next = Math.max(1, Math.min(100, current + delta));
+            updateDisplay(next);
+        }
+
+        function syncFromSlider(val) {
+            updateDisplay(parseInt(val));
+        }
+
+        // Init
+        updateDisplay(10);
+    </script>
+</body></html>

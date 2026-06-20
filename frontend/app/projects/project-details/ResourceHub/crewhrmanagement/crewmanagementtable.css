@@ -1,0 +1,386 @@
+/* ── Crew HR Management Table ──────────────────────────── */
+/* Uses global app design tokens from globals.css            */
+
+.crew-page-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Toolbar ── */
+.crew-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--surface-r) var(--surface-r) 0 0;
+  border-bottom: none;
+}
+
+.crew-search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 180px;
+  max-width: 260px;
+}
+
+.crew-search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--text-4);
+  pointer-events: none;
+}
+
+.crew-search-input {
+  width: 100%;
+  height: 36px;
+  padding: 0 12px 0 34px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface-2);
+  color: var(--text-1);
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.crew-search-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-pale);
+  background: var(--surface);
+}
+
+.crew-filter-group {
+  display: flex;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.crew-filter-btn {
+  padding: 5px 14px;
+  border-radius: 7px;
+  border: none;
+  background: transparent;
+  color: var(--text-3);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+.crew-filter-btn.active,
+.crew-filter-btn:hover {
+  background: var(--surface);
+  color: var(--text-1);
+  box-shadow: var(--shadow-sm);
+}
+
+.crew-filter-btn.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.crew-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.crew-btn-sm {
+  height: 34px !important;
+  padding: 0 12px !important;
+  font-size: 12.5px !important;
+}
+
+/* ── Workforce grid ── */
+.crew-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Team card ── */
+.crew-team-card {
+  border: 1px solid var(--border);
+  border-top: none;
+  background: var(--surface);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.crew-team-card:last-child {
+  border-radius: 0 0 var(--surface-r) var(--surface-r);
+}
+
+.crew-team-card:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+/* Team header */
+.crew-team-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.crew-team-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.crew-team-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+}
+
+.crew-team-icon--blue   { background: var(--accent); }
+.crew-team-icon--violet { background: var(--violet); }
+.crew-team-icon--green  { background: var(--green); }
+
+.crew-team-name {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-1);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.crew-team-sub {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.crew-team-kpis {
+  display: flex;
+  gap: 24px;
+  flex-shrink: 0;
+}
+
+.crew-kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: right;
+}
+
+.crew-kpi-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.crew-kpi-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.crew-kpi-value--warn {
+  color: var(--red);
+}
+
+/* ── Data table ── */
+.crew-table-wrap {
+  overflow-x: auto;
+}
+
+.crew-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.crew-data-table th {
+  text-align: left;
+  padding: 10px 16px;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-4);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+  background: var(--surface);
+}
+
+.crew-data-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-2);
+  vertical-align: middle;
+}
+
+.crew-data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.crew-row {
+  transition: background 0.12s;
+}
+
+.crew-row:hover td {
+  background: var(--surface-2);
+}
+
+.crew-row--lead td {
+  background: var(--accent-pale);
+}
+
+.crew-row--lead:hover td {
+  background: rgba(30, 79, 208, 0.12);
+}
+
+/* Cell content */
+.cell-member {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cell-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--surface-2), var(--border));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-2);
+  flex-shrink: 0;
+  border: 1.5px solid var(--border);
+}
+
+.cell-avatar--primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color: #fff;
+  border-color: transparent;
+}
+
+.cell-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-1);
+}
+
+.cell-lead-badge {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-top: 1px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.cell-role {
+  color: var(--text-3);
+  font-size: 13px;
+}
+
+.cell-qty {
+  font-weight: 600;
+  color: var(--text-1);
+}
+
+/* Status pills */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+.status-pill.active {
+  background: var(--green-pale);
+  color: var(--green);
+}
+
+.status-pill.warning {
+  background: var(--amber-pale);
+  color: var(--amber);
+}
+
+.status-pill.inactive {
+  background: var(--red-pale);
+  color: var(--red);
+}
+
+/* Expand row */
+.crew-expand-row {
+  text-align: center;
+  padding: 12px 16px !important;
+  background: var(--surface-2);
+}
+
+.crew-expand-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 4px 8px;
+  border-radius: 7px;
+  transition: background 0.15s;
+}
+
+.crew-expand-btn:hover {
+  background: var(--accent-pale);
+}
+
+@media (max-width: 1024px) {
+  .crew-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .crew-search-wrap {
+    max-width: 100%;
+  }
+  .crew-actions {
+    margin-left: 0;
+  }
+  .crew-team-kpis {
+    display: none;
+  }
+}

@@ -1,0 +1,145 @@
+.daily-planning-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.board-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 4px 0 12px;
+}
+
+.board-heading h2 {
+  margin: 0;
+  font-size: 33px;
+  font-weight: 600;
+  color: #7f879a;
+  letter-spacing: -0.25px;
+}
+
+.board-heading-line {
+  flex: 1;
+  height: 1px;
+  background: #d7dce5;
+}
+
+.kanban-board {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.kanban-column {
+  background: transparent;
+  border: 0;
+  border-radius: 12px;
+  padding: 0;
+  min-height: 320px;
+  box-shadow: none;
+}
+
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dde2ea;
+  margin-bottom: 10px;
+}
+
+.column-header h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2b313c;
+  margin: 0;
+  text-transform: none;
+  letter-spacing: -0.1px;
+}
+
+.column-header .count {
+  background: transparent;
+  color: #7c8598;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 0;
+  border-radius: 0;
+}
+
+.column-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.add-task-row {
+  margin-top: 8px;
+}
+
+.add-task-btn {
+  width: 100%;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid #cfd5e0;
+  background: #f7f8fb;
+  color: #8a93a4;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add-task-btn:hover {
+  border-color: #bfc7d6;
+  background: #f2f5fa;
+}
+
+.add-task-btn:focus-visible {
+  outline: 2px solid #9fb3d5;
+  outline-offset: 1px;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .kanban-board {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .kanban-board {
+    grid-template-columns: 1fr;
+  }
+
+  .board-heading h2 {
+    font-size: 24px;
+  }
+}
+
+/* Card Move Button */
+.card-move-btn {
+  background: var(--accent, #3b82f6);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-move-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.card-move-btn:active {
+  transform: translateY(0);
+}

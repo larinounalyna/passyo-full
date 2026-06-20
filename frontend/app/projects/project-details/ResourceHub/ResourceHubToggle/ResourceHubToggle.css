@@ -1,0 +1,95 @@
+/* =========================================================
+   Notebook Divider Tabs — Calendar-matched palette
+   Tabs flush onto the content panel below (no gap).
+   ========================================================= */
+
+/* Wrapper that holds the tabs + the bottom "connection" line */
+.resource-hub-toggle-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.resource-hub-toggle {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 0;
+  list-style: none;
+  padding: 0 0 0 6px;
+  margin: 0;
+  border-bottom: 1.5px solid var(--border);
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Each tab ──────────────────────────────────────────── */
+.resource-hub-toggle li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 1.35rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  background: var(--surface-2);
+  border: 1.5px solid var(--border);
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  margin-right: 4px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.18s ease;
+  user-select: none;
+}
+
+/* Progressive stagger: each tab slightly taller */
+.resource-hub-toggle li:nth-child(1) { padding-top: 0.4rem;  }
+.resource-hub-toggle li:nth-child(2) { padding-top: 0.55rem; }
+.resource-hub-toggle li:nth-child(3) { padding-top: 0.7rem;  }
+
+/* ── Hover ───────────────────────────────────────────── */
+.resource-hub-toggle li:hover {
+  background: var(--accent-pale);
+  border-color: var(--border-2);
+  color: var(--text-1);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Active tab ──────────────────────────────────────── */
+.resource-hub-toggle li.active {
+  background: var(--surface);
+  color: var(--accent);
+  border-color: var(--border);
+  font-weight: 700;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  z-index: 3;
+}
+
+/* Cover the baseline so the active tab merges with the panel */
+.resource-hub-toggle li.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--surface);
+  z-index: 4;
+}
+
+/* ── SVG icons ───────────────────────────────────────── */
+.resource-hub-toggle li svg {
+  display: block;
+  flex-shrink: 0;
+  stroke: currentColor;
+  transition: stroke 0.18s ease;
+}
+
+.resource-hub-toggle li.active svg {
+  stroke: var(--accent);
+}

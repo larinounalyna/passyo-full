@@ -1,0 +1,104 @@
+.inprogress-lookahead-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+}
+
+.lookahead-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.lookahead-tag {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.lookahead-tag.active {
+  color: #3b82f6;
+}
+
+.lookahead-more-btn {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.lookahead-more-btn:hover {
+  color: #6b7280;
+}
+
+.lookahead-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 20px 0;
+  line-height: 1.4;
+}
+
+.lookahead-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lookahead-tabs {
+  display: flex;
+  gap: 32px;
+}
+
+.lookahead-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #9ca3af;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.lookahead-tab.active.conc {
+  color: #ef4444;
+}
+
+.lookahead-tab.active.plan {
+  color: #10b981;
+}
+
+.lookahead-tab.active.logi {
+  color: #64748b;
+}
+
+.lookahead-avatars {
+  display: flex;
+  gap: -8px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  border: 2px solid white;
+  margin-left: -8px;
+}
+
+.avatar:first-child {
+  margin-left: 0;
+}

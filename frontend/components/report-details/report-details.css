@@ -1,0 +1,150 @@
+.report-details {
+  width: 320px;
+  max-width: 100%;
+  border: 1px solid #d7e2f4;
+  border-radius: 18px;
+  padding: 16px;
+  background: #f9fcff;
+  box-shadow: 0 12px 24px rgba(13, 35, 66, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: 95vh;
+}
+
+.report-settings-header {
+  flex-direction: column;
+  display: flex;
+  gap: 4px;
+}
+
+.report-settings-header h2 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 800;
+  color: #1b3154;
+}
+
+.report-settings-header p {
+  margin: 0;
+  font-size: 13px;
+  color: #637a98;
+}
+
+.report-settings-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.settings-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.settings-field span {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #5d7392;
+  font-weight: 700;
+}
+
+.settings-field input,
+.settings-field select {
+  height: 40px;
+  border: 1px solid #d4e0f2;
+  border-radius: 10px;
+  padding: 0 12px;
+  font-size: 13px;
+  color: #233a5d;
+  background: #ffffff;
+}
+
+.settings-field input:focus,
+.settings-field select:focus {
+  outline: 2px solid #c8d7ef;
+  border-color: #9fb8df;
+}
+
+.sync-button-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.sync-now-button {
+  height: 44px;
+  width: 100%;
+  border: 1px solid #2f6ce5;
+  border-radius: 12px;
+  background: #2f6ce5;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sync-now-button:hover {
+  background: #2555c8;
+  border-color: #2555c8;
+  box-shadow: 0 4px 12px rgba(47, 108, 229, 0.3);
+}
+
+.sync-now-button:active {
+  transform: scale(0.98);
+}
+
+.sync-info {
+  margin: 0;
+  font-size: 11px;
+  color: #7d8fa8;
+  text-align: center;
+  font-weight: 500;
+}
+
+.integration-panel {
+  border: 1px solid #d9e5f6;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.integration-panel h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  color: #213b5f;
+}
+
+.integration-panel dl {
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.integration-panel dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.integration-panel dt {
+  color: #5f7696;
+  font-weight: 600;
+}
+
+.integration-panel dd {
+  margin: 0;
+  color: #2a4163;
+  font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+  .report-details {
+    width: 100%;
+  }
+}

@@ -1,0 +1,42 @@
+.finished-wrapper {
+  background: #f3f4f6;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.finished-card {
+  width: 420px;
+  background: #ffffff;
+  border: 1px dashed #e5e7eb;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.finished-title {
+  margin: 0 0 14px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #6b7280; /* muted gray like a completed task */
+  text-decoration: line-through;
+}
+
+.finished-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.finished-icon {
+  color: #9ca3af;
+}
+
+.finished-text {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #9ca3af;
+}

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Estimator - Application</title>
+    <link rel="stylesheet" href="styles.css?v=7.0">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top Bar -->
+        <header class="app-topbar">
+            <a href="index.html" class="topbar-brand">Smart Estimator</a>
+            <div class="topbar-actions">
+                <button type="button" class="btn btn-small btn-ghost" onclick="resetApp()">Réinitialiser</button>
+            </div>
+        </header>
+
+        <!-- Stepper Navigation -->
+        <nav class="stepper">
+            <div class="stepper-track">
+                <div class="step-item active" data-step="1">
+                    <div class="step-circle">1</div>
+                    <span class="step-label">Importer</span>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item" data-step="2">
+                    <div class="step-circle">2</div>
+                    <span class="step-label">Vérifier & Valider</span>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item" data-step="3">
+                    <div class="step-circle">3</div>
+                    <span class="step-label">Configuration</span>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item" data-step="4">
+                    <div class="step-circle">4</div>
+                    <span class="step-label">Résultats</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="app-main">
+
+            <!-- STEP 1: Upload -->
+            <section id="step-1" class="step-content active">
+                <div class="step-header">
+                    <h2>Importer un Fichier</h2>
+                    <p>Importez votre fichier BIM ou PDF pour extraire les composants de construction</p>
+                </div>
+
+                <!-- Upload Type Selector -->
+                <div class="upload-type-selector">
+                    <button class="upload-type-btn active" data-type="bim" onclick="selectUploadType('bim')">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        <span>Fichier BIM</span>
+                        <small>IFC, Excel</small>
+                    </button>
+                    <button class="upload-type-btn" data-type="pdf" onclick="selectUploadType('pdf')">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15h6"/><path d="M9 11h6"/></svg>
+                        <span>Fichier PDF</span>
+                        <small>Export AutoCAD</small>
+                    </button>
+                </div>
+
+                <div class="upload-area">
+                    <!-- BIM Upload Zone -->
+                    <div class="upload-zone" id="uploadZoneBIM">
+                        <div class="upload-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                        </div>
+                        <p class="upload-text">Glissez-déposez votre fichier BIM ici</p>
+                        <p class="upload-hint">Formats supportés : IFC (.ifc), Excel (.xlsx)</p>
+                        <p class="upload-hint" style="font-size: 0.8rem; color: var(--text-muted);">Les fichiers Revit (.rvt) et ArchiCAD (.pln) doivent être exportés en IFC.</p>
+                        <input type="file" id="fileInputBIM" hidden accept=".ifc,.xlsx,.xls,.rvt,.pln">
+                    </div>
+
+                    <!-- PDF Upload Zone (hidden by default) -->
+                    <div class="upload-zone" id="uploadZonePDF" style="display:none;">
+                        <div class="upload-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15h6"/><path d="M9 11h6"/></svg>
+                        </div>
+                        <p class="upload-text">Glissez-déposez votre fichier PDF ici</p>
+                        <p class="upload-hint">PDF exporté depuis AutoCAD avec tableaux ou quantités</p>
+                        <input type="file" id="fileInputPDF" hidden accept=".pdf">
+                    </div>
+
+                    <!-- PDF Metadata + Configuration Fields (hidden by default) -->
+                    <div class="pdf-meta-fields" id="pdfMetaFields" style="display:none;">
+                        <!-- Row 1: Plan Type + Floor Level + Upload Button -->
+                        <div class="pdf-meta-grid pdf-meta-grid-3">
+                            <div class="pdf-meta-group">
+                                <label class="pdf-meta-label">TYPE DE PLAN</label>
+                                <div class="pdf-meta-select-wrapper">
+                                    <svg class="pdf-meta-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                    <select id="pdfPlanType" onchange="onPlanTypeChange()">
+                                        <option value="tous">Tous les projets</option>
+                                        <option value="architecture">Architecture</option>
+                                        <option value="structure">Structure</option>
+                                        <option value="electricite">Électricité</option>
+                                        <option value="plomberie">Plomberie</option>
+                                        <option value="cvc">CVC (Climatisation)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="pdf-meta-group">
+                                <label class="pdf-meta-label">NIVEAU / ÉTAGE</label>
+                                <div class="pdf-meta-input-wrapper">
+                                    <svg class="pdf-meta-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 8V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2"/><rect x="2" y="10" width="20" height="4" rx="1"/></svg>
+                                    <input type="text" id="pdfFloorLevel" placeholder="RDC, 1er étage, 2ème étage...">
+                                </div>
+                            </div>
+                            <div class="pdf-meta-group pdf-meta-upload-group">
+                                <label class="pdf-meta-label">TÉLÉCHARGER</label>
+                                <button type="button" class="btn btn-primary pdf-upload-btn" id="pdfUploadBtn" onclick="document.getElementById('fileInputPDF').click()">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                    Télécharger Fichier
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Construction Configuration (always visible for PDF) -->
+                        <div class="pdf-config-section" id="pdfConfigSection">
+                            <h4 class="pdf-config-title">Configuration de Construction</h4>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="floor_height_h">Hauteur Étage H (m)</label>
+                                    <input type="number" id="floor_height_h" value="3.0" min="2.5" max="6.0" step="0.1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="num_levels">Nombre de Niveaux</label>
+                                    <input type="number" id="num_levels" value="1" min="1" max="20" step="1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="foundation_type">Type de Fondation</label>
+                                    <select id="foundation_type">
+                                        <option value="isolee">Semelle Isolée</option>
+                                        <option value="filante">Semelle Filante</option>
+                                        <option value="radier">Radier Général</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="slab_type">Type de Dalle</label>
+                                    <select id="slab_type">
+                                        <option value="creux">Plancher Creux (Hourdis)</option>
+                                        <option value="pleine">Dalle Pleine</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Structural dimensions — only for Architecture plans -->
+                            <div id="structuralFields" class="structural-fields">
+                                <p class="structural-hint">Ces dimensions sont nécessaires car le plan architectural ne contient pas les détails structurels.</p>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="column_section_width">Section Poteaux - Largeur (m)</label>
+                                        <input type="number" id="column_section_width" value="0.30" min="0.15" max="1.0" step="0.05">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="column_section_depth">Section Poteaux - Profondeur (m)</label>
+                                        <input type="number" id="column_section_depth" value="0.30" min="0.15" max="1.0" step="0.05">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="beam_height">Hauteur Poutre (m)</label>
+                                        <input type="number" id="beam_height" value="0.30" min="0.15" max="1.0" step="0.05">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="footing_width">Dimension Semelle (m)</label>
+                                        <input type="number" id="footing_width" value="1.20" min="0.5" max="3.0" step="0.1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="footing_depth">Épaisseur Semelle (m)</label>
+                                        <input type="number" id="footing_depth" value="0.40" min="0.2" max="1.5" step="0.05">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="footing_excavation_depth">Profondeur Fouille (m)</label>
+                                        <input type="number" id="footing_excavation_depth" value="1.20" min="0.5" max="3.0" step="0.1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-actions">
+                    <button type="button" class="btn btn-primary" id="chooseFileBtn" onclick="document.getElementById('fileInputBIM').click()">Choisir un Fichier</button>
+                </div>
+                <div id="uploadStatus" class="toast-container"></div>
+            </section>
+
+            <!-- STEP 2: Review & Validate -->
+            <section id="step-2" class="step-content">
+                <div class="step-header">
+                    <h2>Vérifier & Valider les Composants</h2>
+                    <p id="componentStats">Vérifiez les données extraites. Modifiez les quantités, prix et heures de main-d'œuvre avant de continuer.</p>
+                </div>
+                <div id="validationBanner" class="validation-banner" style="display:none;"></div>
+                <div class="controls-bar">
+                    <input type="text" id="componentSearch" placeholder="Rechercher des composants..." class="search-input">
+                    <select id="componentFilter" class="filter-select">
+                        <option value="">Tous les Types</option>
+                        <option value="IfcWall">Murs</option>
+                        <option value="IfcWallStandardCase">Murs (Standard)</option>
+                        <option value="IfcSlab">Dalles / Planchers</option>
+                        <option value="IfcDoor">Portes</option>
+                        <option value="IfcWindow">Fenêtres</option>
+                        <option value="IfcBeam">Poutres</option>
+                        <option value="IfcColumn">Poteaux</option>
+                        <option value="IfcFooting">Semelles</option>
+                        <option value="IfcRoof">Toitures</option>
+                        <option value="IfcStair">Escaliers</option>
+                        <option value="IfcMember">Éléments</option>
+                        <option value="IfcPlate">Plaques</option>
+                        <option value="IfcRailing">Garde-corps</option>
+                        <option value="IfcCovering">Revêtements</option>
+                        <option value="IfcCurtainWall">Murs-rideaux</option>
+                    </select>
+                    <button type="button" class="btn btn-small btn-secondary" onclick="addManualComponent()">+ Ajouter un Composant</button>
+                </div>
+
+                <div class="components-table-wrapper">
+                    <table class="editable-table" id="componentsTable">
+                        <thead>
+                            <tr>
+                                <th>Désignation</th>
+                                <th>Type IFC</th>
+                                <th>Qté</th>
+                                <th>Unité</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="componentsList"></tbody>
+                    </table>
+                </div>
+
+                <div class="step-actions">
+                    <button type="button" class="btn btn-ghost" onclick="goToStep(1)">Retour</button>
+                    <button type="button" class="btn btn-primary" onclick="goToStep(3)">Suivant : Configuration du Site</button>
+                </div>
+            </section>
+
+            <!-- STEP 3: Site Configuration -->
+            <section id="step-3" class="step-content">
+                <div class="step-header">
+                    <h2>Configuration du Site</h2>
+                    <p>Configurez les conditions du site pour un calcul précis des coûts</p>
+                </div>
+                <form id="wizardForm" class="wizard-form">
+                    <div class="form-grid">
+                        <!-- Equipment Strategy -->
+                        <div class="form-group">
+                            <label for="equipment_ownership">Stratégie Équipement <span class="ref-badge">pour référence</span></label>
+                            <select name="equipment_ownership" id="equipment_ownership">
+                                <option value="rented">Location</option>
+                                <option value="owned">Propriété</option>
+                            </select>
+                        </div>
+
+                        <!-- Concrete Method -->
+                        <div class="form-group">
+                            <label for="concrete_method">Méthode Béton <span class="ref-badge">pour référence</span></label>
+                            <select name="concrete_method" id="concrete_method">
+                                <option value="ready_mix">Béton Prêt à l'Emploi (BPE)</option>
+                                <option value="on_site_mixing">Bétonnage sur Site</option>
+                            </select>
+                        </div>
+
+                        <!-- Site Access -->
+                        <div class="form-group">
+                            <label for="site_access">Accessibilité du Site</label>
+                            <select name="site_access" id="site_access">
+                                <option value="urban">Urbain - Accès facile (1.0x)</option>
+                                <option value="remote">Éloigné - Hors ville (1.35x)</option>
+                                <option value="extremely_remote">Très Éloigné - Isolé (1.75x)</option>
+                            </select>
+                        </div>
+
+                        <!-- Soil Type -->
+                        <div class="form-group">
+                            <label for="soil_type">Type de Sol</label>
+                            <select name="soil_type" id="soil_type">
+                                <option value="sandy">Sableux - Excavation facile (1.0x)</option>
+                                <option value="clay">Argileux - Difficulté modérée (1.2x)</option>
+                                <option value="mixed" selected>Mixte - Moyen (1.3x)</option>
+                                <option value="rocky">Rocheux - Excavation difficile (1.5x)</option>
+                            </select>
+                        </div>
+
+                        <!-- Utility Access -->
+                        <div class="form-group">
+                            <label for="utility_access">Réseaux (Eau & Électricité)</label>
+                            <select name="utility_access" id="utility_access">
+                                <option value="full">Les deux disponibles</option>
+                                <option value="partial">Un seul disponible</option>
+                                <option value="none">Aucun disponible</option>
+                            </select>
+                        </div>
+
+                        <!-- Distance -->
+                        <div class="form-group">
+                            <label for="site_distance_km">Distance aux Fournisseurs (km)</label>
+                            <input type="number" name="site_distance_km" id="site_distance_km" value="10" min="1" max="500" step="1">
+                        </div>
+
+                        <!-- Narrowness -->
+                        <div class="form-group">
+                            <label for="site_narrowness">Étroitesse du Site : <span id="narrownessValue">0.5</span></label>
+                            <input type="range" name="site_narrowness" id="site_narrowness" value="0.5" min="0" max="1" step="0.1" oninput="document.getElementById('narrownessValue').textContent = this.value">
+                            <small>0 = Spacieux (1.0x) &mdash; 1 = Très Étroit (1.35x main-d'œuvre)</small>
+                        </div>
+
+                        <!-- Accommodation -->
+                        <div class="form-group">
+                            <label for="worker_accommodation_available">Hébergement Ouvriers sur Site ?</label>
+                            <select name="worker_accommodation_available" id="worker_accommodation_available">
+                                <option value="false">Non - Hébergement à fournir</option>
+                                <option value="true">Oui - Déjà disponible</option>
+                            </select>
+                        </div>
+
+                        <!-- Project Duration -->
+                        <div class="form-group">
+                            <label for="total_project_days">Durée du Projet (jours)</label>
+                            <input type="number" name="total_project_days" id="total_project_days" value="120" min="7" max="1825" step="1">
+                        </div>
+
+                        <!-- Worker Count -->
+                        <div class="form-group">
+                            <label for="daily_worker_count">Nombre d'Ouvriers par Jour</label>
+                            <input type="number" name="daily_worker_count" id="daily_worker_count" value="20" min="1" max="500" step="1">
+                        </div>
+
+                    </div>
+                </form>
+                <div class="step-actions">
+                    <button type="button" class="btn btn-ghost" onclick="goToStep(2)">Retour</button>
+                    <button type="button" class="btn btn-primary" onclick="generateEstimate()">Générer l'Estimation</button>
+                </div>
+            </section>
+
+            <!-- STEP 4: Results -->
+            <section id="step-4" class="step-content">
+                <div class="step-header">
+                    <h2>Bordereau des Quantités</h2>
+                    <p id="resultsSummary"></p>
+                </div>
+
+                <!-- Summary Cards -->
+                <div class="summary-cards" id="summaryCards">
+                    <!-- Filled dynamically -->
+                </div>
+
+                <!-- Charts -->
+                <div class="charts-row" style="grid-template-columns:1fr">
+                    <div class="chart-container">
+                        <h3>Coût par Type de Composant</h3>
+                        <canvas id="componentTypeChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- BoQ Mode Toggle -->
+                <div class="boq-section">
+                    <div class="boq-header-row">
+                        <h3>Bordereau Détaillé des Quantités</h3>
+                        <div class="boq-mode-toggle" id="boqModeToggle" style="display:none;">
+                            <button class="toggle-btn active" data-mode="hierarchical" onclick="switchBoqView('hierarchical')">Hiérarchique</button>
+                            <button class="toggle-btn" data-mode="flat" onclick="switchBoqView('flat')">Tableau Simple</button>
+                        </div>
+                    </div>
+
+                    <!-- Hierarchical BoQ (MétréExpert) -->
+                    <div id="hierarchicalBoq" style="display:none;"></div>
+
+                    <!-- Flat BoQ Table (default) -->
+                    <div id="flatBoq">
+                        <div class="components-table-wrapper">
+                            <table class="editable-table" id="boqTable">
+                                <thead>
+                                    <tr>
+                                        <th>Désignation</th>
+                                        <th>Type IFC</th>
+                                        <th>Qté</th>
+                                        <th>Unité</th>
+                                        <th>Coût Matériaux</th>
+                                        <th>Coût Main-d'œuvre</th>
+                                        <th>Coût Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="boqList"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="export-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="exportPDF()">Exporter PDF</button>
+                    <button type="button" class="btn btn-secondary" onclick="exportWord()">Exporter Word</button>
+                    <button type="button" class="btn btn-secondary" onclick="copyResults()">Copier les Résultats</button>
+                </div>
+
+                <div class="step-actions">
+                    <button type="button" class="btn btn-ghost" onclick="goToStep(3)">Retour à la Configuration</button>
+                    <button type="button" class="btn btn-primary" onclick="resetApp()">Nouvelle Estimation</button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toastContainer" class="global-toast-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="app.js?v=7.0"></script>
+</body>
+</html>

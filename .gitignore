@@ -1,0 +1,15 @@
+# Frontend
+/frontend/node_modules
+/frontend/.next
+/frontend/.env*
+/frontend/out
+
+# Backend
+/backend/node_modules
+/backend/.env*
+/backend/dist
+/backend/build
+
+# General
+*.log
+.DS_Store

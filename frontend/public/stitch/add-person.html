@@ -1,0 +1,377 @@
+<!DOCTYPE html><html class="light" lang="fr" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Passyo - Ajouter une Personne</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#505f76",
+                    "on-tertiary-fixed-variant": "#3f465c",
+                    "on-primary-container": "#eeefff",
+                    "surface-container-low": "#f3f4f6",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "tertiary": "#4d556b",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "outline-variant": "#c3c6d7",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e1e2e4",
+                    "surface-container-highest": "#e1e2e4",
+                    "on-secondary-container": "#54647a",
+                    "inverse-on-surface": "#f0f1f3",
+                    "tertiary-fixed": "#dae2fd",
+                    "surface-container": "#edeef0",
+                    "primary-container": "#2563eb",
+                    "on-tertiary-fixed": "#131b2e",
+                    "primary": "#004ac6",
+                    "tertiary-fixed-dim": "#bec6e0",
+                    "primary-fixed": "#dbe1ff",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "inverse-primary": "#b4c5ff",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#f8f9fb",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "inverse-surface": "#2e3132",
+                    "surface-tint": "#0053db",
+                    "secondary-fixed": "#d3e4fe",
+                    "on-surface-variant": "#434655",
+                    "surface": "#f8f9fb",
+                    "outline": "#737686",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#e7e8ea",
+                    "tertiary-container": "#656d84",
+                    "secondary-container": "#d0e1fb",
+                    "on-background": "#191c1e",
+                    "on-secondary-fixed": "#0b1c30",
+                    "on-primary-fixed": "#00174b",
+                    "on-surface": "#191c1e",
+                    "on-tertiary-container": "#eef0ff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-error": "#ffffff",
+                    "surface-dim": "#d9dadc",
+                    "surface-container-lowest": "#ffffff",
+                    "background": "#f8f9fb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "1rem",
+                    "margin-mobile": "1rem",
+                    "gutter": "1.5rem",
+                    "stack-sm": "0.5rem",
+                    "stack-lg": "2rem",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "display": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .drawer-shadow {
+            box-shadow: -10px 0 30px -5px rgba(0, 0, 0, 0.1);
+        }
+        .step-transition {
+            transition: all 0.3s ease-in-out;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e5e7eb;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-surface min-h-screen overflow-hidden">
+<!-- Mock Background Page to simulate context -->
+<main class="w-full h-screen p-stack-lg flex flex-col gap-6 opacity-40 select-none pointer-events-none">
+<header class="flex justify-between items-center">
+<h1 class="font-display text-display text-primary">Passyo</h1>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high"></div>
+</div>
+</header>
+<div class="grid grid-cols-12 gap-gutter flex-1">
+<aside class="col-span-3 border-r border-outline-variant flex flex-col gap-4">
+<div class="h-8 bg-surface-container-high w-3/4 rounded"></div>
+<div class="h-8 bg-surface-container-high w-1/2 rounded"></div>
+<div class="h-8 bg-surface-container-high w-2/3 rounded"></div>
+</aside>
+<section class="col-span-9 bg-white border border-outline-variant rounded-lg p-6 flex flex-col gap-4">
+<div class="flex gap-4">
+<div class="h-10 bg-surface-container-high flex-1 rounded"></div>
+<div class="h-10 bg-surface-container-high w-32 rounded"></div>
+</div>
+<div class="grid grid-cols-3 gap-4 h-full">
+<div class="bg-surface-container-low rounded-lg"></div>
+<div class="bg-surface-container-low rounded-lg"></div>
+<div class="bg-surface-container-low rounded-lg"></div>
+</div>
+</section>
+</div>
+</main>
+<!-- Slide-over Backdrop -->
+<div class="fixed inset-0 bg-on-background/20 backdrop-blur-sm z-40 transition-opacity duration-300" id="drawerBackdrop"></div>
+<!-- Slide-over (Drawer) -->
+<aside class="fixed inset-y-0 right-0 w-full max-w-md bg-white z-50 drawer-shadow flex flex-col transform transition-transform duration-300 translate-x-0" id="addWorkerDrawer">
+<!-- Header -->
+<header class="px-6 py-5 border-b border-outline-variant flex justify-between items-center bg-white sticky top-0 z-10">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Ajouter une Personne</h2>
+<p class="text-secondary font-label-md">Nouveau collaborateur projet</p>
+</div>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors text-secondary" onclick="closeDrawer()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</header>
+<!-- Multi-Step Wizard Progress Bar -->
+<div class="px-6 pt-6 pb-2">
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1 rounded-full bg-primary overflow-hidden">
+<div class="h-full bg-primary transition-all duration-300" id="progressFill" style="width: 100%;"></div>
+</div>
+<span class="font-label-md text-secondary shrink-0" id="stepCounter">Étape 2 sur 2</span>
+</div>
+</div>
+<!-- Form Content (Scrollable) -->
+<div class="flex-1 overflow-y-auto custom-scrollbar px-6 py-4 pb-24">
+<!-- Step 1: Affectation -->
+<div class="step-transition space-y-6 hidden" id="step1">
+<div class="space-y-4">
+<h3 class="font-headline-md text-on-surface text-base">Affectation initiale</h3>
+<!-- Team Choice -->
+<div class="space-y-2">
+<label class="font-label-md text-secondary block">Équipe</label>
+<select class="w-full px-3 py-2 border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white transition-all outline-none" id="teamSelector" onchange="togglePoste()">
+<option value="">Sélectionner une équipe</option>
+<option value="alpha">Équipe Alpha (Gros œuvre)</option>
+<option value="beta">Équipe Beta (Second œuvre)</option>
+<option value="gamma">Équipe Gamma (Fluides)</option>
+</select>
+</div>
+<!-- Poste (Conditional) -->
+<div class="space-y-2 transition-all duration-300" id="posteContainer">
+<label class="font-label-md text-secondary block">Poste</label>
+<select class="w-full px-3 py-2 border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white outline-none">
+<option value="">Sélectionner un poste</option>
+<option value="chef">Chef d'équipe</option>
+<option value="compagnon">Compagnon</option>
+<option value="apprenti">Apprenti</option>
+</select>
+</div>
+<!-- Help Message -->
+<div class="flex gap-3 p-3 bg-surface-container-low rounded-lg border border-outline-variant hidden" id="helpMessage">
+<span class="material-symbols-outlined text-secondary text-sm">info</span>
+<p class="text-secondary font-label-md">Veuillez d'abord sélectionner une équipe pour voir les postes disponibles</p>
+</div>
+</div>
+<button class="w-full py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 active:scale-[0.98] transition-all flex justify-center items-center gap-2" onclick="nextStep()">
+                    Continuer
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Step 2: Données du Travailleur (Hidden by Default) -->
+<div class="step-transition space-y-6" id="step2">
+<button class="flex items-center gap-1 text-primary font-label-md hover:underline mb-2" onclick="prevStep()">
+<span class="material-symbols-outlined text-xs">arrow_back</span>
+                    Retour à l'étape 1
+                </button>
+<div class="space-y-6">
+<h3 class="font-headline-md text-on-surface text-base">Données du Travailleur</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="font-label-md text-secondary block">Prénom</label>
+<input class="w-full px-3 py-2 border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="SDFSG" type="text">
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-secondary block">Nom</label>
+<input class="w-full px-3 py-2 border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="ex: Dupont" type="text">
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-secondary block">Statut / Rôle</label>
+<div class="flex flex-wrap gap-2">
+<label class="flex-1">
+<input class="sr-only peer" name="role" type="radio">
+<div class="px-4 py-2 border border-outline-variant rounded-lg text-center peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary cursor-pointer transition-all font-label-md">Interne</div>
+</label>
+<label class="flex-1">
+<input checked="" class="sr-only peer" name="role" type="radio">
+<div class="px-4 py-2 border border-outline-variant rounded-lg text-center peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary cursor-pointer transition-all font-label-md">Sous-traitant</div>
+</label>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-secondary block">Bloc d'affectation</label>
+<select class="w-full px-3 py-2 border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white outline-none">
+<option value="A">Bloc A - Fondations</option>
+<option value="B">Bloc B - Parking</option>
+<option value="C">Bloc C - Logements</option>
+</select>
+</div>
+<div class="space-y-3">
+<label class="font-label-md text-secondary block">Jours assignés (Semaine en cours)</label>
+<div class="grid grid-cols-7 gap-1">
+<button class="h-10 border border-outline-variant rounded flex flex-col items-center justify-center bg-white hover:bg-surface-container-low transition-colors" onclick="toggleDay(this)">
+<span class="text-[10px] uppercase font-bold text-secondary">L</span>
+<span class="text-xs">12</span>
+</button>
+<button class="h-10 border border-outline-variant rounded flex flex-col items-center justify-center bg-white hover:bg-surface-container-low transition-colors" onclick="toggleDay(this)">
+<span class="text-[10px] uppercase font-bold text-secondary">M</span>
+<span class="text-xs">13</span>
+</button>
+<button class="h-10 border border-primary bg-primary-fixed rounded flex flex-col items-center justify-center transition-colors" onclick="toggleDay(this)">
+<span class="text-[10px] uppercase font-bold text-primary">M</span>
+<span class="text-xs text-primary font-bold">14</span>
+</button>
+<button class="h-10 border border-primary bg-primary-fixed rounded flex flex-col items-center justify-center transition-colors" onclick="toggleDay(this)">
+<span class="text-[10px] uppercase font-bold text-primary">J</span>
+<span class="text-xs text-primary font-bold">15</span>
+</button>
+<button class="h-10 border border-primary bg-primary-fixed rounded flex flex-col items-center justify-center transition-colors" onclick="toggleDay(this)">
+<span class="text-[10px] uppercase font-bold text-primary">V</span>
+<span class="text-xs text-primary font-bold">16</span>
+</button>
+<button class="h-10 bg-surface-container rounded flex flex-col items-center justify-center opacity-40 cursor-not-allowed" disabled="">
+<span class="text-[10px] uppercase font-bold text-secondary">S</span>
+<span class="text-xs">17</span>
+</button>
+<button class="h-10 bg-surface-container rounded flex flex-col items-center justify-center opacity-40 cursor-not-allowed" disabled="">
+<span class="text-[10px] uppercase font-bold text-secondary">D</span>
+<span class="text-xs">18</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Footer Buttons -->
+<footer class="absolute bottom-0 left-0 right-0 p-6 border-t border-outline-variant bg-white flex gap-3 z-20">
+<button class="flex-1 py-3 border border-outline-variant text-on-surface font-medium rounded-lg hover:bg-surface-container-low transition-all" onclick="closeDrawer()">
+                Annuler
+            </button>
+<button class="flex-1 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 active:scale-[0.98] transition-all" id="submitBtn" onclick="saveWorker()">
+                Enregistrer le Travailleur
+            </button>
+</footer>
+</aside>
+<script>
+        function togglePoste() {
+            const teamSelector = document.getElementById('teamSelector');
+            const posteContainer = document.getElementById('posteContainer');
+            const helpMessage = document.getElementById('helpMessage');
+            
+            if (teamSelector.value !== "") {
+                posteContainer.classList.remove('opacity-50', 'pointer-events-none');
+                helpMessage.classList.add('hidden');
+            } else {
+                posteContainer.classList.add('opacity-50', 'pointer-events-none');
+                helpMessage.classList.remove('hidden');
+            }
+        }
+
+        function nextStep() {
+            document.getElementById('step1').classList.add('hidden');
+            document.getElementById('step2').classList.remove('hidden');
+            document.getElementById('progressFill').style.width = '100%';
+            document.getElementById('stepCounter').innerText = 'Étape 2 sur 2';
+            
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
+
+        function prevStep() {
+            document.getElementById('step2').classList.add('hidden');
+            document.getElementById('step1').classList.remove('hidden');
+            document.getElementById('progressFill').style.width = '50%';
+            document.getElementById('stepCounter').innerText = 'Étape 1 sur 2';
+            
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+        }
+
+        function toggleDay(btn) {
+            if (btn.classList.contains('border-primary')) {
+                btn.classList.remove('border-primary', 'bg-primary-fixed');
+                btn.classList.add('border-outline-variant', 'bg-white');
+                btn.querySelector('span:first-child').classList.remove('text-primary');
+                btn.querySelector('span:first-child').classList.add('text-secondary');
+                btn.querySelector('span:last-child').classList.remove('text-primary', 'font-bold');
+            } else {
+                btn.classList.remove('border-outline-variant', 'bg-white');
+                btn.classList.add('border-primary', 'bg-primary-fixed');
+                btn.querySelector('span:first-child').classList.remove('text-secondary');
+                btn.querySelector('span:first-child').classList.add('text-primary');
+                btn.querySelector('span:last-child').classList.add('text-primary', 'font-bold');
+            }
+        }
+
+        function closeDrawer() {
+            const drawer = document.getElementById('addWorkerDrawer');
+            const backdrop = document.getElementById('drawerBackdrop');
+            drawer.style.transform = 'translateX(100%)';
+            backdrop.style.opacity = '0';
+            setTimeout(() => {
+                backdrop.style.display = 'none';
+            }, 300);
+        }
+
+        function saveWorker() {
+            const btn = document.getElementById('submitBtn');
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span> Enregistrement...';
+            setTimeout(() => {
+                alert('Travailleur enregistré avec succès !');
+                closeDrawer();
+            }, 1000);
+        }
+
+        // Keyboard support
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeDrawer();
+        });
+    </script>
+
+
+
+
+</body></html>

@@ -1,0 +1,178 @@
+/* ── Project Card ──────────────────────────────────────── */
+
+.project-card {
+  background: var(--surface);
+  border-radius: var(--surface-r);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-2);
+}
+
+.project-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ── Cover banner ── */
+.project-cover-wrap {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.project-cover-wrap.cover--active {
+  background: linear-gradient(135deg, #1E4FD0 0%, #3b82f6 70%, #93c5fd 100%);
+}
+.project-cover-wrap.cover--on-track {
+  background: linear-gradient(135deg, #047857 0%, #10b981 70%, #6ee7b7 100%);
+}
+.project-cover-wrap.cover--risk {
+  background: linear-gradient(135deg, #B45309 0%, #F59E0B 70%, #FCD34D 100%);
+}
+.project-cover-wrap.cover--blocked {
+  background: linear-gradient(135deg, #991B1B 0%, #DC2626 70%, #FCA5A5 100%);
+}
+.project-cover-wrap.cover--completed {
+  background: linear-gradient(135deg, #5B21B6 0%, #7C3AED 70%, #C4B5FD 100%);
+}
+
+.project-cover-initials {
+  font-size: 30px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.88);
+  letter-spacing: -1px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  user-select: none;
+}
+
+/* ── Card body ── */
+.project-card-body {
+  padding: 13px 14px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* ── Status badge ── */
+.project-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 9px;
+  border-radius: 99px;
+  flex-shrink: 0;
+}
+
+.project-badge.badge--active    { background: var(--accent-pale);  color: var(--accent);      }
+.project-badge.badge--on-track  { background: var(--green-pale);   color: var(--green);       }
+.project-badge.badge--risk      { background: var(--amber-pale);   color: var(--yellow-dark); }
+.project-badge.badge--blocked   { background: var(--red-pale);     color: var(--red);         }
+.project-badge.badge--completed { background: var(--violet-pale);  color: var(--violet);      }
+
+/* ── Location ── */
+.project-location {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 11px;
+  color: var(--text-4);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 130px;
+  flex-shrink: 1;
+}
+
+/* ── Title & description ── */
+.project-name {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-1);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.project-description {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--text-3);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Progress bar ── */
+.project-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.project-progress-track {
+  flex: 1;
+  height: 5px;
+  border-radius: 99px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+
+.project-progress-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--accent), #60A5FA);
+  transition: width 0.5s ease;
+}
+
+.project-progress-pct {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-3);
+  min-width: 30px;
+  text-align: right;
+}
+
+/* ── Footer ── */
+.project-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.project-footer-chip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11.5px;
+  color: var(--text-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+}

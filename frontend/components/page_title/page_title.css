@@ -1,0 +1,41 @@
+.page-title {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 0.2rem;
+  margin-bottom: 0;
+}
+
+.title {
+  margin: 0;
+  color: var(--text-1);
+  font-size: clamp(22px, 2.1vw, 32px);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.preceding-title {
+  color: var(--text-3);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.preceding-title-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.preceding-title-link:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  color: var(--text-4);
+  margin: 0 2px;
+}

@@ -1,0 +1,306 @@
+<!DOCTYPE html><html class="light" lang="fr" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Passyo - Gestion des Attachements</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0052CC",
+                        "on-primary": "#FFFFFF",
+                        "primary-container": "#D6E4FF",
+                        "on-primary-container": "#001A41",
+                        secondary: "#535F70",
+                        "on-secondary": "#FFFFFF",
+                        surface: "#FDFBFF",
+                        "on-surface": "#1A1C1E",
+                        "surface-variant": "#E0E2EC",
+                        "on-surface-variant": "#44474E",
+                        "surface-container-lowest": "#FFFFFF",
+                        "surface-container-low": "#F7F9FF",
+                        "surface-container-high": "#EBEEF5",
+                        outline: "#74777F",
+                        "outline-variant": "#C4C6D0",
+                        inverse: {
+                            surface: "#2F3033",
+                            primary: "#ADC6FF"
+                        },
+                        success: "#1B6C31",
+                        warning: "#8F4E00"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        headline: ["Public Sans", "sans-serif"],
+                        display: ["Public Sans", "sans-serif"],
+                        body: ["Public Sans", "sans-serif"],
+                        label: ["Public Sans", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav-border {
+            border-right: 4px solid #0052CC;
+        }
+        body {
+            font-family: 'Public Sans', sans-serif;
+            background-color: #FDFBFF;
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- SideNavBar Shell -->
+
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-surface-container-lowest border-b border-outline-variant flex items-center justify-between px-8 z-40">
+<div class="flex items-center bg-surface-container-high px-4 py-1.5 rounded-full w-96">
+<span class="material-symbols-outlined text-secondary mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full" placeholder="Rechercher un attachement..." type="text">
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-all text-on-surface-variant relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-all text-on-surface-variant">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjrJpvVtNdYNxAyg8s3X4EcMbGuxXBHMXnQ1KUYf9yJ1j5OLzioKKSMJa9_E5S4WIH9LksepHgmR5JTZrrHtIsKIwk0DF_3xEYtMg5nrbr1tA5xJDCPZUoBHMHofl-Y2YZNxp87sMGgW0xLp3zqeggYXa_0PK37lXXvVm0UGC8bCSN6rHgW-JENRknKc2m9mMRp55U6lRBbXFYMv_OJvYOHs6W5alhsnc4AiPZWV3gyQbtTqaeEgrwAYBU8uEaWwnVPt75r95dJZY">
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 mt-16 p-8 min-h-screen">
+<!-- Header & Breadcrumbs -->
+<div class="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<nav aria-label="Breadcrumb" class="flex text-xs text-secondary mb-2">
+<ol class="flex items-center space-x-2">
+<li class=""><a class="hover:text-primary transition-colors" href="#">Reports</a></li>
+<li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+<li class="font-bold text-on-surface">Gestion des Attachements</li>
+</ol>
+</nav>
+<h2 class="text-3xl font-headline font-extrabold text-on-surface">Gestion des Attachements</h2>
+</div>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-xl font-bold flex items-center gap-2 shadow-sm hover:shadow-md transition-all active:scale-95">
+<span class="material-symbols-outlined">add_circle</span>
+                Créer un Attachement
+            </button>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Filters & Period Selection -->
+<div class="lg:col-span-12">
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant flex flex-wrap items-end gap-6 shadow-sm">
+<div class="flex-1 min-w-[240px]">
+<label class="block text-sm font-semibold text-secondary mb-2">Période de consolidation</label>
+<div class="flex items-center gap-2">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-lg">calendar_month</span>
+<input class="w-full pl-10 pr-4 py-2.5 border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all bg-surface" type="date" value="2024-05-01">
+</div>
+<span class="text-secondary font-bold">à</span>
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-lg">calendar_month</span>
+<input class="w-full pl-10 pr-4 py-2.5 border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all bg-surface" type="date" value="2024-05-31" placeholder="2024-05-26">
+</div>
+</div>
+</div>
+<div class="w-48">
+
+
+</div>
+<button class="px-6 py-2.5 bg-surface-container-high text-on-surface font-bold rounded-lg border border-outline-variant hover:bg-surface-variant transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined">filter_list</span>
+                        Appliquer
+                    </button>
+</div>
+</div>
+<!-- Dynamic Task Table -->
+<div class="lg:col-span-8">
+<div class="bg-white rounded-2xl border border-outline-variant overflow-hidden shadow-sm">
+<div class="px-6 py-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h3 class="font-bold text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">list_alt</span>
+                            Détail des travaux effectués
+                        </h3>
+<span class="text-xs font-bold px-2 py-1 bg-primary/10 text-primary rounded">MAI 2024</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest text-left border-b border-outline-variant">
+<th class="px-6 py-4 text-xs font-extrabold uppercase tracking-wider text-secondary">Tâche / Libellé</th>
+<th class="px-4 py-4 text-xs font-extrabold uppercase tracking-wider text-secondary text-center">Unité</th>
+<th class="px-4 py-4 text-xs font-extrabold uppercase tracking-wider text-secondary">Mode Fact.</th>
+<th class="px-6 py-4 text-xs font-extrabold uppercase tracking-wider text-secondary text-right">Total Période</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="font-bold text-on-surface">Terrassement fondation Zone A</div>
+<div class="text-xs text-secondary">Réf: TS-001-2024</div>
+</td>
+<td class="px-4 py-4 text-center">
+<span class="inline-block px-2 py-1 bg-surface-container-high rounded text-xs font-bold text-secondary">m³</span>
+</td>
+<td class="px-4 py-4">
+<span class="text-sm">Quantité</span>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="font-mono font-bold text-lg">1 240.00</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="font-bold text-on-surface">Coulage dalle béton armé</div>
+<div class="text-xs text-secondary">Réf: CB-042-2024</div>
+</td>
+<td class="px-4 py-4 text-center">
+<span class="inline-block px-2 py-1 bg-surface-container-high rounded text-xs font-bold text-secondary">m²</span>
+</td>
+<td class="px-4 py-4">
+<span class="text-sm">Quantité</span>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="font-mono font-bold text-lg">450.00</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="font-bold text-on-surface">Location de grue G-15</div>
+<div class="text-xs text-secondary">Réf: LOC-GR-01</div>
+</td>
+<td class="px-4 py-4 text-center">
+<span class="inline-block px-2 py-1 bg-surface-container-high rounded text-xs font-bold text-secondary">Jour</span>
+</td>
+<td class="px-4 py-4">
+<span class="text-sm">Day</span>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="font-mono font-bold text-lg">22.00</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="font-bold text-on-surface">Main d'œuvre qualifiée (Finition)</div>
+<div class="text-xs text-secondary">Réf: MO-FIN-A</div>
+</td>
+<td class="px-4 py-4 text-center">
+<span class="inline-block px-2 py-1 bg-surface-container-high rounded text-xs font-bold text-secondary">h</span>
+</td>
+<td class="px-4 py-4">
+<span class="text-sm">Day</span>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="font-mono font-bold text-lg">158.00</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Side Summary & Actions -->
+<div class="lg:col-span-4 space-y-6">
+<!-- Status Indicators for Previous -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm">
+<h4 class="font-bold text-sm text-secondary uppercase tracking-widest mb-4">Historique Récent</h4>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3 rounded-xl border border-outline-variant bg-surface">
+<div>
+<p class="text-sm font-bold">Attachement Avril 2024</p>
+<p class="text-xs text-secondary">Émis le 02/05/2024</p>
+</div>
+<span class="flex items-center gap-1 text-[10px] font-bold px-2 py-1 bg-success/10 text-success rounded-full border border-success/20">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                Approved
+                            </span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl border border-outline-variant bg-surface">
+<div>
+<p class="text-sm font-bold">Attachement Mars 2024</p>
+<p class="text-xs text-secondary">Émis le 01/04/2024</p>
+</div>
+<span class="flex items-center gap-1 text-[10px] font-bold px-2 py-1 bg-success/10 text-success rounded-full border border-success/20">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                Approved
+                            </span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl border border-dashed border-primary/40 bg-primary/5">
+<div>
+<p class="text-sm font-bold text-primary">Draft Courant</p>
+<p class="text-xs text-secondary">Dernière modif: 1h ago</p>
+</div>
+<span class="flex items-center gap-1 text-[10px] font-bold px-2 py-1 bg-warning/10 text-warning rounded-full border border-warning/20">
+<span class="material-symbols-outlined text-[14px]">edit_note</span>
+                                Draft
+                            </span>
+</div>
+</div>
+<button class="w-full mt-4 py-2 text-primary font-bold text-sm hover:underline flex items-center justify-center gap-1">
+                        Voir tous les attachements
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Final Validation Button -->
+<div class="bg-primary-container/20 p-6 rounded-2xl border border-primary/20">
+<p class="text-sm text-on-primary-container mb-4 leading-relaxed">
+                        Cette action est irréversible. En clôturant cet attachement, vous figez les quantités pour la facturation finale de la période.
+                    </p>
+<button class="w-full bg-primary text-on-primary py-4 rounded-xl font-extrabold text-lg flex items-center justify-center gap-3 shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 transition-all active:scale-95">
+<span class="material-symbols-outlined">lock</span>
+                        Clôturer et figer l'attachement
+                    </button>
+<p class="text-[10px] text-center text-secondary mt-3">
+                        Certifié conforme aux rapports journaliers validés.
+                    </p>
+</div>
+<!-- Map / Site Context Visual -->
+
+</div>
+</div>
+</main>
+<!-- Simple Micro-interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Highlight table rows on click
+            const rows = document.querySelectorAll('tbody tr');
+            rows.forEach(row => {
+                row.addEventListener('click', () => {
+                    rows.forEach(r => r.classList.remove('bg-primary/5'));
+                    row.classList.add('bg-primary/5');
+                });
+            });
+
+            // Smooth scale for buttons
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(btn => {
+                btn.addEventListener('mousedown', () => btn.classList.add('scale-95'));
+                btn.addEventListener('mouseup', () => btn.classList.remove('scale-95'));
+                btn.addEventListener('mouseleave', () => btn.classList.remove('scale-95'));
+            });
+        });
+    </script>
+
+
+
+
+</body></html>

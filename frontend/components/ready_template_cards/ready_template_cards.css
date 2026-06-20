@@ -1,0 +1,42 @@
+.ready-templates {
+  display: flex;
+  gap: 14px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 16px;
+  border-radius: 12px;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.template-card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--accent-pale);
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.template-card-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-1);
+}
+
+.template-card-description {
+  margin-top: 0.35rem;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-3);
+}
+
+.ready-templates:hover {
+  background: var(--accent-pale);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+}

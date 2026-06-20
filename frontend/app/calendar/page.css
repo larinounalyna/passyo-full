@@ -1,0 +1,286 @@
+.calendar-right-side {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  align-items: stretch;
+}
+
+.calendar-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.calendar-header-block {
+  margin-left: 0;
+}
+
+.calendar-toolbar {
+  margin-bottom: 0;
+}
+
+.calendar-surface {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.calendar-grid-shell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--surface-r);
+  min-height: 0;
+  border: 1px solid #d8e4f4;
+  background: #ffffff;
+  height: 100%;
+  box-shadow: var(--shadow-md);
+  --foreground: #0F1D3B;
+  --muted-foreground: #7898BE;
+  --card-foreground: #0F1D3B;
+  --popover-foreground: #0F1D3B;
+  --primary-foreground: #ffffff;
+  --border: #D9E6F5;
+}
+
+/* Keep calendar text readable */
+.calendar-grid-shell .text-muted-foreground,
+.calendar-grid-shell .text-muted-foreground\/50,
+.calendar-grid-shell .text-muted-foreground\/70,
+.calendar-grid-shell .text-muted-foreground\/80,
+.calendar-grid-shell .text-foreground,
+.calendar-grid-shell [class*="text-muted-foreground"],
+.calendar-grid-shell [class*="text-foreground"],
+.calendar-grid-shell .rbc-button-link,
+.calendar-grid-shell .rbc-date-cell,
+.calendar-grid-shell .task-event-title,
+.calendar-grid-shell .task-event-project {
+  color: #0F1D3B !important;
+}
+
+.calendar-grid-shell .bg-primary.text-primary-foreground,
+.calendar-grid-shell [data-slot="button"].bg-primary {
+  color: #ffffff !important;
+}
+
+.calendar-grid-shell h2 {
+  color: #0F1D3B !important;
+}
+
+.calendar-grid-shell [data-slot="button"].bg-primary span,
+.calendar-grid-shell [data-slot="button"].bg-primary svg {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+.calendar-grid-shell .rbc-header,
+.calendar-grid-shell .rbc-header *,
+.calendar-grid-shell .rbc-date-cell,
+.calendar-grid-shell .rbc-date-cell *,
+.calendar-grid-shell [data-outside-cell],
+.calendar-grid-shell [data-outside-cell] * {
+  color: #0F1D3B !important;
+}
+
+/* Grid lines */
+.calendar-grid-shell .rbc-month-view,
+.calendar-grid-shell .rbc-month-row,
+.calendar-grid-shell .rbc-day-bg,
+.calendar-grid-shell .rbc-header,
+.calendar-grid-shell .rbc-time-header,
+.calendar-grid-shell .rbc-date-cell,
+.calendar-grid-shell .rbc-time-content,
+.calendar-grid-shell .rbc-timeslot-group,
+.calendar-grid-shell .rbc-day-slot {
+  border-color: #D9E6F5 !important;
+}
+
+.task-calendar {
+  flex: 1;
+  min-height: 0;
+  color: #0F1D3B;
+}
+
+.task-calendar .rbc-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  margin: 0;
+  border-bottom: 1px solid #D9E6F5;
+  background: #ffffff;
+}
+
+.task-calendar .rbc-toolbar .rbc-toolbar-label {
+  font-size: clamp(26px, 2.2vw, 34px);
+  line-height: 1;
+  font-weight: 800;
+  color: #0F1D3B;
+}
+
+.task-calendar .rbc-toolbar .rbc-btn-group:first-child {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.task-calendar .rbc-btn-group button {
+  border: 1px solid #C8D8F0;
+  background: #ffffff;
+  color: #1E3558;
+  border-radius: 9px;
+  height: 36px;
+  padding: 0 14px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.task-calendar .rbc-btn-group button:hover {
+  background: #EEF4FF;
+  border-color: #A0BDE8;
+}
+
+/* Active view button: yellow highlight */
+.task-calendar .rbc-btn-group button.rbc-active {
+  background: #FEF3C7;
+  border-color: #F59E0B;
+  color: #B45309;
+  font-weight: 700;
+}
+
+.task-calendar .rbc-btn-group button:focus-visible {
+  outline: 2px solid var(--accent, #1E4FD0);
+  outline-offset: 2px;
+}
+
+.task-calendar .rbc-time-view,
+.task-calendar .rbc-month-view,
+.task-calendar .rbc-agenda-view {
+  border: 0;
+}
+
+.task-calendar .rbc-time-header,
+.task-calendar .rbc-header {
+  border-color: #D9E6F5;
+  background: #ffffff;
+}
+
+.task-calendar .rbc-header {
+  padding: 10px 6px;
+  color: #526080;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.task-calendar .rbc-time-content,
+.task-calendar .rbc-day-slot,
+.task-calendar .rbc-timeslot-group,
+.task-calendar .rbc-time-gutter,
+.task-calendar .rbc-month-row,
+.task-calendar .rbc-date-cell {
+  border-color: #D9E6F5;
+}
+
+.task-calendar .rbc-now .rbc-button-link,
+.task-calendar .rbc-today {
+  background: #F0F5FF;
+}
+
+.task-calendar .rbc-current-time-indicator {
+  background-color: #1E4FD0;
+}
+
+.task-calendar .rbc-event,
+.task-calendar .rbc-background-event {
+  border: 0;
+  padding: 3px 6px;
+  border-radius: 7px;
+}
+
+.task-event-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 2px 4px;
+}
+
+.task-event-title {
+  margin: 0;
+  font-size: clamp(11px, 0.9vw, 13px);
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.task-event-project {
+  margin: 0;
+  font-size: 11px;
+  opacity: 0.9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Event color variants — blue+yellow palette */
+.task-calendar .task-event.indigo {
+  background: #DBEAFE;
+  color: #1E3A8A;
+}
+
+.task-calendar .task-event.slate {
+  background: #E0EAF8;
+  color: #1E3558;
+}
+
+.task-calendar .task-event.amber {
+  background: #FEF3C7;
+  color: #92400E;
+}
+
+.task-calendar .task-event.coral {
+  background: #FFE4E6;
+  color: #9F1239;
+}
+
+.task-calendar .task-event.ghost {
+  background: #F0F4FF;
+  color: #1E3558;
+  border: 1px solid #C8D8F0;
+}
+
+.task-calendar .rbc-off-range-bg {
+  background: #F8FAFF;
+}
+
+.task-calendar .rbc-agenda-date-cell,
+.task-calendar .rbc-agenda-time-cell,
+.task-calendar .rbc-agenda-event-cell {
+  padding: 10px;
+  color: #0F1D3B;
+}
+
+@media (max-width: 900px) {
+  .task-calendar .rbc-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .calendar-header-block {
+    margin-left: 0;
+  }
+}

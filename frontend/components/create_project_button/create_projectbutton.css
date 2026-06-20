@@ -1,0 +1,502 @@
+/* ─────────────────────────────────────────────
+   Passyo Design System — CreateProjectButton
+   ───────────────────────────────────────────── */
+
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0&display=swap");
+
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+  line-height: 1;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+/* ── Tokens ── */
+:root {
+  --passyo-primary: #1E4FD0;
+  --passyo-primary-hover: #1840B0;
+  --passyo-primary-c: #3D7EFF;
+  --passyo-success: #059669;
+  --passyo-success-hover: #047857;
+  --passyo-surface: #F4F7FF;
+  --passyo-surface-low: #EEF3FF;
+  --passyo-surface-lowest: #ffffff;
+  --passyo-surface-high: #DBEAFE;
+  --passyo-surface-highest: #C7D9F5;
+  --passyo-on-surface: #0F1D3B;
+  --passyo-on-surface-v: #1E3558;
+  --passyo-outline: #8AA4C8;
+  --passyo-outline-v: rgba(30, 79, 208, 0.18);
+  --passyo-secondary: #526080;
+  --passyo-error: #DC2626;
+}
+
+/* ── Trigger Button ── */
+.create-project-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  background: var(--passyo-primary);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s, box-shadow 0.15s, transform 0.15s;
+  letter-spacing: 0.01em;
+  box-shadow: 0 2px 6px rgba(30, 79, 208, 0.28);
+}
+
+.create-project-trigger:hover {
+  background: var(--passyo-primary-hover);
+  box-shadow: 0 4px 16px rgba(30, 79, 208, 0.35);
+  transform: translateY(-1px);
+}
+
+/* ── Overlay ── */
+.passyo-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(7, 15, 28, 0.52);
+  backdrop-filter: blur(4px);
+  padding: 1rem;
+}
+
+/* ── Modal Shell ── */
+.passyo-modal {
+  background: var(--passyo-surface-lowest);
+  border-radius: 16px;
+  width: 640px;
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 60px rgba(7, 15, 40, 0.22);
+  border: 1px solid var(--passyo-outline-v);
+}
+
+/* ── Header ── */
+.passyo-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--passyo-primary);
+  flex-shrink: 0;
+}
+
+.passyo-modal-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.passyo-modal-subtitle {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: 2px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.passyo-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+
+.passyo-close-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.passyo-close-btn .material-symbols-outlined {
+  font-size: 20px;
+}
+
+/* ── Body ── */
+.passyo-modal-body {
+  overflow-y: auto;
+  flex: 1;
+  padding: 1.25rem 1.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--passyo-surface-highest) transparent;
+}
+
+.passyo-modal-body::-webkit-scrollbar { width: 4px; }
+.passyo-modal-body::-webkit-scrollbar-track { background: transparent; }
+.passyo-modal-body::-webkit-scrollbar-thumb {
+  background: var(--passyo-surface-highest);
+  border-radius: 99px;
+}
+
+/* ── Stepper ── */
+.passyo-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.passyo-step-item { display: flex; align-items: center; }
+
+.passyo-step-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.passyo-step-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: all 0.25s;
+}
+
+.passyo-step-dot.done {
+  background: var(--passyo-success);
+  color: #fff;
+}
+
+.passyo-step-dot.active {
+  background: var(--passyo-primary);
+  color: #fff;
+  box-shadow: 0 0 0 4px rgba(30, 79, 208, 0.16);
+}
+
+.passyo-step-dot.idle {
+  background: var(--passyo-surface-high);
+  color: var(--passyo-outline);
+}
+
+.passyo-step-label {
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+}
+
+.passyo-step-label.active { color: var(--passyo-primary); }
+.passyo-step-label.idle { color: var(--passyo-outline); }
+
+.passyo-step-line {
+  width: 48px;
+  height: 2px;
+  margin-bottom: 14px;
+  flex-shrink: 0;
+  transition: background 0.25s;
+}
+
+.passyo-step-line.done { background: var(--passyo-success); }
+.passyo-step-line.idle { background: var(--passyo-surface-highest); }
+
+/* ── Section Cards ── */
+.passyo-section-card {
+  border: 1px solid var(--passyo-outline-v);
+  border-radius: 10px;
+  background: var(--passyo-surface-lowest);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.passyo-section-card:last-child { margin-bottom: 0; }
+
+.passyo-section-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--passyo-surface-high);
+  background: var(--passyo-surface-low);
+}
+
+.passyo-section-icon { color: var(--passyo-primary); font-size: 18px !important; }
+
+.passyo-section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--passyo-on-surface);
+  margin: 0;
+}
+
+.passyo-section-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.passyo-step-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Form Fields ── */
+.passyo-field { display: flex; flex-direction: column; }
+
+.passyo-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--passyo-secondary);
+  margin-bottom: 5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.passyo-label-icon { font-size: 13px !important; color: var(--passyo-outline); }
+
+.passyo-input {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--passyo-outline-v);
+  border-radius: 9px;
+  font-size: 13.5px;
+  color: var(--passyo-on-surface);
+  background: var(--passyo-surface);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  font-family: inherit;
+}
+
+.passyo-input:focus {
+  border-color: var(--passyo-primary);
+  box-shadow: 0 0 0 3px rgba(30, 79, 208, 0.1);
+  background: var(--passyo-surface-lowest);
+}
+
+.passyo-textarea { resize: none; line-height: 1.5; }
+
+.passyo-row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.875rem;
+}
+
+.passyo-input-icon-wrap { position: relative; }
+.passyo-input-with-icon { padding-left: 34px !important; }
+.passyo-input-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px !important;
+  color: var(--passyo-outline);
+  pointer-events: none;
+}
+
+/* ── Construction System Buttons ── */
+.passyo-sys-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.passyo-sys-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 8px;
+  border-radius: 10px;
+  border: 1.5px solid var(--passyo-outline-v);
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  background: var(--passyo-surface-lowest);
+  color: var(--passyo-on-surface-v);
+  transition: all 0.18s;
+  line-height: 1.4;
+  font-family: inherit;
+}
+
+.passyo-sys-btn:hover {
+  border-color: var(--passyo-primary-c);
+  background: var(--passyo-surface-low);
+}
+
+.passyo-sys-btn.selected {
+  border-color: var(--passyo-primary);
+  background: var(--passyo-surface-low);
+  color: var(--passyo-primary);
+  box-shadow: 0 2px 8px rgba(30, 79, 208, 0.14);
+}
+
+.passyo-sys-icon { font-size: 22px !important; color: inherit; }
+
+/* ── Duration Pill ── */
+.passyo-duration-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--passyo-surface-low);
+  border: 1px solid var(--passyo-surface-high);
+  border-radius: 10px;
+  padding: 7px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--passyo-primary);
+}
+
+/* ── Working Days ── */
+.passyo-days-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.passyo-day-btn {
+  padding: 6px 13px;
+  border-radius: 8px;
+  border: 1px solid var(--passyo-outline-v);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--passyo-surface-low);
+  color: var(--passyo-secondary);
+  transition: all 0.15s;
+  letter-spacing: 0.02em;
+  font-family: inherit;
+}
+
+.passyo-day-btn:hover { background: var(--passyo-surface-high); }
+
+.passyo-day-btn.on {
+  background: var(--passyo-primary);
+  color: #fff;
+  border-color: var(--passyo-primary);
+}
+
+/* ── Footer ── */
+.passyo-modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.875rem 1.5rem;
+  border-top: 1px solid var(--passyo-surface-high);
+  background: var(--passyo-surface-low);
+  flex-shrink: 0;
+}
+
+.passyo-btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid var(--passyo-outline-v);
+  border-radius: 10px;
+  background: var(--passyo-surface-lowest);
+  color: var(--passyo-on-surface-v);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.passyo-btn-back:hover { background: var(--passyo-surface-high); }
+
+.passyo-btn-next {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 10px;
+  background: var(--passyo-primary);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.passyo-btn-next:hover {
+  background: var(--passyo-primary-hover);
+  transform: translateY(-1px);
+}
+
+.passyo-btn-next:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.passyo-btn-create {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 10px;
+  background: var(--passyo-success);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  min-width: 150px;
+  justify-content: center;
+  font-family: inherit;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.passyo-btn-create:hover {
+  background: var(--passyo-success-hover);
+  transform: translateY(-1px);
+}
+
+.passyo-btn-create:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Spinner */
+.passyo-spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: passyo-spin 0.75s linear infinite;
+}
+
+@keyframes passyo-spin {
+  to { transform: rotate(360deg); }
+}

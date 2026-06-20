@@ -1,0 +1,821 @@
+<!doctype html>
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Passyo | Workforce Management</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-on-surface": "#f0f1f3",
+              "inverse-primary": "#b4c5ff",
+              "tertiary-container": "#656d84",
+              "primary-container": "#2563eb",
+              "on-tertiary-fixed-variant": "#3f465c",
+              "on-secondary-container": "#54647a",
+              "on-primary-fixed": "#00174b",
+              "error-container": "#ffdad6",
+              "surface-container-highest": "#e1e2e4",
+              "on-secondary": "#ffffff",
+              outline: "#737686",
+              "surface-dim": "#d9dadc",
+              background: "#f8f9fb",
+              "on-tertiary": "#ffffff",
+              "primary-fixed-dim": "#b4c5ff",
+              "primary-fixed": "#dbe1ff",
+              "on-tertiary-fixed": "#131b2e",
+              "secondary-fixed-dim": "#b7c8e1",
+              "outline-variant": "#c3c6d7",
+              "on-primary-fixed-variant": "#003ea8",
+              error: "#ba1a1a",
+              "surface-tint": "#0053db",
+              surface: "#f8f9fb",
+              secondary: "#505f76",
+              "on-secondary-fixed-variant": "#38485d",
+              "on-background": "#191c1e",
+              "surface-container-low": "#f3f4f6",
+              primary: "#004ac6",
+              "on-error-container": "#93000a",
+              "tertiary-fixed": "#dae2fd",
+              "inverse-surface": "#2e3132",
+              "tertiary-fixed-dim": "#bec6e0",
+              "secondary-fixed": "#d3e4fe",
+              tertiary: "#4d556b",
+              "on-surface": "#191c1e",
+              "on-error": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "surface-bright": "#f8f9fb",
+              "on-secondary-fixed": "#0b1c30",
+              "on-primary-container": "#eeefff",
+              "on-primary": "#ffffff",
+              "surface-container-high": "#e7e8ea",
+              "surface-variant": "#e1e2e4",
+              "on-tertiary-container": "#eef0ff",
+              "secondary-container": "#d0e1fb",
+              "on-surface-variant": "#434655",
+              "surface-container": "#edeef0",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "stack-sm": "0.5rem",
+              "stack-lg": "2rem",
+              gutter: "1.5rem",
+              "margin-mobile": "1rem",
+              "stack-md": "1rem",
+              "container-max": "1280px",
+            },
+            fontFamily: {
+              "label-md": ["Inter"],
+              "headline-lg-mobile": ["Inter"],
+              "body-md": ["Inter"],
+              display: ["Inter"],
+              "headline-md": ["Inter"],
+              "headline-lg": ["Inter"],
+              "body-lg": ["Inter"],
+            },
+            fontSize: {
+              "label-md": [
+                "12px",
+                {
+                  lineHeight: "16px",
+                  letterSpacing: "0.05em",
+                  fontWeight: "500",
+                },
+              ],
+              "headline-lg-mobile": [
+                "24px",
+                { lineHeight: "32px", fontWeight: "600" },
+              ],
+              "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+              display: [
+                "36px",
+                {
+                  lineHeight: "44px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "headline-md": [
+                "20px",
+                { lineHeight: "28px", fontWeight: "600" },
+              ],
+              "headline-lg": [
+                "28px",
+                {
+                  lineHeight: "36px",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8f9fb;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  </head>
+  <body class="bg-background text-on-surface">
+    <div class="flex min-h-screen">
+      <!-- Main Content Canvas -->
+      <main class="flex-1 flex flex-col min-h-screen">
+        <!-- Top App Bar (Shared Component Strategy) -->
+        <header
+          class="bg-surface-container-lowest border-b border-outline-variant sticky top-0 z-50"
+        >
+          <div
+            class="flex justify-between items-center w-full px-gutter h-16 max-w-container-max mx-auto"
+          >
+            <div class="flex items-center gap-8">
+              <span class="font-display text-display font-bold text-primary"
+                >Passyo</span
+              >
+              <div class="hidden lg:flex items-center gap-6">
+                <div class="flex flex-col">
+                  <span
+                    class="text-[10px] font-bold text-secondary uppercase tracking-widest"
+                    >Client</span
+                  >
+                  <span class="font-label-md text-label-md font-semibold"
+                    >Skyline Corp.</span
+                  >
+                </div>
+                <div class="h-6 w-px bg-outline-variant"></div>
+                <div class="flex flex-col">
+                  <span
+                    class="text-[10px] font-bold text-secondary uppercase tracking-widest"
+                    >Lead Office</span
+                  >
+                  <span class="font-label-md text-label-md font-semibold"
+                    >Studio Archon</span
+                  >
+                </div>
+                <div class="h-6 w-px bg-outline-variant"></div>
+                <div class="flex flex-col">
+                  <span
+                    class="text-[10px] font-bold text-secondary uppercase tracking-widest"
+                    >Main Contractor</span
+                  >
+                  <span class="font-label-md text-label-md font-semibold"
+                    >Terraform Const.</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <button
+                class="p-2 text-on-surface-variant hover:bg-surface-container transition-colors rounded-full"
+              >
+                <span class="material-symbols-outlined">notifications</span>
+              </button>
+              <button
+                class="p-2 text-on-surface-variant hover:bg-surface-container transition-colors rounded-full"
+              >
+                <span class="material-symbols-outlined">settings</span>
+              </button>
+              <img
+                alt="User Profile"
+                class="w-8 h-8 rounded-full border border-outline-variant object-cover"
+                data-alt="A professional headshot of a senior construction project manager in a minimalist setting. He is wearing a sharp, modern navy blazer over a clean white shirt. The background is a blurred, high-end office environment with cool neutral tones and soft architectural lighting. The overall aesthetic is professional, reliable, and corporate, matching a premium B2B SaaS platform."
+                src="https://lh3.googleusercontent.com/aida/AP1WRLtymiYmMry5P1ldzu85p6vg_Gbe8Sytxnc4HbVpM5Ke-OCsuLdBBvdGqHp3JtphUrkv12FPCRNkprq-AIoVp8QClCNagiY1m6CmlUxhfM7xO7b_-RaNAc7onc-qeHNyXO1t_TbIMBbI6tgZzpj6eS8zQIdZlE9MGZgJzr1Zb07E1t0SYdJgfdOwSeQorl6xViwAOvlI3rVBIDwAoMAfkvMGpwG2O8TBRNtPYxotG1IiSmCMmhTLMUf8LVs"
+              />
+            </div>
+          </div>
+        </header>
+        <!-- Dashboard Content -->
+        <div
+          class="p-gutter max-w-container-max mx-auto w-full flex flex-col gap-gutter"
+        >
+          <!-- Toolbar -->
+          <div
+            class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-4 rounded-lg border border-outline-variant shadow-sm"
+          >
+            <div class="flex flex-col sm:flex-row items-center gap-4 flex-1">
+              <!-- Search Bar -->
+              <div class="relative w-full sm:w-64">
+                <span
+                  class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]"
+                  >search</span
+                >
+                <input
+                  class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-md text-body-md focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all"
+                  placeholder="Search members..."
+                  type="text"
+                />
+              </div>
+              <!-- Segmented Controls -->
+              <div
+                class="flex bg-surface-container-low p-1 rounded-lg border border-outline-variant w-full sm:w-auto"
+              >
+                <button
+                  class="px-4 py-1.5 rounded-md text-label-md font-semibold bg-white shadow-sm text-primary transition-all"
+                >
+                  By Team
+                </button>
+                <button
+                  class="px-4 py-1.5 rounded-md text-label-md font-medium text-secondary hover:text-on-surface transition-all"
+                >
+                  By Person
+                </button>
+                <button
+                  class="px-4 py-1.5 rounded-md text-label-md font-medium text-secondary hover:text-on-surface transition-all"
+                >
+                  By Team Lead
+                </button>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <!-- Export Actions -->
+              <div class="relative group">
+                <button
+                  class="p-2.5 rounded-md border border-outline-variant text-secondary hover:bg-surface-container transition-all flex items-center"
+                >
+                  <span class="material-symbols-outlined">more_horiz</span>
+                </button>
+                <!-- Dropdown Mock -->
+                <div
+                  class="absolute right-0 top-full mt-2 w-48 bg-white border border-outline-variant rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10 p-1"
+                >
+                  <button
+                    class="w-full text-left px-4 py-2 text-body-md hover:bg-surface-container transition-colors rounded-md"
+                  >
+                    Absent by Person
+                  </button>
+                  <button
+                    class="w-full text-left px-4 py-2 text-body-md hover:bg-surface-container transition-colors rounded-md"
+                  >
+                    Absent by Team
+                  </button>
+                  <button
+                    class="w-full text-left px-4 py-2 text-body-md hover:bg-surface-container transition-colors rounded-md font-semibold text-primary"
+                  >
+                    Full Situation Report
+                  </button>
+                </div>
+              </div>
+              <!-- Add Button -->
+              <div class="relative group">
+                <button
+                  class="bg-primary-container hover:bg-primary text-white px-4 py-2.5 rounded-md font-semibold text-body-md flex items-center gap-2 transition-all active:scale-95 shadow-sm"
+                >
+                  <span class="material-symbols-outlined text-[20px]">add</span>
+                  Add Workforce
+                </button>
+                <!-- Dropdown Mock -->
+                <div
+                  class="absolute right-0 top-full mt-2 w-48 bg-white border border-outline-variant rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10 p-1"
+                >
+                  <button
+                    class="w-full text-left px-4 py-2 text-body-md hover:bg-surface-container transition-colors rounded-md flex items-center gap-2"
+                  >
+                    <span class="material-symbols-outlined text-secondary"
+                      >group_add</span
+                    >
+                    Add Team
+                  </button>
+                  <button
+                    class="w-full text-left px-4 py-2 text-body-md hover:bg-surface-container transition-colors rounded-md flex items-center gap-2"
+                  >
+                    <span class="material-symbols-outlined text-secondary"
+                      >person_add</span
+                    >
+                    Add Person
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Workforce Grid -->
+          <div class="grid grid-cols-1 gap-6">
+            <!-- Team Section: CONCRETE - FORMWORKERS -->
+            <div
+              class="bg-white rounded-lg border border-outline-variant shadow-sm overflow-hidden transition-all hover:shadow-md"
+            >
+              <!-- Team Header -->
+              <div
+                class="bg-surface-container-low px-gutter py-4 border-b border-outline-variant flex justify-between items-center"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="bg-primary-container w-10 h-10 rounded flex items-center justify-center text-white"
+                  >
+                    <span
+                      class="material-symbols-outlined"
+                      style="font-variation-settings: &quot;FILL&quot; 1"
+                      >construction</span
+                    >
+                  </div>
+                  <div>
+                    <h3
+                      class="font-headline-md text-headline-md font-bold text-on-surface"
+                    >
+                      TEAM CONCRETE - FORMWORKERS
+                    </h3>
+                    <p class="text-label-md font-label-md text-secondary">
+                      8 Members Active • Area: Structural Shell
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-6">
+                  <!-- KPIs -->
+                  <div class="hidden lg:flex gap-8 mr-4">
+                    <div class="text-right">
+                      <p
+                        class="text-[10px] font-bold text-secondary uppercase tracking-widest"
+                      >
+                        Daily Performance
+                      </p>
+                      <p
+                        class="font-label-md text-label-md font-bold text-primary"
+                      >
+                        45m³ poured
+                      </p>
+                    </div>
+                    <div class="text-right">
+                      <p
+                        class="text-[10px] font-bold text-secondary uppercase tracking-widest"
+                      >
+                        Absence Rate
+                      </p>
+                      <p
+                        class="font-label-md text-label-md font-bold text-error"
+                      >
+                        5%
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    class="p-2 text-secondary hover:bg-surface-container-highest rounded-full transition-colors"
+                  >
+                    <span class="material-symbols-outlined">more_horiz</span>
+                  </button>
+                </div>
+              </div>
+              <!-- Cascade List -->
+              <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                  <thead>
+                    <tr
+                      class="bg-surface-container-lowest border-b border-outline-variant"
+                    >
+                      <th
+                        class="px-gutter py-3 font-label-md text-label-md text-secondary uppercase tracking-wider"
+                      >
+                        Member Name
+                      </th>
+                      <th
+                        class="px-gutter py-3 font-label-md text-label-md text-secondary uppercase tracking-wider"
+                      >
+                        Role
+                      </th>
+                      <th
+                        class="px-gutter py-3 font-label-md text-label-md text-secondary uppercase tracking-wider"
+                      >
+                        Working Days
+                      </th>
+                      <th
+                        class="px-gutter py-3 font-label-md text-label-md text-secondary uppercase tracking-wider"
+                      >
+                        Assigned Block
+                      </th>
+                      <th
+                        class="px-gutter py-3 font-label-md text-label-md text-secondary uppercase tracking-wider"
+                      >
+                        Individual Qty
+                      </th>
+                      <th
+                        class="px-gutter py-3 font-label-md text-label-md text-secondary uppercase tracking-wider"
+                      >
+                        Status
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-outline-variant">
+                    <!-- Lead Row -->
+                    <tr
+                      class="bg-primary-fixed/30 hover:bg-primary-fixed/50 transition-colors"
+                    >
+                      <td class="px-gutter py-4 flex items-center gap-3">
+                        <div
+                          class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-[12px]"
+                        >
+                          RM
+                        </div>
+                        <div class="flex flex-col">
+                          <span
+                            class="font-body-md text-body-md font-bold text-on-surface"
+                            >Ricardo Mendes</span
+                          >
+                          <span
+                            class="text-[10px] font-bold text-primary flex items-center gap-1"
+                          >
+                            <span
+                              class="material-symbols-outlined text-[12px]"
+                              style="
+                                font-variation-settings: &quot;FILL&quot; 1;
+                              "
+                              >star</span
+                            >
+                            TEAM LEAD
+                          </span>
+                        </div>
+                      </td>
+                      <td class="px-gutter py-4 font-body-md text-body-md">
+                        Foreman
+                      </td>
+                      <td class="px-gutter py-4 font-body-md text-body-md">
+                        22/22
+                      </td>
+                      <td class="px-gutter py-4 font-body-md text-body-md">
+                        Block A, Floor 2
+                      </td>
+                      <td
+                        class="px-gutter py-4 font-body-md text-body-md font-semibold"
+                      >
+                        12m²
+                      </td>
+                      <td class="px-gutter py-4">
+                        <span
+                          class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#dcfce7] text-[#166534] uppercase tracking-wider"
+                          >Present</span
+                        >
+                      </td>
+                    </tr>
+                    <!-- Member Rows -->
+                    <tr
+                      class="hover:bg-surface-container-low transition-colors"
+                    >
+                      <td class="px-gutter py-3 flex items-center gap-3">
+                        <div
+                          class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-[12px]"
+                        >
+                          JS
+                        </div>
+                        <span class="font-body-md text-body-md text-on-surface"
+                          >João Silva</span
+                        >
+                      </td>
+                      <td
+                        class="px-gutter py-3 font-body-md text-body-md text-secondary"
+                      >
+                        Ironworker
+                      </td>
+                      <td
+                        class="px-gutter py-3 font-body-md text-body-md text-secondary"
+                      >
+                        19/22
+                      </td>
+                      <td
+                        class="px-gutter py-3 font-body-md text-body-md text-secondary"
+                      >
+                        Block A, Floor 2
+                      </td>
+                      <td
+                        class="px-gutter py-3 font-body-md text-body-md text-secondary"
+                      >
+                        9m²
+                      </td>
+                      <td class="px-gutter py-3">
+                        <span
+                          class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#dcfce7] text-[#166534] uppercase tracking-wider"
+                          >Present</span
+                        >
+                      </td>
+                    </tr>
+                    <tr
+                      class="hover:bg-surface-container-low transition-colors"
+                    >
+                      <td class="px-gutter py-3 flex items-center gap-3">
+                        <div
+                          class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-[12px]"
+                        >
+                          PA
+                        </div>
+                        <span class="font-body-md text-body-md text-on-surface"
+                          >Pedro Alves</span
+                        >
+                      </td>
+                      <td
+                        class="px-gutter py-3 font-body-md text-body-md text-secondary"
+                      >
+                        Mason
+                      </td>
+                      <td
+                        class="px-gutter py-3 font-body-md text-body-md text-secondary"
+                      >
+                        21/22
+                      </td>
+                      <td
+                        class="px-gutter py-3 font-body-md text-body-md text-secondary"
+                      >
+                        Block A, Floor 1
+                      </td>
+                      <td
+                        class="px-gutter py-3 font-body-md text-body-md text-secondary"
+                      >
+                        15m²
+                      </td>
+                      <td class="px-gutter py-3">
+                        <span
+                          class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#fee2e2] text-[#991b1b] uppercase tracking-wider"
+                          >Absent</span
+                        >
+                      </td>
+                    </tr>
+                    <tr
+                      class="hover:bg-surface-container-low transition-colors"
+                    >
+                      <td class="px-gutter py-3 flex items-center gap-3">
+                        <div
+                          class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-[12px]"
+                        >
+                          MT
+                        </div>
+                        <span class="font-body-md text-body-md text-on-surface"
+                          >Miguel Teixeira</span
+                        >
+                      </td>
+                      <td
+                        class="px-gutter py-3 font-body-md text-body-md text-secondary"
+                      >
+                        Ironworker
+                      </td>
+                      <td
+                        class="px-gutter py-3 font-body-md text-body-md text-secondary"
+                      >
+                        22/22
+                      </td>
+                      <td
+                        class="px-gutter py-3 font-body-md text-body-md text-secondary"
+                      >
+                        Block B, Ground
+                      </td>
+                      <td
+                        class="px-gutter py-3 font-body-md text-body-md text-secondary"
+                      >
+                        11m²
+                      </td>
+                      <td class="px-gutter py-3">
+                        <span
+                          class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#dcfce7] text-[#166534] uppercase tracking-wider"
+                          >Present</span
+                        >
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- Team Section: MASONRY & FINISHING -->
+            <div
+              class="bg-white rounded-lg border border-outline-variant shadow-sm overflow-hidden transition-all hover:shadow-md"
+            >
+              <!-- Team Header -->
+              <div
+                class="bg-surface-container-low px-gutter py-4 border-b border-outline-variant flex justify-between items-center"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="bg-tertiary-container w-10 h-10 rounded flex items-center justify-center text-white"
+                  >
+                    <span
+                      class="material-symbols-outlined"
+                      style="font-variation-settings: &quot;FILL&quot; 1"
+                      >format_paint</span
+                    >
+                  </div>
+                  <div>
+                    <h3
+                      class="font-headline-md text-headline-md font-bold text-on-surface"
+                    >
+                      TEAM MASONRY &amp; FINISHING
+                    </h3>
+                    <p class="text-label-md font-label-md text-secondary">
+                      12 Members Active • Area: Internal Dividers
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-6">
+                  <div class="hidden lg:flex gap-8 mr-4">
+                    <div class="text-right">
+                      <p
+                        class="text-[10px] font-bold text-secondary uppercase tracking-widest"
+                      >
+                        Daily Performance
+                      </p>
+                      <p
+                        class="font-label-md text-label-md font-bold text-primary"
+                      >
+                        120m² finished
+                      </p>
+                    </div>
+                    <div class="text-right">
+                      <p
+                        class="text-[10px] font-bold text-secondary uppercase tracking-widest"
+                      >
+                        Absence Rate
+                      </p>
+                      <p
+                        class="font-label-md text-label-md font-bold text-secondary"
+                      >
+                        0%
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    class="p-2 text-secondary hover:bg-surface-container-highest rounded-full transition-colors"
+                  >
+                    <span class="material-symbols-outlined">more_horiz</span>
+                  </button>
+                </div>
+              </div>
+              <!-- Accordion Row Sample -->
+              <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                  <tbody class="divide-y divide-outline-variant">
+                    <tr
+                      class="bg-primary-fixed/30 hover:bg-primary-fixed/50 transition-colors"
+                    >
+                      <td class="px-gutter py-4 flex items-center gap-3">
+                        <div
+                          class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-[12px]"
+                        >
+                          SF
+                        </div>
+                        <div class="flex flex-col">
+                          <span
+                            class="font-body-md text-body-md font-bold text-on-surface"
+                            >Sara Fernandes</span
+                          >
+                          <span
+                            class="text-[10px] font-bold text-primary flex items-center gap-1"
+                          >
+                            <span
+                              class="material-symbols-outlined text-[12px]"
+                              style="
+                                font-variation-settings: &quot;FILL&quot; 1;
+                              "
+                              >star</span
+                            >
+                            TEAM LEAD
+                          </span>
+                        </div>
+                      </td>
+                      <td class="px-gutter py-4 font-body-md text-body-md">
+                        Senior Mason
+                      </td>
+                      <td class="px-gutter py-4 font-body-md text-body-md">
+                        22/22
+                      </td>
+                      <td class="px-gutter py-4 font-body-md text-body-md">
+                        Block A, Floor 4
+                      </td>
+                      <td
+                        class="px-gutter py-4 font-body-md text-body-md font-semibold"
+                      >
+                        28m²
+                      </td>
+                      <td class="px-gutter py-4">
+                        <span
+                          class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#dcfce7] text-[#166534] uppercase tracking-wider"
+                          >Present</span
+                        >
+                      </td>
+                    </tr>
+                    <tr
+                      class="hover:bg-surface-container-low transition-colors"
+                    >
+                      <td class="px-gutter py-3 text-center" colspan="6">
+                        <button
+                          class="text-label-md font-label-md text-primary font-bold hover:underline flex items-center justify-center gap-2 w-full"
+                        >
+                          Show 11 more members
+                          <span class="material-symbols-outlined text-[16px]"
+                            >keyboard_arrow_down</span
+                          >
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Footer (Shared Component Strategy) -->
+        <footer
+          class="mt-auto bg-surface-container-lowest border-t border-outline-variant"
+        >
+          <div
+            class="flex flex-col md:flex-row justify-between items-center w-full px-gutter py-stack-md max-w-container-max mx-auto gap-4"
+          >
+            <div class="flex items-center gap-4">
+              <span class="font-label-md text-label-md font-bold text-primary"
+                >Passyo</span
+              >
+              <p class="font-label-md text-label-md text-secondary">
+                © 2024 Passyo Construction Technologies. All rights reserved.
+              </p>
+            </div>
+            <div class="flex items-center gap-6">
+              <a
+                class="font-label-md text-label-md text-secondary hover:text-primary transition-colors"
+                href="#"
+                >Privacy Policy</a
+              >
+              <a
+                class="font-label-md text-label-md text-secondary hover:text-primary transition-colors"
+                href="#"
+                >Terms of Service</a
+              >
+              <a
+                class="font-label-md text-label-md text-secondary hover:text-primary transition-colors"
+                href="#"
+                >Support</a
+              >
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
+    <!-- Mobile Navigation Shell -->
+    <nav
+      class="md:hidden fixed bottom-0 left-0 right-0 bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center h-16 z-[100] px-2"
+    >
+      <button class="flex flex-col items-center gap-1 text-secondary">
+        <span class="material-symbols-outlined">dashboard</span>
+        <span class="text-[10px] font-bold uppercase">Home</span>
+      </button>
+      <button class="flex flex-col items-center gap-1 text-primary">
+        <span
+          class="material-symbols-outlined"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >groups</span
+        >
+        <span class="text-[10px] font-bold uppercase">Teams</span>
+      </button>
+      <button class="flex flex-col items-center gap-1 text-secondary">
+        <span class="material-symbols-outlined">engineering</span>
+        <span class="text-[10px] font-bold uppercase">Workers</span>
+      </button>
+      <button class="flex flex-col items-center gap-1 text-secondary">
+        <span class="material-symbols-outlined">analytics</span>
+        <span class="text-[10px] font-bold uppercase">Reports</span>
+      </button>
+    </nav>
+    <script>
+      // Micro-interaction for scale effect on buttons
+      document.querySelectorAll("button").forEach((btn) => {
+        btn.addEventListener("mousedown", () => {
+          btn.style.transform = "scale(0.98)";
+        });
+        btn.addEventListener("mouseup", () => {
+          btn.style.transform = "scale(1)";
+        });
+        btn.addEventListener("mouseleave", () => {
+          btn.style.transform = "scale(1)";
+        });
+      });
+    </script>
+  </body>
+</html>

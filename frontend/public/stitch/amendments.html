@@ -1,0 +1,311 @@
+<!DOCTYPE html><html class="light" lang="fr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Passyo - Historique des Avenants</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0052CC",
+                        "on-primary": "#FFFFFF",
+                        "primary-container": "#D6E4FF",
+                        "on-primary-container": "#001A41",
+                        secondary: "#535F70",
+                        "on-secondary": "#FFFFFF",
+                        "surface": "#F8F9FA",
+                        "on-surface": "#1A1C1E",
+                        "surface-variant": "#E1E2EC",
+                        "on-surface-variant": "#44474E",
+                        "outline": "#74777F",
+                        "outline-variant": "#C4C6D0",
+                        "surface-container-lowest": "#FFFFFF",
+                        "surface-container-low": "#F2F3F7",
+                        "surface-container-high": "#E8EAED",
+                        "inverse-surface": "#2F3033",
+                        "inverse-primary": "#ADC6FF",
+                        "success": "#1E8E3E",
+                        "error": "#B3261E"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Public Sans"],
+                        "display": ["Public Sans"],
+                        "body": ["Public Sans"],
+                        "label": ["Public Sans"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 23px;
+            top: 40px;
+            bottom: 0;
+            width: 2px;
+            background: repeating-linear-gradient(to bottom, #C4C6D0, #C4C6D0 4px, transparent 4px, transparent 8px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar Shell -->
+
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 z-40 bg-surface-container-lowest border-b border-outline-variant flex items-center justify-between px-8">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary/20" placeholder="Rechercher un avenant..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-all">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-all">settings</button>
+<div class="h-8 w-8 rounded-full bg-primary-container flex items-center justify-center text-primary font-bold text-xs overflow-hidden border border-outline-variant">
+<img alt="Profile" data-alt="A high-quality professional portrait of a construction project manager in a bright, modern office setting. The lighting is soft and natural, emphasizing a clean and organized workspace. The image uses a professional color palette of soft blues and grays, maintaining a corporate yet accessible light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUlemIm2Rr7hcEAPMR8SAymLzmMh7xX4YlvK5l5CGuuoThIpNWieVyWyC8hneHGtZy-LU8I_TAvOdUWhp5xNy5WOscd8c5Uj8TNgWd_YbxC5OXNKAsnendoLne-4W-IAhXhCj94_qgVQbIillJumqqiCqBvOSBwcgbtPtMRciUDlVosUTMCyNjOYGTtk6RKt5Cj5TnjlgDbVqQi9tNcN2Dek5HPPNzI2wiri29YXkOlMuD_fHp2G7T1ATotV8gvzEtEHM3Ek7qMUQ" class="">
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 min-h-screen">
+<div class="max-w-7xl mx-auto p-8">
+<!-- Header Section -->
+<div class="flex items-center justify-between mb-10">
+<div>
+<nav class="flex text-xs text-secondary mb-2 gap-2 items-center">
+<span class="">Projets</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span class="">Rénovation Centre Ville</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span class="text-primary font-bold">Avenants</span>
+</nav>
+<h2 class="text-3xl font-bold text-on-surface tracking-tight">Historique des Avenants</h2>
+</div>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:shadow-lg transition-all active:scale-95">
+<span class="material-symbols-outlined">add_circle</span>
+                    Créer un Avenant
+                </button>
+</div>
+<!-- Bento Layout Content -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Left: Timeline View (8 cols) -->
+<div class="col-span-12 lg:col-span-8 space-y-6 relative timeline-line">
+<!-- Active Version (V3) -->
+<div class="relative pl-14 group">
+<div class="absolute left-0 top-0 w-12 h-12 rounded-full bg-primary-container border-4 border-surface flex items-center justify-center z-10 shadow-sm">
+<span class="text-primary font-bold">V3</span>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border-2 border-primary ring-4 ring-primary/5">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h3 class="text-lg font-bold">Avenant 2 - Extension de Scope</h3>
+<span class="px-3 py-1 bg-primary text-on-primary text-[10px] font-bold rounded-full uppercase tracking-wider">Actif</span>
+</div>
+<p class="text-sm text-secondary">Approuvé le 14 Octobre 2023 • Par Jean Dupont</p>
+</div>
+<div class="text-right">
+<span class="text-xs font-bold text-secondary uppercase block mb-1">Impact Budget</span>
+<span class="text-xl font-bold text-success">+ 42 500,00 €</span>
+</div>
+</div>
+<div class="space-y-3">
+<div class="p-4 bg-surface-container-low rounded-xl border border-outline-variant/30">
+<p class="text-xs font-bold text-secondary mb-3 uppercase tracking-widest">Tâches Modifiées</p>
+<div class="space-y-2">
+<div class="flex items-center justify-between text-sm py-2 border-b border-outline-variant/20 last:border-0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-lg">format_paint</span>
+<span class="font-medium">Peinture Intérieure - Zone B</span>
+</div>
+<span class="text-primary font-bold">+12,5% Qte</span>
+</div>
+<div class="flex items-center justify-between text-sm py-2 border-b border-outline-variant/20 last:border-0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-lg">electric_bolt</span>
+<span class="font-medium">Câblage Domotique</span>
+</div>
+<span class="text-primary font-bold">+8,00 €/m²</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Previous Version (V2) -->
+<div class="relative pl-14 opacity-80 hover:opacity-100 transition-opacity">
+<div class="absolute left-0 top-0 w-12 h-12 rounded-full bg-surface-container-high border-4 border-surface flex items-center justify-center z-10">
+<span class="text-outline font-bold">V2</span>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-outline-variant">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h3 class="text-lg font-bold text-on-surface-variant">Avenant 1 - Ajustement Matériaux</h3>
+<span class="px-3 py-1 bg-surface-container-high text-secondary text-[10px] font-bold rounded-full uppercase tracking-wider">Historique</span>
+</div>
+<p class="text-sm text-secondary">Approuvé le 02 Septembre 2023 • Par Marie Lefebvre</p>
+</div>
+<div class="text-right">
+<span class="text-xs font-bold text-secondary uppercase block mb-1">Impact Budget</span>
+<span class="text-xl font-bold text-on-surface-variant">- 12 200,00 €</span>
+</div>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-surface-container-low rounded-lg text-xs text-secondary border border-outline-variant/30">Gros Œuvre</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-lg text-xs text-secondary border border-outline-variant/30">Fondations</span>
+</div>
+</div>
+</div>
+<!-- Initial Version (V1) -->
+<div class="relative pl-14 opacity-80 hover:opacity-100 transition-opacity pb-10">
+<div class="absolute left-0 top-0 w-12 h-12 rounded-full bg-surface-container-high border-4 border-surface flex items-center justify-center z-10">
+<span class="text-outline font-bold">V1</span>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-outline-variant">
+<div class="flex justify-between items-start">
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h3 class="text-lg font-bold text-on-surface-variant">Contrat Initial</h3>
+</div>
+<p class="text-sm text-secondary">Signé le 15 Juillet 2023</p>
+</div>
+<div class="text-right">
+<span class="text-xs font-bold text-secondary uppercase block mb-1">Montant Initial</span>
+<span class="text-xl font-bold text-on-surface-variant">845 000,00 €</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Adjustment Form (4 cols) -->
+<div class="col-span-12 lg:col-span-4">
+<div class="sticky top-24 bg-surface-container-lowest rounded-3xl p-6 shadow-xl border border-outline-variant/50">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">edit_document</span>
+</div>
+<h3 class="text-xl font-bold">Ajustement Prix/Qte</h3>
+</div>
+<div class="space-y-6">
+<!-- Task Selector -->
+<div class="space-y-2">
+<label class="text-xs font-bold text-secondary uppercase tracking-wider">Sélectionner une tâche</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-xl px-4 py-3 appearance-none focus:ring-2 focus:ring-primary">
+<option>Menuiserie Extérieure - Alu</option>
+<option>Dalle Béton Armé</option>
+<option>Isolation Thermique</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
+</div>
+</div>
+<!-- Current Targets -->
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 bg-surface-container-low rounded-xl border border-outline-variant/30">
+<p class="text-[10px] font-bold text-secondary uppercase mb-1">Cible Actuelle</p>
+<p class="text-lg font-bold">145 m²</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-xl border border-outline-variant/30">
+<p class="text-[10px] font-bold text-secondary uppercase mb-1">Prix Unitaire</p>
+<p class="text-lg font-bold">112,00 €</p>
+</div>
+</div>
+<div class="h-px bg-outline-variant/50 my-2"></div>
+<!-- Input Fields -->
+<div class="space-y-4">
+<div class="space-y-2">
+<label class="text-xs font-bold text-secondary uppercase tracking-wider">Nouvelle Quantité Approuvée</label>
+<div class="relative">
+<input class="w-full bg-white border border-primary/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary font-bold" placeholder="158" type="number">
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-outline text-sm">m²</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-secondary uppercase tracking-wider">Nouveau Prix Approuvé</label>
+<div class="relative">
+<input class="w-full bg-white border border-primary/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary font-bold" placeholder="112.00" type="number">
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-outline text-sm">€</span>
+</div>
+</div>
+</div>
+<!-- Summary Impact -->
+<div class="bg-primary/5 rounded-2xl p-4 border border-primary/10">
+<div class="flex justify-between items-center mb-1">
+<span class="text-sm text-secondary">Impact financier estimé</span>
+<span class="text-sm font-bold text-primary">+ 1 456,00 €</span>
+</div>
+<div class="w-full bg-primary-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[15%]"></div>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-primary/90 transition-all shadow-md active:scale-95">
+<span class="material-symbols-outlined">save</span>
+                                Enregistrer la modification
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Background Decoration -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 opacity-30">
+
+</div>
+<script>
+        // Micro-interaction for the form button
+        const saveBtn = document.querySelector('button .material-symbols-outlined:contains("save")')?.parentElement;
+        if (saveBtn) {
+            saveBtn.addEventListener('click', () => {
+                const originalContent = saveBtn.innerHTML;
+                saveBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Modification en cours...';
+                saveBtn.disabled = true;
+                setTimeout(() => {
+                    saveBtn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Modifié avec succès';
+                    saveBtn.classList.remove('bg-primary');
+                    saveBtn.classList.add('bg-success');
+                    setTimeout(() => {
+                        saveBtn.innerHTML = originalContent;
+                        saveBtn.classList.add('bg-primary');
+                        saveBtn.classList.remove('bg-success');
+                        saveBtn.disabled = false;
+                    }, 2000);
+                }, 1200);
+            });
+        }
+
+        // Search highlight interaction
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-primary/40');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-primary/40');
+        });
+    </script>
+
+
+</body></html>

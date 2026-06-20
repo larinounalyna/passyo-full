@@ -1,0 +1,100 @@
+.upcoming-task-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.task-tag {
+  font-size: 11px;
+  font-weight: 700;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.task-more-btn {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.task-more-btn:hover {
+  color: #6b7280;
+}
+
+.task-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 20px 0;
+  line-height: 1.4;
+  white-space: pre-line;
+}
+
+.task-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-tabs {
+  display: flex;
+  gap: 32px;
+}
+
+.task-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #9ca3af;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.task-tab.active.conc {
+  color: #10b981;
+}
+
+.task-tab.active.plan {
+  color: #ef4444;
+}
+
+.task-tab.active.logi {
+  color: #64748b;
+}
+
+.task-due {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.due-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.due-date {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f2937;
+}

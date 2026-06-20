@@ -1,0 +1,312 @@
+.daily-reports-page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.reports-header-container {
+  margin-bottom: 24px;
+}
+
+.generate-report-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #2563eb;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
+  white-space: nowrap;
+}
+
+.generate-report-btn:hover:not(:disabled) {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.32);
+}
+
+.generate-report-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.generate-report-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.reports-subtitle {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin-top: -4px;
+}
+
+/* Calendar + daily reports grid */
+.reports-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.reports-calendar-container {
+  background: #f8faff;
+  border: 1px solid #e8eef8;
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 2px 16px rgba(30, 60, 120, 0.06);
+  display: flex;
+  justify-content: center;
+}
+
+.reports-daily-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.embedded-report-preview {
+  width: 100%;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.embedded-report-preview .report-right-side {
+  height: 600px;
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+.embedded-report-preview .report-paper {
+  min-height: auto;
+  height: 100%;
+}
+
+.no-reports-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.no-reports-placeholder {
+  background: #f8faff;
+  border: 2px dashed #dbe4f0;
+  border-radius: 20px;
+  padding: 56px 32px;
+  text-align: center;
+  color: #94a3b8;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.meetings-section {
+  background: #f8faff;
+  border: 1px solid #e8eef8;
+  border-radius: 20px;
+  padding: 28px;
+  margin-top: 8px;
+  box-shadow: 0 2px 16px rgba(30, 60, 120, 0.06);
+}
+
+.meetings-section h3 {
+  margin: 0 0 22px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1e293b;
+  letter-spacing: -0.01em;
+}
+
+/* React Calendar — light theme overrides */
+.react-calendar {
+  width: 100% !important;
+  background: transparent !important;
+  border: none !important;
+  font-family: inherit !important;
+  color: #1e293b !important;
+}
+
+.react-calendar__navigation {
+  display: flex;
+  margin-bottom: 20px !important;
+  background: #eef2fb;
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.react-calendar__navigation button {
+  color: #1e293b !important;
+  min-width: 44px;
+  background: none;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background-color: #2563eb !important;
+  color: #fff !important;
+}
+
+.react-calendar__month-view__weekdays {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 11px;
+  color: #2563eb !important;
+  opacity: 0.85;
+  margin-bottom: 12px;
+}
+
+.react-calendar__month-view__weekdays__weekday abbr {
+  text-decoration: none;
+}
+
+.react-calendar__tile {
+  padding: 14px 8px !important;
+  border-radius: 12px !important;
+  font-weight: 600;
+  font-size: 14px;
+  color: #475569 !important;
+  transition: all 0.15s !important;
+}
+
+.react-calendar__tile:enabled:hover {
+  background-color: #eef2fb !important;
+  color: #1e293b !important;
+}
+
+.react-calendar__tile--now {
+  background: #eef6ff !important;
+  color: #2563eb !important;
+  position: relative;
+}
+
+.react-calendar__tile--now::after {
+  content: '';
+  position: absolute;
+  bottom: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: #2563eb;
+  border-radius: 50%;
+}
+
+.react-calendar__tile--active {
+  background: #2563eb !important;
+  color: #fff !important;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.3) !important;
+  z-index: 2;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #cbd5e1 !important;
+  opacity: 0.7;
+}
+
+/* ── Report Modal ── */
+.report-modal-overlay {
+  background-color: rgba(7, 15, 28, 0.4);
+  backdrop-filter: blur(4px);
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.report-modal-content {
+  background-color: var(--bg);
+  border-radius: 20px;
+  box-shadow: 0 10px 38px -10px rgba(22, 23, 24, 0.35), 0 10px 20px -15px rgba(22, 23, 24, 0.2);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 900px;
+  max-height: 92vh;
+  padding: 0;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.report-modal-header {
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.report-modal-title {
+  margin: 0;
+  font-weight: 700;
+  color: var(--text-1);
+  font-size: 18px;
+}
+
+.report-modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.report-modal-close-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-3);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.report-modal-close-btn:hover {
+  background: var(--red-pale);
+  color: var(--red);
+  border-color: var(--red);
+}
+
+@keyframes overlayShow {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes contentShow {
+  from { opacity: 0; transform: translate(-50%, -48%) scale(0.96); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@media (max-width: 1100px) {
+  .reports-grid {
+    grid-template-columns: 1fr;
+  }
+  .reports-calendar-container {
+    max-width: 460px;
+    margin: 0 auto;
+  }
+}

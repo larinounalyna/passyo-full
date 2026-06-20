@@ -1,0 +1,21 @@
+.daily-report-page {
+  width: 100%;
+}
+
+.daily-report-content {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 0;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, #eef3fb 0%, #e8eef8 100%);
+  width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .daily-report-content {
+    padding: 0;
+  }
+}

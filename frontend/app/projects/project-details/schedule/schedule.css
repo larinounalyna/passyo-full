@@ -1,0 +1,10 @@
+.schedule-module {
+  margin-top: 10px;
+}
+
+.schedule-module-shell {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
