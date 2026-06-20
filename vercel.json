@@ -1,15 +1,13 @@
 {
-  "buildCommand": "cd frontend && npm run build",
-  "outputDirectory": "frontend/.next",
-  "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "/api/:path*"
-    }
-  ],
-  "functions": {
-    "api/**/*.py": {
-      "runtime": "python3.11"
+  "experimentalServices": {
+    "frontend": {
+      "root": "frontend",
+      "framework": "nextjs"
+    },
+    "backend": {
+      "root": "api",
+      "runtime": "python3.11",
+      "entrypoint": "index.py"
     }
   }
 }
