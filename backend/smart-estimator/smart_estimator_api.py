@@ -40,18 +40,14 @@ from pricing_database import (
 try:
     from bim_parser import parse_bim_file, validate_components
     BIM_PARSER_AVAILABLE = True
-    logger.info("✓ BIM parser imported successfully")
 except Exception as e:
     BIM_PARSER_AVAILABLE = False
-    logger.warning(f"✗ BIM parser import failed: {str(e)}")
 
 try:
     from ai_enhancement import ai_enhance_components, ai_generate_component_summary
     AI_ENHANCEMENT_AVAILABLE = True
-    logger.info("✓ AI enhancement imported successfully")
 except Exception as e:
     AI_ENHANCEMENT_AVAILABLE = False
-    logger.warning(f"✗ AI enhancement import failed: {str(e)}")
 
 # Try to import PDF parser (in parent directory)
 try:
@@ -92,6 +88,11 @@ app.add_middleware(
 )
 
 logger = logging.getLogger(__name__)
+
+# Log import status
+logger.info(f"BIM parser available: {BIM_PARSER_AVAILABLE}")
+logger.info(f"AI enhancement available: {AI_ENHANCEMENT_AVAILABLE}")
+logger.info(f"PDF parser available: {PDF_PARSER_AVAILABLE}")
 
 # ============================================================================
 # GLOBAL EXCEPTION HANDLER
