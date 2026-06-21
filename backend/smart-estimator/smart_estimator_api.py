@@ -524,7 +524,7 @@ async def upload_bim_file(file: UploadFile = File(...)):
     if not BIM_PARSER_AVAILABLE:
         raise HTTPException(
             status_code=400,
-            detail="BIM parser not available. Install: pip install pandas openpyxl"
+            detail="BIM parser not available. Install required packages: pip install pandas openpyxl ifcopenshell"
         )
 
     tmp_path = None
@@ -534,7 +534,10 @@ async def upload_bim_file(file: UploadFile = File(...)):
             tmp.write(contents)
             tmp_path = tmp.name
 
+        logger.info(f"Parsing BIM file: {file.filename} (temp: {tmp_path})")
         components = parse_bim_file(tmp_path)
+        logger.info(f"Successfully parsed {len(components)} components")
+        
         # Auto-fill prices from pricing database for components with price == 0
         components = auto_price_components(components, "default")
         validation = validate_components(components)
@@ -559,8 +562,8 @@ async def upload_bim_file(file: UploadFile = File(...)):
         }
 
     except Exception as e:
-        logger.error(f"BIM upload error: {str(e)}")
-        raise HTTPException(status_code=400, detail=str(e))
+        logger.error(f"BIM upload error: {str(e)}", exc_info=True)
+        raise HTTPException(status_code=400, detail=f"BIM parsing failed: {str(e)}")
 
     finally:
         if tmp_path:
