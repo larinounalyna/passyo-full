@@ -61,23 +61,42 @@ export default function CalculatorPage() {
     try {
       const endpoint =
         type === "pdf" ? "/api/v2/upload/pdf-file" : "/api/v2/upload/bim-file";
+
+      console.log(`Uploading ${file.name} to ${API_BASE}${endpoint}`);
+
       const res = await fetch(`${API_BASE}${endpoint}`, {
         method: "POST",
         body: formData,
       });
 
-      if (!res.ok)
-        throw new Error("Upload failed. Make sure backend is running.");
-
       const data = await res.json();
+
+      if (!res.ok) {
+        const errorMsg =
+          data.detail ||
+          data.message ||
+          "Upload failed. Make sure backend is running.";
+        throw new Error(errorMsg);
+      }
+
+      console.log(`Upload successful:`, data);
       setFileData(data);
       setComponents(data.components || []);
+
+      if (!data.components || data.components.length === 0) {
+        toast.error("No components extracted. Check file format.");
+        return;
+      }
+
       toast.success(
         `Successfully extracted ${data.components?.length || 0} components.`,
       );
       setActiveStep(2);
     } catch (err: any) {
-      toast.error(err.message);
+      console.error("Upload error:", err);
+      toast.error(
+        err.message || "Upload failed. Check browser console for details.",
+      );
     } finally {
       setIsLoading(false);
     }

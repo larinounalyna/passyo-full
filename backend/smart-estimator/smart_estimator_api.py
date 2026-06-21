@@ -40,14 +40,18 @@ from pricing_database import (
 try:
     from bim_parser import parse_bim_file, validate_components
     BIM_PARSER_AVAILABLE = True
-except Exception:
+    logger.info("✓ BIM parser imported successfully")
+except Exception as e:
     BIM_PARSER_AVAILABLE = False
+    logger.warning(f"✗ BIM parser import failed: {str(e)}")
 
 try:
     from ai_enhancement import ai_enhance_components, ai_generate_component_summary
     AI_ENHANCEMENT_AVAILABLE = True
-except Exception:
+    logger.info("✓ AI enhancement imported successfully")
+except Exception as e:
     AI_ENHANCEMENT_AVAILABLE = False
+    logger.warning(f"✗ AI enhancement import failed: {str(e)}")
 
 # Try to import PDF parser (in parent directory)
 try:
@@ -521,7 +525,10 @@ async def create_custom_pricing_profile(request: CustomProfileRequest):
 @app.post("/api/v2/upload/bim-file")
 async def upload_bim_file(file: UploadFile = File(...)):
     """Upload BIM file and extract components"""
+    logger.info(f"BIM upload received: {file.filename}, content_type: {file.content_type}")
+    
     if not BIM_PARSER_AVAILABLE:
+        logger.error("BIM parser not available")
         raise HTTPException(
             status_code=400,
             detail="BIM parser not available. Install required packages: pip install pandas openpyxl ifcopenshell"
@@ -529,8 +536,12 @@ async def upload_bim_file(file: UploadFile = File(...)):
 
     tmp_path = None
     try:
-        with tempfile.NamedTemporaryFile(delete=False, suffix=os.path.splitext(file.filename)[1]) as tmp:
+        file_ext = os.path.splitext(file.filename)[1]
+        logger.info(f"File extension: {file_ext}")
+        
+        with tempfile.NamedTemporaryFile(delete=False, suffix=file_ext) as tmp:
             contents = await file.read()
+            logger.info(f"File size: {len(contents)} bytes")
             tmp.write(contents)
             tmp_path = tmp.name
 
