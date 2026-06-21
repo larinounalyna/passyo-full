@@ -14,3 +14,4 @@
 # General
 *.log
 .DS_Store
+.vercel
