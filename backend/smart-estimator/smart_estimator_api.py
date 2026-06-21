@@ -74,13 +74,21 @@ app = FastAPI(
     version="3.0.0"
 )
 
-# CORS middleware for local development
+# CORS middleware - must be first middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://passyo-full.vercel.app",
+        "http://localhost:3000",
+        "http://localhost:8000",
+        "http://localhost:8001",
+        "http://localhost:8002",
+        "*"  # Allow all for development
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 logger = logging.getLogger(__name__)
